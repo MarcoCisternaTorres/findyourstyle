@@ -1,6 +1,7 @@
 package com.example.findyourstyle.Adampters;
 
 import android.content.Context;
+import android.icu.text.Transliterator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,11 @@ public class AdapterBuscar extends RecyclerView.Adapter<AdapterBuscar.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.card_view_buscar, parent, false);
-        view.setOnClickListener(this);
+        //View view = LayoutInflater.from(parent.getContext().inflate(R.layout.card_view_buscar, parent, false);
+        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(layoutParams);
+
+        //view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
@@ -42,17 +47,10 @@ public class AdapterBuscar extends RecyclerView.Adapter<AdapterBuscar.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String nombreProducto   = model.get(position).getNombreProducto();
-        String tienda           = model.get(position).getTienda();
-        String direccion        = model.get(position).getDireccion();
-        String precio           = model.get(position).getPrecio();
-        int    idImagenBuscar   = model.get(position).getIdImagenBuscar();
-
-        holder.nombreProducto.setText(nombreProducto);
-        holder.tienda.setText(tienda);
-        holder.direccion.setText(direccion);
-        holder.precio.setText(precio);
-        holder.imgBuscar.setImageResource(idImagenBuscar);
+        holder.nombreProducto.setText(model.get(position).getNombreProducto());
+        holder.tienda.setText(model.get(position).getTienda());
+        holder.direccion.setText(model.get(position).getDireccion());
+        holder.precio.setText(model.get(position).getPrecio());
     }
 
     @Override
@@ -77,7 +75,7 @@ public class AdapterBuscar extends RecyclerView.Adapter<AdapterBuscar.ViewHolder
             tienda          = itemView.findViewById(R.id.txt_card_view_tienda);
             direccion       = itemView.findViewById(R.id.txt_card_view_direccion);
             precio          = itemView.findViewById(R.id.txt_card_view_precio);
-            imgBuscar       = itemView.findViewById(R.id.img_card_view_buscar);
+            //imgBuscar       = itemView.findViewById(R.id.img_card_view_buscar);
 
         }
     }

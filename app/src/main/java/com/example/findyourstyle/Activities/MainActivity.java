@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnIniciarSesion = (Button) findViewById(R.id.btnIniciarSesion);
-        btnRegistrarse = (Button) findViewById(R.id.btnRegistro);
+        btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
+        btnRegistrarse = findViewById(R.id.btnRegistro);
 
-        etxtCorreo= (EditText) findViewById(R.id.etxtCorreoInicioSesion);
-        etxtContrasenia= (EditText) findViewById(R.id.etxtContraseniaInicioSesion);
+        etxtCorreo= findViewById(R.id.etxtCorreoInicioSesion);
+        etxtContrasenia= findViewById(R.id.etxtContraseniaInicioSesion);
 
-        bottomNavigationView    = (BottomNavigationView) findViewById(R.id.bottomNavegation);
+        bottomNavigationView    =  findViewById(R.id.bottomNavegation);
 
         recuperarPeferencias();
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity  {
                 correo = etxtCorreo.getText().toString();
                 contrasenia = etxtContrasenia.getText().toString();
                 if(!correo.isEmpty() && !contrasenia.isEmpty()){
-                    validarUsuario("http://192.168.43.222/findyourstyleBDR/validar_usuario.php");
+                    validarUsuario("http://192.168.57.1/findyourstyleBDR/validar_usuario.php");
                 }else {
                     Toast.makeText(MainActivity.this, "No se permiten campos vacios",Toast.LENGTH_SHORT).show();
                 }

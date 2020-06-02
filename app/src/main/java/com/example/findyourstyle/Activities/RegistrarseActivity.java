@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.findyourstyle.Modelo.ModeloBuscar;
 import com.example.findyourstyle.R;
 
 import org.json.JSONObject;
@@ -89,7 +90,7 @@ public class RegistrarseActivity extends AppCompatActivity implements Response.L
         progreso.setMessage("Cargando...");
         progreso.show();
         // Enviar datos al web service
-        String url = "http://192.168.43.222/findyourstyleBDR/wsJSONRegistro.php?nombre_usuario="+nombre_usuario.getText().toString()+
+        String url = "http://192.168.57.1/findyourstyleBDR/wsJSONRegistro.php?nombre_usuario="+nombre_usuario.getText().toString()+
                 "&apellido_usuario="+apellido_usuario.getText().toString()+"&correo_usuario="+correo_usuario.getText().toString()+"&contrasenia_usuario="+contrasenia_usuario.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
