@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
     //variables del fragment agendar productos
     AgendarHoraFragment agendarHoraFragment;
 
-
+    //adcla vhjeashvjs
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
