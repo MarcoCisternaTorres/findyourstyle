@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/item_inicio"
+        android:title="Inicio"
+        android:icon="@mipmap/home_icono"
+        android:iconTint="@color/colorNegro"/>
+
+    <item android:id="@+id/item_buscar"
+        android:title="Buscar"
+        android:icon="@mipmap/icono_buscar"
+        android:iconTint="@color/colorNegro"/>
+
+    <item android:id="@+id/item_agenda"
+        android:title="Agenda"
+        android:icon="@mipmap/calendar_icon"
+        android:iconTint="@color/colorNegro"/>
+
+    <item android:id="@+id/item_perfil"
+        android:title="Perfil"
+        android:icon="@mipmap/people_icon"
+        android:iconTint="@color/colorNegro"/>
+
+
+</menu>

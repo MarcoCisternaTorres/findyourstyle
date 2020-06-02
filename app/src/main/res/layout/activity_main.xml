@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/degradado"
+    tools:context=".Activities.MainActivity">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/logo_findyourstyle" />
+
+    <Button
+        android:id="@+id/btnIniciarSesion"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etxtContraseniaInicioSesion"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:hint="@string/btnIniciarSesion"
+        android:textColorHint="@color/colorNegro"
+        />
+
+    <EditText
+        android:id="@+id/etxtContraseniaInicioSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etxtCorreoInicioSesion"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/editTxt_password"
+        android:textColorHint="@color/colorNegro"/>
+
+    <EditText
+        android:id="@+id/etxtCorreoInicioSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="390dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="453dp"
+        android:hint="Correo electronio"
+        android:textColorHint="@color/colorNegro"/>
+
+    <TextView
+        android:id="@+id/txtRecuperarPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnIniciarSesion"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="83dp"
+        android:text="@string/txtRecuperarPassword" />
+
+    <ImageView
+        android:id="@+id/imgLogoSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="390dp"
+        android:layout_marginEnd="293dp"
+        android:adjustViewBounds="true"
+        android:visibility="visible"
+        app:srcCompat="@mipmap/logo_inicio_sesion" />
+
+    <ImageView
+        android:id="@+id/imgLogoKey"
+        android:layout_width="52dp"
+        android:layout_height="41dp"
+        android:layout_below="@+id/imgLogoSesion"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="18dp"
+        app:srcCompat="@mipmap/logo_key" />
+
+    <Button
+        android:id="@+id/btnRegistro"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRecuperarPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:hint="Registarse"
+        android:textColorHint="@color/colorNegro"/>
+
+</RelativeLayout>

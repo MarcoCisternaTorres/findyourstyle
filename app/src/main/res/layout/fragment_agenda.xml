@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.AgendaFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <CalendarView
+        android:id="@+id/ViewCalendario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp" />
+
+    <ImageView
+        android:id="@+id/fechaAtras_fragmentAgenda"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:src="@mipmap/icon_flecha_atras"/>
+
+    <ImageView
+        android:id="@+id/notificacion_fragmentAgenda"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="360dp"
+        android:src="@mipmap/notificacion_icon"
+        />
+
+    <TextView
+        android:id="@+id/text_agenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="150dp"
+        android:textSize="30dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/txt_agenda"
+        android:textColor="@color/colorNegro"/>
+
+</FrameLayout>

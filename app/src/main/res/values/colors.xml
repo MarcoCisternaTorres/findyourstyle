@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorNegro">#000000</color>
+    <color name="Lavander">#E6E6FA</color>
+    <color name="orchid">#DA70D6</color>
+    <color name="blancoTrasparente">#80FFFFFF</color>
+    <color name="silver">#C0C0C0</color>
+</resources>

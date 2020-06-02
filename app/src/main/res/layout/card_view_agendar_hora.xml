@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/blancoTrasparente"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blancoTrasparente"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/iconCalendar_cardAgendarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/calendar_icon"
+            />
+        <TextView
+            android:id="@+id/txtFecha_carAgendarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/iconCalendar_cardAgendarHora"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:textColor="@color/colorNegro"
+            android:text="03 DIC"
+            />
+
+        <ImageView
+            android:id="@+id/iconClock_cardAgendarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/icon_clock"
+            android:layout_toRightOf="@id/iconCalendar_cardAgendarHora"
+            android:layout_marginLeft="80dp"/>
+
+        <TextView
+            android:id="@+id/txtHora_carAgendarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/iconClock_cardAgendarHora"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:textColor="@color/colorNegro"
+            android:text="15 HRS"
+            />
+
+
+            <ImageView
+                android:id="@+id/iconTick_carrAgendarHora"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/icon_tick"
+                android:layout_toRightOf="@id/iconClock_cardAgendarHora"
+                android:layout_marginLeft="100dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:scrollbarStyle="insideInset"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/txtHora_carAgendarHora"
+            android:layout_marginLeft="70dp"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

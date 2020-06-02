@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Find Your Style</string>
+
+    //activity_main
+    <string name="btnIniciarSesion">INICIAR SESIÓN</string>
+    <string name="editTxt_password">Contraseña</string>
+    <string name="editTxt_nombreUsuraio">Nombre de Usuario</string>
+    <string name="txtRecuperarPassword">¿Tienes Problemas para ingresar?</string>
+    <string name="txtRegistarse">Registrarse</string>
+
+    //Fragments Inicio
+    <string name="frangmentInicio">Hola desde inicio</string>
+    <string name="txt_loMasBuscado">Lo mas buscado</string>
+    <string name="txt_tiendasRecomendadas">Tiendas Recomendadas</string>
+
+    //Fragments Buscar
+    <string name="fragmentBuscar">Hola desde buscar</string>
+    <string name="editTextBuscar">Buscar</string>
+
+
+    //Fragments Agenda
+    <string name="fragmentAgenda">Hola desde Agenda</string>
+
+    //Fragment Perfil
+    <string name="fragmentPerfil">Hola desde Perfil</string>
+
+    //Fragment txt View
+    <string name="txt_inicio1">Inicio</string>
+    <string name="txt_buscar">Buscar</string>
+    <string name="txt_agenda">Agenda</string>
+    <string name="txt_perfil">Pefil</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

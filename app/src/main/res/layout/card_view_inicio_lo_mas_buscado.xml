@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/blancoTrasparente"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="25dp">
+
+        <ImageView
+            android:id="@+id/img_card_view_lo_mas_buscado"
+            android:layout_width="130dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_launcher_background"/>
+        <TextView
+            android:id="@+id/txt_np_lo_mas_buscado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_card_view_lo_mas_buscado"
+            android:text="Nombre producto"
+            android:textColor="@color/colorNegro"
+            />
+
+        <TextView
+            android:id="@+id/txt_nt_lo_mas_buscado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_np_lo_mas_buscado"
+            android:text="Nombre tienda"/>
+
+        <TextView
+            android:id="@+id/txt_pr_lo_mas_buscado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_nt_lo_mas_buscado"
+            android:text="$5000"/>
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

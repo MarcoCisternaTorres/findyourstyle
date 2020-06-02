@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1070064434091",
+    "firebase_url": "https://find-your-style-da506.firebaseio.com",
+    "project_id": "find-your-style-da506",
+    "storage_bucket": "find-your-style-da506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070064434091:android:23bc29d5308801ec25f0ee",
+        "android_client_info": {
+          "package_name": "com.example.findyourstyle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070064434091-ali5ncl257j5slafug8bvn6ljv32kvg8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.findyourstyle",
+            "certificate_hash": "4ab26be6fb008f43a467310be68ac9e696b3215d"
+          }
+        },
+        {
+          "client_id": "1070064434091-afsar2f91868c9k6kmfl2lnvh39l43fb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA3TUmdurprYK5k48beYTbPMmqKmJ6NZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070064434091-afsar2f91868c9k6kmfl2lnvh39l43fb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
