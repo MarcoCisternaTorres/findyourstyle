@@ -13,15 +13,19 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Activities.HomeActivity;
+import com.example.findyourstyle.Adampters.AdapterListaProducto;
 import com.example.findyourstyle.Interfaces.IComunicaFragment;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,17 +43,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BuscarFragment extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener{
+public class BuscarFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject> {
 
-    AdapterBuscar adapterBuscar;
     RecyclerView recyclerViewBuscar;
-    ArrayList<ModeloBuscar> productos;
+    ArrayList<ModeloBuscar> listaProductos;
 
-    ProgressDialog progressDialog;
+    ProgressDialog progress;
 
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
@@ -73,12 +77,11 @@ public class BuscarFragment extends Fragment implements Response.Listener<JSONOb
         recyclerViewBuscar =  view.findViewById(R.id.recycler_view_buscar);
         recyclerViewBuscar.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerViewBuscar.setHasFixedSize(true);
-        request = Volley.newRequestQueue(getContext());
+        recyclerViewBuscar.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        productos    = new ArrayList<>();
+        listaProductos = new ArrayList<>();
+        request = Volley.newRequestQueue(getContext());
         btnAtras = view.findViewById(R.id.fechaAtras_fragmentBuscar);
-        //cargarProductos();
-        //mostarData();
 
         cargarWebService();
 
@@ -91,22 +94,54 @@ public class BuscarFragment extends Fragment implements Response.Listener<JSONOb
                 transaction.commit();
             }
         });
-
-
-
         return view;
     }
 
     private void cargarWebService() {
-        progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Buscando productos");
-        progressDialog.show();
-        String url = "http://192.168.1.57/findyourstyleBDR/consultaListaProductos.php";
+        progress = new ProgressDialog(getContext());
+        progress.setMessage("Cargando");
+        progress.show();
+
+        final String ip = getString(R.string.ip);
+
+        String url = ip + "/findyourstyleBDR/consultaListaProductos.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
-
+    }
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(actividad, "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+        System.out.println();
+        progress.hide();
+        Log.d("ERROR: ", error.toString());
     }
 
+    @Override
+    public void onResponse(JSONObject response) {
+        ModeloBuscar modeloBuscar = null;
+        JSONArray jsonArray =  response.optJSONArray("producto");
+        try{
+            for(int i = 0; i < jsonArray.length();i++){
+                modeloBuscar = new ModeloBuscar();
+                JSONObject jsonObject = null;
+                jsonObject = jsonArray.getJSONObject(i);
+
+                modeloBuscar.setNombreProducto(jsonObject.optString("nombre_producto"));
+                modeloBuscar.setTienda(jsonObject.optString("nombre_tienda"));
+                modeloBuscar.setPrecio(jsonObject.optString("precio"));
+                modeloBuscar.setDireccion(jsonObject.optString("direccion_tienda"));
+                listaProductos.add(modeloBuscar);
+            }
+            progress.hide();
+            AdapterListaProducto adapterListaProducto = new AdapterListaProducto(listaProductos);
+            recyclerViewBuscar.setAdapter(adapterListaProducto);
+        }catch (JSONException e){
+            e.printStackTrace();
+            Toast.makeText(getContext(),"no se ha podido conectar con el servidor"+""+response, Toast.LENGTH_LONG).show();
+            progress.hide();
+
+        }
+    }
     // comunicacion de fragment a fragment
     @Override
     public void onAttach(@NonNull Context context) {
@@ -122,45 +157,6 @@ public class BuscarFragment extends Fragment implements Response.Listener<JSONOb
         super.onDetach();
     }
 
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getContext(),error.toString(),Toast.LENGTH_LONG).show();
-        System.out.println();
 
-        progressDialog.hide();
-    }
 
-    @Override
-    public void onResponse(JSONObject response) {
-        ModeloBuscar modeloBuscar=null;
-
-        JSONArray json=response.optJSONArray("producto");
-
-        try {
-
-            for (int i=0; i<json.length(); i++){
-                modeloBuscar = new ModeloBuscar();
-                JSONObject jsonObject=null;
-                jsonObject=json.getJSONObject(i);
-
-                modeloBuscar.setNombreProducto(jsonObject.optString("nombre_producto"));
-                modeloBuscar.setPrecio(jsonObject.optInt("precio"));
-                modeloBuscar.setTienda(jsonObject.optString("nombre_tienda"));
-                modeloBuscar.setDireccion(jsonObject.optString("direccion_tienda"));
-
-                //modeloBuscar.setIdImagenBuscar(jsonObject.optInt(String.valueOf(R.drawable.ic_launcher_background)));
-                productos.add(modeloBuscar);
-            }
-            progressDialog.hide();
-            AdapterBuscar adapter=new AdapterBuscar(getContext(),productos);
-            recyclerViewBuscar.setAdapter(adapter);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(getContext(), "No se ha podido establecer conexión con el servidor" +
-                    " "+response, Toast.LENGTH_LONG).show();
-            progressDialog.hide();
-        }
-
-    }
 }

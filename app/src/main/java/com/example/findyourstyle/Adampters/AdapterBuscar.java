@@ -12,33 +12,34 @@ import com.example.findyourstyle.Modelo.ModeloBuscar;
 import com.example.findyourstyle.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterBuscar extends RecyclerView.Adapter<AdapterBuscar.ViewHolder> implements View.OnClickListener{
 
+    Context context;
+
     LayoutInflater inflater;
-    ArrayList<ModeloBuscar> model;
-    //listener
+    List<ModeloBuscar> listaProductos;
     private View.OnClickListener listener;
 
-    public AdapterBuscar(Context context, ArrayList<ModeloBuscar> model){
-        this.inflater = LayoutInflater.from(context);
-        this.model    = model;
+    public AdapterBuscar(Context context, List<ModeloBuscar> listaProductos){
+        this.context = context;
+        this.listaProductos = listaProductos;
 
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.card_view_buscar, parent, false);
-        //View view = LayoutInflater.from(parent.getContext().inflate(R.layout.card_view_buscar, parent, false);
-        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        view.setLayoutParams(layoutParams);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_view_buscar, viewGroup, false);
+        //RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        //view.setLayoutParams(layoutParams);
 
         //view.setOnClickListener(this);
-        return new ViewHolder(view);
+        return new ViewHolder(v);
     }
 
     public void setOnClickListener(View.OnClickListener listener){
@@ -46,16 +47,16 @@ public class AdapterBuscar extends RecyclerView.Adapter<AdapterBuscar.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.nombreProducto.setText(model.get(position).getNombreProducto());
-        holder.tienda.setText(model.get(position).getTienda());
-        holder.direccion.setText(model.get(position).getDireccion());
-        holder.precio.setText(model.get(position).getPrecio());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+        holder.nombreProducto.setText(listaProductos.get(i).getNombreProducto());
+        holder.tienda.setText(listaProductos.get(i).getTienda());
+        holder.direccion.setText(listaProductos.get(i).getDireccion());
+        holder.precio.setText(listaProductos.get(i).getPrecio());
     }
 
     @Override
     public int getItemCount() {
-        return model.size();
+        return listaProductos.size();
     }
 
     @Override
@@ -78,5 +79,10 @@ public class AdapterBuscar extends RecyclerView.Adapter<AdapterBuscar.ViewHolder
             //imgBuscar       = itemView.findViewById(R.id.img_card_view_buscar);
 
         }
+    }
+
+    public void filtrar(ArrayList<ModeloBuscar> filtroProductos) {
+        this.listaProductos= filtroProductos;
+        notifyDataSetChanged();
     }
 }

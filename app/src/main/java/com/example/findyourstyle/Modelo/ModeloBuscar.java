@@ -7,17 +7,17 @@ public class ModeloBuscar implements Serializable {
     private String  nombreProducto;
     private String  tienda;
     private String  direccion;
-    private int  precio;
+    private String  precio;
     private int     idImagenBuscar;
 
     public ModeloBuscar(){}
 
-    public ModeloBuscar(String nombreProducto, String tienda,String direccion, int precio, int idImagenBuscar) {
+    public ModeloBuscar(String nombreProducto, String tienda,String precio, String direccion) {
         this.nombreProducto = nombreProducto;
         this.tienda         = tienda;
         this.direccion      = direccion;
         this.precio         = precio;
-        this.idImagenBuscar = idImagenBuscar;
+       // this.idImagenBuscar = idImagenBuscar;
     }
 
     public String getNombreProducto() {
@@ -36,11 +36,11 @@ public class ModeloBuscar implements Serializable {
         this.tienda = tienda;
     }
 
-    public int getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
