@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProducto.productosHolder> {
-
+    //NDCJ
     List<ModeloBuscar> listaProducto;
 
     public  AdapterListaProducto(List<ModeloBuscar> listaProducto){
@@ -35,7 +35,7 @@ public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProdu
         holder.nombreProducto.setText(listaProducto.get(position).getNombreProducto());
         holder.nombreTienda.setText(listaProducto.get(position).getTienda());
         holder.direccion.setText(listaProducto.get(position).getDireccion());
-        holder.precio.setText(listaProducto.get(position).getPrecio().toString());
+        holder.precio.setText(listaProducto.get(position).getPrecio());
     }
 
     @Override
