@@ -3,6 +3,7 @@ package com.example.findyourstyle.Adampters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.findyourstyle.Modelo.ModeloBuscar;
@@ -36,6 +37,12 @@ public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProdu
         holder.nombreTienda.setText(listaProducto.get(position).getTienda());
         holder.direccion.setText(listaProducto.get(position).getDireccion());
         holder.precio.setText(listaProducto.get(position).getPrecio());
+
+        if(listaProducto.get(position).getImagen()!=null){
+            holder.imagen.setImageBitmap(listaProducto.get(position).getImagen());
+        }else{
+            holder.imagen.setImageResource(R.drawable.ic_launcher_background);
+        }
     }
 
     @Override
@@ -45,12 +52,14 @@ public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProdu
 
     public class productosHolder extends RecyclerView.ViewHolder {
         TextView nombreTienda, nombreProducto, direccion, precio;
+        ImageView imagen;
         public productosHolder(@NonNull View itemView) {
             super(itemView);
             nombreProducto =  itemView.findViewById(R.id.txt_card_view_nombre_producto);
             nombreTienda =  itemView.findViewById(R.id.txt_card_view_tienda);
             direccion = itemView.findViewById(R.id.txt_card_view_direccion);
             precio =  itemView.findViewById(R.id.txt_card_view_precio);
+            imagen = itemView.findViewById(R.id.img_card_view_buscar);
         }
     }
 }

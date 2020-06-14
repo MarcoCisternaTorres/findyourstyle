@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity  {
                 contrasenia = etxtContrasenia.getText().toString();
                 if(!correo.isEmpty() && !contrasenia.isEmpty()){
                     final String ip = getString(R.string.ip);
-                    validarUsuario("http://192.168.1.51/findyourstyleBDR/validar_usuario.php");
+                    validarUsuario(ip+"/findyourstyleBDR/validar_usuario.php");
                 }else {
                     Toast.makeText(MainActivity.this, "No se permiten campos vacios",Toast.LENGTH_SHORT).show();
                 }

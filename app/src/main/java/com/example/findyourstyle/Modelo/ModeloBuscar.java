@@ -1,5 +1,9 @@
 package com.example.findyourstyle.Modelo;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import java.io.Serializable;
 
 public class ModeloBuscar implements Serializable {
@@ -8,7 +12,9 @@ public class ModeloBuscar implements Serializable {
     private String  tienda;
     private String  direccion;
     private String  precio;
-    private int     idImagenBuscar;
+    private String dato;
+    private Bitmap imagen;
+    private String rutaImagen;
 
     public ModeloBuscar(){}
 
@@ -18,6 +24,45 @@ public class ModeloBuscar implements Serializable {
         this.direccion      = direccion;
         this.precio         = precio;
        // this.idImagenBuscar = idImagenBuscar;
+    }
+
+    public String getDato() {
+        return dato;
+    }
+
+    public void setDato(String dato) {
+        this.dato = dato;
+
+        try {
+            byte[] byteCode= Base64.decode(dato,Base64.DEFAULT);
+            //this.imagen= BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
+
+            //int alto=100;//alto en pixeles
+            //int ancho=150;//ancho en pixeles
+
+            this.imagen=BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
+            //this.imagen=Bitmap.createScaledBitmap(foto,alto,ancho,true);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public Bitmap getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Bitmap imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 
     public String getNombreProducto() {
@@ -42,14 +87,6 @@ public class ModeloBuscar implements Serializable {
 
     public void setPrecio(String precio) {
         this.precio = precio;
-    }
-
-    public int getIdImagenBuscar() {
-        return idImagenBuscar;
-    }
-
-    public void setIdImagenBuscar(int idImagenBuscar) {
-        this.idImagenBuscar = idImagenBuscar;
     }
 
     public String getDireccion() {

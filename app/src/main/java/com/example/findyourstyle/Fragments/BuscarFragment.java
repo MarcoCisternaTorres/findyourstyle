@@ -129,6 +129,7 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
                 modeloBuscar.setNombreProducto(jsonObject.optString("nombre_producto"));
                 modeloBuscar.setTienda(jsonObject.optString("nombre_tienda"));
                 modeloBuscar.setPrecio(jsonObject.optString("precio"));
+                modeloBuscar.setDato(jsonObject.optString("imagen_producto"));
                 modeloBuscar.setDireccion(jsonObject.optString("direccion_tienda"));
                 listaProductos.add(modeloBuscar);
             }

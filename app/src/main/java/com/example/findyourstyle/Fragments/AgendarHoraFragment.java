@@ -117,7 +117,7 @@ public class AgendarHoraFragment extends Fragment {
             nombreProducto.setText(modeloBuscar.getNombreProducto());
             nombreTienda.setText(modeloBuscar.getTienda());
             direccion.setText(modeloBuscar.getDireccion());
-            imgProduto.setImageResource(modeloBuscar.getIdImagenBuscar());
+            //imgProduto.setImageResource(modeloBuscar.getIdImagenBuscar());
         }
 
         cargarHorasDisponibles();

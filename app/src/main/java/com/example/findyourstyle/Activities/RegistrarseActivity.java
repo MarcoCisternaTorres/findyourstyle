@@ -90,7 +90,8 @@ public class RegistrarseActivity extends AppCompatActivity implements Response.L
         progreso.setMessage("Cargando...");
         progreso.show();
         // Enviar datos al web service
-        String url = "http://192.168.57.1/findyourstyleBDR/wsJSONRegistro.php?nombre_usuario="+nombre_usuario.getText().toString()+
+        final String ip = getString(R.string.ip);
+        String url = ip +"/findyourstyleBDR/wsJSONRegistro.php?nombre_usuario="+nombre_usuario.getText().toString()+
                 "&apellido_usuario="+apellido_usuario.getText().toString()+"&correo_usuario="+correo_usuario.getText().toString()+"&contrasenia_usuario="+contrasenia_usuario.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
