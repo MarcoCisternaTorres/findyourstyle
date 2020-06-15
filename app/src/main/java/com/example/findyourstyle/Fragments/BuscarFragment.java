@@ -134,6 +134,7 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
                 listaProductos.add(modeloBuscar);
             }
             progress.hide();
+
             AdapterListaProducto adapterListaProducto = new AdapterListaProducto(listaProductos);
             recyclerViewBuscar.setAdapter(adapterListaProducto);
         }catch (JSONException e){
