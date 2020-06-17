@@ -40,10 +40,8 @@
 
     <EditText
         android:id="@+id/etxtNombreUsuarioRegistro"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="26dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="150dp"
         android:layout_x="113dp"
@@ -52,7 +50,9 @@
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
         android:hint="Nombre"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etxApellidoUsuarioRegistro"
