@@ -166,7 +166,7 @@
         android:layout_width="220dp"
         android:layout_height="46dp"
         android:layout_x="113dp"
-        android:layout_y="457dp"
+        android:layout_y="455dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:entries="asdasd"
