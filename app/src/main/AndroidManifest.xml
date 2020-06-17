@@ -30,12 +30,12 @@
 
         <!-- Para android 7 o superiores-->
         <provider
-            android:authorities="${applicationId}.provider"
-            android:name= "androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.FileProvider"
+            android:name="androidx.core.content.FileProvider"
+            android:enabled="true"
             android:exported="false"
             android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PAHTS"
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
 
         </provider>

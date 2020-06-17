@@ -46,7 +46,7 @@
         android:id="@+id/iconcamera_fragmenPerfil"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="215dp"
+        android:layout_marginTop="210dp"
         android:layout_marginLeft="150dp"
         android:src="@mipmap/camera_icon"/>
 
