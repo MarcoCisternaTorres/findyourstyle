@@ -16,11 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.MainActivity"></activity>
+        <activity android:name=".Activities.PresentacionActivity"></activity>
         <activity android:name=".Activities.RegistrarseActivity" />
         <activity android:name=".Listas.ListaInicioActivity" />
         <activity android:name=".Activities.HomeActivity" />
-        <activity android:name=".Activities.PresentacionActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

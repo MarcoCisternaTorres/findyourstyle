@@ -61,6 +61,8 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         fm.beginTransaction().add(R.id.contenedorFragment,buscarFragment).commit();
 
 
+
+
         setFragment(inicioFragment);
 
         modeloBuscar = new ArrayList<>();
@@ -95,7 +97,7 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         });
     }
 
-    private void setFragment(Fragment fragment){
+    public void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.contenedorFragment, fragment);
         fragmentTransaction.commit();
@@ -141,4 +143,6 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         fragmentTransaction.replace(R.id.contenedorFragment, agendarHoraFragment);
         fragmentTransaction.commit();
     }
+
+
 }
