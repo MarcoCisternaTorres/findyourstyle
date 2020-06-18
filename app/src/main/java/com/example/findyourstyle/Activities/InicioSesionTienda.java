@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,7 +23,7 @@ import com.example.findyourstyle.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InicioSesionCliente extends AppCompatActivity {
+public class InicioSesionTienda extends AppCompatActivity {
 
     private EditText txtCorreoCliente,etxtPasswordCliente;
 
@@ -53,7 +52,7 @@ public class InicioSesionCliente extends AppCompatActivity {
                     final String ip = getString(R.string.ip);
                     validarUsuario(ip+"/findyourstyleBDR/validar_cliente.php");
                 }else {
-                    Toast.makeText(InicioSesionCliente.this, "No se permiten campos vacios",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InicioSesionTienda.this, "No se permiten campos vacios",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -65,24 +64,24 @@ public class InicioSesionCliente extends AppCompatActivity {
             public void onResponse(String response) {
                 if(!response.isEmpty()){
                     guardarPreferencias();
-                    Intent intent = new Intent(InicioSesionCliente.this, HomeClienteActivity.class);
+                    Intent intent = new Intent(InicioSesionTienda.this, HomeTiendaActivity.class);
                     startActivity(intent);
                     finish();
                 }else{
-                    Toast.makeText(InicioSesionCliente.this,"Usuario o contraseña incorrecta",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InicioSesionTienda.this,"Usuario o contraseña incorrecta",Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(InicioSesionCliente.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(InicioSesionTienda.this,error.toString(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> paramentros = new HashMap<String, String>();
-                paramentros.put("correo_cliente", correo);
-                paramentros.put("contrasenia_cliente", contrasenia);
+                paramentros.put("correo_tienda", correo);
+                paramentros.put("contrasenia_tienda", contrasenia);
                 return paramentros;
             }
         };
@@ -94,16 +93,16 @@ public class InicioSesionCliente extends AppCompatActivity {
     private void guardarPreferencias(){
         SharedPreferences preferences = getSharedPreferences("preferensiaLogin", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("correo_cliente", correo);
-        editor.putString("contrasenia_cliente", contrasenia);
+        editor.putString("correo_tienda", correo);
+        editor.putString("contrasenia_tienda", contrasenia);
         editor.putBoolean("sesion", true);
         editor.commit();
     }
 
     private void recuperarPeferencias(){
         SharedPreferences preferences = getSharedPreferences("preferensiaLogin", Context.MODE_PRIVATE);
-        txtCorreoCliente.setText(preferences.getString("correo_cliente", ""));
-        etxtPasswordCliente.setText(preferences.getString("contrasenia_cliente", ""));
+        txtCorreoCliente.setText(preferences.getString("correo_tienda", ""));
+        etxtPasswordCliente.setText(preferences.getString("contrasenia_tienda", ""));
 
     }
 }

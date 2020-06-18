@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.HomeClienteActivity"></activity>
-        <activity android:name=".Activities.InicioSesionCliente" />
+        <activity android:name=".Activities.HomeTiendaActivity"></activity>
+        <activity android:name=".Activities.InicioSesionTienda" />
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.PresentacionActivity" />
         <activity android:name=".Activities.RegistrarseActivity" />

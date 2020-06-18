@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@drawable/degradado2"
-    tools:context=".Activities.InicioSesionCliente">
+    tools:context=".Activities.InicioSesionTienda">
 
     <ImageView
         android:layout_width="300dp"

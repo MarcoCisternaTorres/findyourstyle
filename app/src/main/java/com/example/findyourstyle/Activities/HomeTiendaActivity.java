@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.findyourstyle.R;
 
-public class HomeClienteActivity extends AppCompatActivity {
+public class HomeTiendaActivity extends AppCompatActivity {
 
 
 

@@ -44,80 +44,64 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="150dp"
-        android:layout_x="113dp"
-        android:layout_y="136dp"
+        android:layout_x="112dp"
+        android:layout_y="190dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
-        android:hint="Nombre"
+        android:hint="Nombre Tienda"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etxApellidoUsuarioRegistro"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxtNombreUsuarioRegistro"
+        android:id="@+id/etxtCorreoRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="20dp"
-        android:layout_x="113dp"
-        android:layout_y="198dp"
+        android:layout_x="116dp"
+        android:layout_y="335dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
-        android:hint="Apellido"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etxtCorreoRegistro"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxApellidoUsuarioRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="20dp"
-        android:layout_x="113dp"
-        android:layout_y="264dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:ems="10"
         android:hint="Correo electronico"
         android:inputType="textPersonName"
-        android:backgroundTint="@color/blancoTrasparente"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxApellidoUsuarioRegistro" />
 
     <EditText
         android:id="@+id/etxtContraseniaRegistro"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxtCorreoRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
         android:layout_x="118dp"
-        android:layout_y="603dp"
+        android:layout_y="408dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
         android:hint="Contraseña"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxtCorreoRegistro" />
+
 
     <EditText
         android:id="@+id/etxtContrasenia2Registro"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxtContraseniaRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
         android:layout_x="116dp"
-        android:layout_y="660dp"
+        android:layout_y="478dp"
         android:background="@drawable/estilo_borde_edit_text"
+        android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
         android:hint="Confirmar Contraseña"
         android:inputType="textPassword"
-        android:backgroundTint="@color/blancoTrasparente"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxtContraseniaRegistro" />
 
     <EditText
         android:id="@+id/Nombre-tienda"
@@ -127,25 +111,11 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
         android:layout_x="109dp"
-        android:layout_y="392dp"
+        android:layout_y="262dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
         android:hint="Direccion de la Tienda" />
-
-    <EditText
-        android:id="@+id/direccion-tienda"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="25dp"
-        android:layout_x="114dp"
-        android:layout_y="331dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:backgroundTint="@color/blancoTrasparente"
-        android:ems="10"
-        android:hint="Nombre de la Tienda"></EditText>
 
     <Button
         android:id="@+id/btnRegistrarse"
