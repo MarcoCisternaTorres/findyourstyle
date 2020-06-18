@@ -2,12 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.findyourstyle">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.Camera"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/lgfinal"
@@ -16,31 +10,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.PresentacionActivity"></activity>
+        <activity android:name=".Activities.HomeClienteActivity"></activity>
+        <activity android:name=".Activities.InicioSesionCliente" />
+        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.PresentacionActivity" />
         <activity android:name=".Activities.RegistrarseActivity" />
         <activity android:name=".Listas.ListaInicioActivity" />
         <activity android:name=".Activities.HomeActivity" />
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.appUnificada">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Para android 7 o superiores-->
+        </activity> <!-- Para android 7 o superiores -->
         <provider
-            android:authorities="${applicationId}.FileProvider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.FileProvider"
             android:enabled="true"
             android:exported="false"
             android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
-
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
         </provider>
     </application>
 
+    <uses-feature android:name="android.hardware.Camera" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

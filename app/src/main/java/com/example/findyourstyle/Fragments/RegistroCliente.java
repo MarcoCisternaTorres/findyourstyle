@@ -1,4 +1,4 @@
-package com.example.findyourstyle.Activities;
+package com.example.findyourstyle.Fragments;
 
 import android.os.Bundle;
 

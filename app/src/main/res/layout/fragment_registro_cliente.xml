@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.RegistroCliente"
+    tools:context=".Fragments.RegistroCliente"
     android:background="@drawable/degradado2">
 
     <TextView
@@ -18,7 +18,7 @@
         android:text="Registro"
         android:textColor="@color/logo_background"
         android:textSize="30dp"
-        app:autoSizeTextType="blond"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -161,16 +161,5 @@
         android:text="Registrarse"
         />
 
-    <Spinner
-        android:id="@+id/Categoria"
-        android:layout_width="220dp"
-        android:layout_height="46dp"
-        android:layout_x="113dp"
-        android:layout_y="455dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:backgroundTint="@color/blancoTrasparente"
-        android:entries="asdasd"
-        android:spinnerMode="dropdown">
 
-    </Spinner>
 </AbsoluteLayout>
