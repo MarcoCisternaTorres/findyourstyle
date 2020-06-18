@@ -107,17 +107,17 @@
         app:srcCompat="@mipmap/logo_key" />
 
     <Button
-        android:id="@+id/btnRegistro"
+        android:id="@+id/btnRegistroNuevaTienda"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtRecuperarPassword"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="86dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:hint="Registarse"
-        android:textColorHint="@color/colorNegro"/>
+        android:textColorHint="@color/colorNegro" />
 
 </RelativeLayout>

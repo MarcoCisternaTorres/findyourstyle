@@ -28,7 +28,7 @@ public class InicioSesionTienda extends AppCompatActivity {
     private EditText txtCorreoCliente,etxtPasswordCliente;
 
     private Button btnIniciarSesion;
-
+    private  Button btnRegistrarTienda;
     private String correo;
     private String contrasenia;
 
@@ -41,6 +41,15 @@ public class InicioSesionTienda extends AppCompatActivity {
         etxtPasswordCliente = (EditText) findViewById(R.id.etxt_PasswordCLiente);
 
         btnIniciarSesion = (Button) findViewById(R.id.btnIniciarSesionCliente);
+        btnRegistrarTienda = findViewById(R.id.btnRegistroNuevaTienda);
+
+        btnRegistrarTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(InicioSesionTienda.this, RegistroTiendaActivity.class);
+                startActivity(intent1);
+            }
+        });
 
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +65,9 @@ public class InicioSesionTienda extends AppCompatActivity {
                 }
             }
         });
+
+
+
     }
 
     private void validarUsuario(String URL){

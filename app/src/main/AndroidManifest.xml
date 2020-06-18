@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.HomeTiendaActivity"></activity>
+        <activity android:name=".Activities.RegistroTiendaActivity"></activity>
+        <activity android:name=".Activities.HomeTiendaActivity" />
         <activity android:name=".Activities.InicioSesionTienda" />
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.PresentacionActivity" />
@@ -37,10 +38,10 @@
     </application>
 
     <uses-feature android:name="android.hardware.Camera" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

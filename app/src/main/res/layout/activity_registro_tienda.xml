@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.RegistroCliente"
+    tools:context=".Activities.RegistroTiendaActivity"
     android:background="@drawable/degradado2">
 
     <TextView
-        android:id="@+id/txtView_registrarse"
+        android:id="@+id/txtView_registrarseTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -39,7 +39,7 @@
         app:srcCompat="@mipmap/icon_flecha_atras" />
 
     <EditText
-        android:id="@+id/etxtNombreUsuarioRegistro"
+        android:id="@+id/etxtNombreTiendaRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etxtCorreoRegistro"
+        android:id="@+id/etxtCorreoRegistroTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etxApellidoUsuarioRegistro" />
 
     <EditText
-        android:id="@+id/etxtContraseniaRegistro"
+        android:id="@+id/etxtContraseniaRegistroTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -88,7 +88,7 @@
 
 
     <EditText
-        android:id="@+id/etxtContrasenia2Registro"
+        android:id="@+id/etxtContrasenia2RegistroTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -104,8 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etxtContraseniaRegistro" />
 
     <EditText
-        android:id="@+id/Nombre-tienda"
-
+        android:id="@+id/txtDireccionTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -118,18 +117,17 @@
         android:hint="Direccion de la Tienda" />
 
     <Button
-        android:id="@+id/btnRegistrarse"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxtContrasenia2Registro"
+        android:id="@+id/btnRegistrarTienda"
         android:layout_width="220dp"
         android:layout_height="57dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
-        android:layout_x="127dp"
-        android:layout_y="842dp"
+        android:layout_x="115dp"
+        android:layout_y="550dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:text="Registrarse"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxtContrasenia2Registro" />
 
 
 </AbsoluteLayout>
