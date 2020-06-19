@@ -38,46 +38,5 @@
         android:textColor="@color/logo_background"
         android:textSize="30dp"></TextView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavegationTienda"
-        app:itemHorizontalTranslationEnabled="true"
-        app:itemTextColor="@color/colorNegro"
-        app:menu="@menu/main_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_x="-3dp"
-        android:layout_y="670dp" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:layout_width="157dp"
-        android:layout_height="141dp"
-        android:layout_x="41dp"
-        android:layout_y="155dp"
-        android:background="@drawable/hair_cut"
-        android:foreground=""></androidx.appcompat.widget.AppCompatImageButton>
-
-    <androidx.appcompat.widget.AppCompatImageButton
-
-        android:layout_width="157dp"
-        android:layout_height="141dp"
-        android:layout_x="224dp"
-        android:layout_y="153dp"
-        android:background="@drawable/tienda"></androidx.appcompat.widget.AppCompatImageButton>
-
-    <androidx.appcompat.widget.AppCompatImageButton
-
-        android:layout_width="157dp"
-        android:layout_height="141dp"
-        android:layout_x="222dp"
-        android:layout_y="347dp"
-        android:background="@drawable/settings__1_"></androidx.appcompat.widget.AppCompatImageButton>
-
-    <androidx.appcompat.widget.AppCompatImageButton
-
-        android:layout_width="157dp"
-        android:layout_height="141dp"
-        android:layout_x="41dp"
-        android:layout_y="347dp"
-        android:background="@drawable/book"></androidx.appcompat.widget.AppCompatImageButton>
 </AbsoluteLayout>
