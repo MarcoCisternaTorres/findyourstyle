@@ -37,10 +37,9 @@
         android:id="@+id/imgPerfil_fragmentPerfil"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="100dp"
         android:layout_marginLeft="40dp"
-        android:src="@drawable/ic_launcher_background"
-        />
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_launcher_background" />
 
     <ImageView
         android:id="@+id/iconcamera_fragmenPerfil"

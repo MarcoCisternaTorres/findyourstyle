@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/blancoTrasparente">
+
+    <AbsoluteLayout
+        android:id="@+id/CNT_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/agregarMas"
+            android:layout_width="79dp"
+            android:layout_height="60dp"
+            android:layout_x="4dp"
+            android:layout_y="6dp"
+            android:background="@drawable/agregarimg"></androidx.appcompat.widget.AppCompatImageButton>
+    </AbsoluteLayout>
+</androidx.cardview.widget.CardView>

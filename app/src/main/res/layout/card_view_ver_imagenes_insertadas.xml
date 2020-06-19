@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/blancoTrasparente">
+
+    <AbsoluteLayout
+        android:id="@+id/CantidadIMG"
+        android:layout_width="177dp"
+        android:layout_height="263dp">
+
+        <ImageView
+            android:id="@+id/img_card_view_tiendas_recomendadas"
+            android:layout_width="130dp"
+            android:layout_height="120dp"
+
+            android:layout_x="18dp"
+            android:layout_y="64dp"
+            android:src="@drawable/ic_launcher_background" />
+
+    </AbsoluteLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+
+
+
