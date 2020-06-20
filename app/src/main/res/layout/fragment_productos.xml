@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/iconSalir_fragmentInicio"
         android:layout_width="37dp"
-        android:layout_height="34dp"
+        android:layout_height="35dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
         android:layout_x="15dp"
@@ -31,8 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_x="-3dp"
-        android:layout_y="23dp"
+        android:layout_x="2dp"
+        android:layout_y="28dp"
         android:paddingLeft="150dp"
         android:text="Productos"
         android:textColor="@color/logo_background"
@@ -48,12 +48,6 @@
 
     </FrameLayout>
 
-    <androidx.appcompat.widget.AppCompatImageButton
 
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_x="346dp"
-        android:layout_y="78dp"
-        android:background="@drawable/add"></androidx.appcompat.widget.AppCompatImageButton>
 
 </AbsoluteLayout>
