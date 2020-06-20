@@ -96,7 +96,8 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
         // Enviar datos al web service
         final String ip = getString(R.string.ip);
         String url = ip +"/findyourstyleBDR/wsJSONRegistroTienda.php?nombre_tienda="+nombreTienda.getText().toString()+
-                "&correo_tienda="+correoTienda.getText().toString()+"&contrasenia_tienda="+contraseniaTienda.getText().toString()+"&direccion_tienda="+direccionTienda.getText().toString()+"&nombre_categoria="+spCategoriaTienda.getSelectedItem().toString();
+                "&correo_tienda="+correoTienda.getText().toString()+"&contrasenia_tienda="+contraseniaTienda.getText().toString()+"&direccion_tienda="+direccionTienda.getText().toString()+"&nombre_categoria="+spCategoriaTienda.getSelectedItem().toString()+
+                "&nombre_ciudad="+spCiudadTienda.getSelectedItem().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
     }
