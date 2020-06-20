@@ -48,12 +48,6 @@
 
     </FrameLayout>
 
-    <androidx.appcompat.widget.AppCompatImageButton
 
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_x="346dp"
-        android:layout_y="78dp"
-        android:background="@drawable/add"></androidx.appcompat.widget.AppCompatImageButton>
 
 </AbsoluteLayout>

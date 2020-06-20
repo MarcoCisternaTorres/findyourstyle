@@ -7,7 +7,7 @@
     tools:context=".Activities.InicioCliente">
 
     <ImageView
-        android:id="@+id/iconSalir_fragmentInicio"
+        android:id="@+id/iconSalir_fragmentInicioback"
         android:layout_width="37dp"
         android:layout_height="34dp"
         android:layout_marginLeft="25dp"
@@ -17,7 +17,7 @@
         android:background="@drawable/back" />
 
     <ImageView
-        android:id="@+id/notificacion_fragmentInicio"
+        android:id="@+id/notificacion_fragmentInicioTienda"
         android:layout_width="37dp"
         android:layout_height="30dp"
         android:layout_marginLeft="360dp"
@@ -35,49 +35,39 @@
         android:layout_y="23dp"
         android:paddingLeft="160dp"
         android:text="Inicio"
-        android:textColor="@color/logo_background"
         android:textSize="30dp"></TextView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavegationTienda"
-        app:itemHorizontalTranslationEnabled="true"
-        app:itemTextColor="@color/colorNegro"
-        app:menu="@menu/main_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_x="-3dp"
-        android:layout_y="670dp" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+
+    <ImageView
         android:layout_width="157dp"
         android:layout_height="141dp"
         android:layout_x="41dp"
         android:layout_y="155dp"
         android:background="@drawable/hair_cut"
-        android:foreground=""></androidx.appcompat.widget.AppCompatImageButton>
+        />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageView
 
         android:layout_width="157dp"
         android:layout_height="141dp"
         android:layout_x="224dp"
         android:layout_y="153dp"
-        android:background="@drawable/tienda"></androidx.appcompat.widget.AppCompatImageButton>
+        android:background="@drawable/tienda"/>
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageView
 
         android:layout_width="157dp"
         android:layout_height="141dp"
         android:layout_x="222dp"
         android:layout_y="347dp"
-        android:background="@drawable/settings__1_"></androidx.appcompat.widget.AppCompatImageButton>
+        android:background="@drawable/settings__1_"/>
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageView
 
         android:layout_width="157dp"
         android:layout_height="141dp"
         android:layout_x="41dp"
         android:layout_y="347dp"
-        android:background="@drawable/book"></androidx.appcompat.widget.AppCompatImageButton>
+        android:background="@drawable/book"/>
 </AbsoluteLayout>

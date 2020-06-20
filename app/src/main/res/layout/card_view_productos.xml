@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/blancoTrasparente"
@@ -11,13 +11,13 @@
         android:layout_height="155dp"
         android:background="@color/blancoTrasparente">
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageView
 
             android:layout_width="40dp"
             android:layout_height="39dp"
             android:layout_x="364dp"
             android:layout_y="8dp"
-            android:background="@drawable/pencil"></androidx.appcompat.widget.AppCompatImageButton>
+            android:background="@drawable/pencil"/>
 
         <ImageView
             android:id="@+id/img_card_view_buscar"

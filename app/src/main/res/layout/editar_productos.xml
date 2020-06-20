@@ -16,12 +16,12 @@
         android:layout_y="29dp"
         android:background="@drawable/back" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageView
         android:layout_width="72dp"
         android:layout_height="63dp"
         android:layout_x="306dp"
         android:layout_y="258dp"
-        android:background="@drawable/agregarimg"></androidx.appcompat.widget.AppCompatImageButton>
+        android:background="@drawable/agregarimg"/>
 
     <ImageView
         android:id="@+id/notificacion_fragmentInicio"
