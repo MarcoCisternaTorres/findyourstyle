@@ -36,8 +36,8 @@
         android:id="@+id/etxtNombreUsuarioRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
         android:layout_marginStart="84dp"
+        android:layout_marginTop="124dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:ems="10"
         android:hint="Nombre"
@@ -105,6 +105,15 @@
         android:layout_marginTop="25dp"
         android:text="Registrarse"
         android:background="@drawable/estilo_borde_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCiudadUsuario" />
+
+    <Spinner
+        android:id="@+id/spinnerCiudadUsuario"
+        android:layout_width="220dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etxtContrasenia2Registro" />
 
