@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Modelo.CategoriaTienda;
+import com.example.findyourstyle.Modelo.Ciudad;
 import com.example.findyourstyle.R;
 
 import org.json.JSONArray;
@@ -45,9 +46,13 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
     RequestQueue request, requestSpinner;
     JsonObjectRequest jsonObjectRequest, jsonObjectRequestSpninner;
 
-    //Conexion con el web service para el spinner
+    //Conexion con el web service para el spinner categoria tienda
     private AsyncHttpClient categoriaTienda;
     Spinner spCategoriaTienda;
+
+    //Conexion con el web service prara el spinner ciudad
+    private AsyncHttpClient ciudadTienda;
+    Spinner spCiudadTienda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +71,10 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
 
         categoriaTienda = new AsyncHttpClient();
         spCategoriaTienda = findViewById(R.id.spinnerCetgoriaTienda);
+        spCiudadTienda = findViewById(R.id.spinnerCiudadTienda);
 
         llenarSpinnner();
+        llenarSpinnnerCiudad();
 
         btnRegistrarTienda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +96,7 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
         // Enviar datos al web service
         final String ip = getString(R.string.ip);
         String url = ip +"/findyourstyleBDR/wsJSONRegistroTienda.php?nombre_tienda="+nombreTienda.getText().toString()+
-                "&correo_tienda="+correoTienda.getText().toString()+"&contrasenia_tienda="+contraseniaTienda.getText().toString()+"&direccion_tienda="+direccionTienda.getText().toString();
+                "&correo_tienda="+correoTienda.getText().toString()+"&contrasenia_tienda="+contraseniaTienda.getText().toString()+"&direccion_tienda="+direccionTienda.getText().toString()+"&nombre_categoria="+spCategoriaTienda.getSelectedItem().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
     }
@@ -149,9 +156,46 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
                 listaCategoriaTienda.add(c);
             }
             ArrayAdapter<CategoriaTienda> ct = new ArrayAdapter<CategoriaTienda>(RegistroTiendaActivity.this,android.R.layout.simple_dropdown_item_1line, listaCategoriaTienda);
-             spCategoriaTienda.setAdapter(ct);
+            spCategoriaTienda.setAdapter(ct);
         }catch (Exception e){
-             e.printStackTrace();
+            e.printStackTrace();
+        }
+    }
+
+    private void llenarSpinnnerCiudad(){
+        final String ip1 = getString(R.string.ip);
+        String url = ip1 + "/findyourstyleBDR/wsJSONCiudad.php";
+        categoriaTienda.get(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if(statusCode == 200){
+                    cargarSpinnerCiudad(new String(responseBody));
+                }else{
+
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
+    private void cargarSpinnerCiudad(String respuesta){
+        ArrayList<Ciudad> listaCiudad = new ArrayList<Ciudad>();
+        try {
+            JSONObject jsonObj = new JSONObject(respuesta);
+            JSONArray jsonArreglo =  jsonObj.optJSONArray("ciudad");
+            for (int i = 0; i < jsonArreglo.length(); i++){
+                Ciudad c = new Ciudad();
+                c.setNombreCiudad(jsonArreglo.getJSONObject(i).optString("nombre_ciudad"));
+                listaCiudad.add(c);
+            }
+            ArrayAdapter<Ciudad> ct = new ArrayAdapter<Ciudad>(RegistroTiendaActivity.this,android.R.layout.simple_dropdown_item_1line, listaCiudad);
+            spCiudadTienda.setAdapter(ct);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

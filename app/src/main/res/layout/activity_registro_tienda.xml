@@ -123,7 +123,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
         android:layout_x="115dp"
-        android:layout_y="550dp"
+        android:layout_y="632dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:text="Registrarse"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,6 +138,13 @@
         android:backgroundTint="@color/colorNegro"
 
        />
+
+    <Spinner
+        android:id="@+id/spinnerCiudadTienda"
+        android:layout_width="220dp"
+        android:layout_height="45dp"
+        android:layout_x="112dp"
+        android:layout_y="546dp" />
 
 
 </AbsoluteLayout>
