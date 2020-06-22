@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.InicioClienteFragment">
-
+    tools:context=".Fragments.InicioClienteFragment"
+    >
 
     <ImageView
         android:id="@+id/iconSalir_fragmentInicioback"
@@ -26,18 +26,17 @@
         android:layout_y="29dp"
         android:src="@mipmap/notificacion_icon" />
 
+
     <TextView
         android:id="@+id/txtView_InicioTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_x="-3dp"
+        android:layout_x="0dp"
         android:layout_y="23dp"
         android:paddingLeft="160dp"
         android:text="Inicio"
         android:textSize="30dp"></TextView>
-
-
 
     <ImageView
         android:layout_width="157dp"
@@ -70,4 +69,36 @@
         android:layout_x="41dp"
         android:layout_y="347dp"
         android:background="@drawable/book"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="84dp"
+        android:layout_y="296dp"
+        android:text="Productos" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="258dp"
+        android:layout_y="296dp"
+        android:text="Perfil Tienda" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="86dp"
+        android:layout_y="489dp"
+        android:text="Registros" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="273dp"
+        android:layout_y="489dp"
+        android:text="Ajustes" />
 </AbsoluteLayout>

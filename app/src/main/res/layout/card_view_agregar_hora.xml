@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:background="@color/blancoTrasparente">
+
+
+        <ImageView
+            android:id="@+id/iconCalendar_AgregarFecha"
+            android:layout_width="48dp"
+            android:layout_height="50dp"
+            android:layout_x="42dp"
+            android:layout_y="23dp"
+            android:src="@mipmap/calendar_icon" />
+
+        <TextView
+            android:id="@+id/txtFecha_carAgregarFecha"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_x="109dp"
+            android:layout_y="22dp"
+            android:text="03 DIC"
+            android:textColor="@color/colorNegro"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/iconClock_AgregarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_x="174dp"
+            android:layout_y="23dp"
+            android:src="@mipmap/icon_clock" />
+
+        <TextView
+            android:id="@+id/txtHora_carAgregarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_x="240dp"
+            android:layout_y="23dp"
+            android:text="15 HRS"
+            android:textColor="@color/colorNegro"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/iconTick_carrAgregarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_x="321dp"
+            android:layout_y="23dp"
+            android:src="@mipmap/icon_tick" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+
+            android:orientation="vertical"
+            android:scrollbarStyle="insideInset" />
+
+
+    </AbsoluteLayout>
+    </androidx.cardview.widget.CardView>
