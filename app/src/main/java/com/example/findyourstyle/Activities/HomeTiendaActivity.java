@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.findyourstyle.Fragments.Horas;
 import com.example.findyourstyle.Fragments.InicioClienteFragment;
 import com.example.findyourstyle.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeTiendaActivity extends AppCompatActivity {
 
     private Fragment inicioFragment;
-    private Fragment productosFragment;
+    private Fragment horas;
     private Fragment horasFragment;
     private Fragment perfilFragment;
 
@@ -29,6 +30,8 @@ public class HomeTiendaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_cliente);
 
         inicioFragment = new InicioClienteFragment();
+        horas = new Horas();
+
         btnNavigationViewTienda = findViewById(R.id.bottomNavegationTienda);
 
 
@@ -44,7 +47,8 @@ public class HomeTiendaActivity extends AppCompatActivity {
                     case R.id.item_inicio:
                         setFragment(inicioFragment);
                         break;
-
+                    case R.id.item_productos:
+                        setFragment(horas);
                 }
                 return true;
             }

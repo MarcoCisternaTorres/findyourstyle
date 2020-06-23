@@ -40,6 +40,7 @@
 
 
     <ImageView
+        android:id="@+id/imgCrearNuevoProducto"
         android:layout_width="157dp"
         android:layout_height="141dp"
         android:layout_x="41dp"

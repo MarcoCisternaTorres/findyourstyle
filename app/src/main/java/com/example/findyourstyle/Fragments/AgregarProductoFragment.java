@@ -95,10 +95,6 @@ import java.util.Map;
             asyncHttpClient = new AsyncHttpClient();
             llenarSpinnner();
 
-            InicioSesionTienda inicioSesionTienda = new InicioSesionTienda();
-            inicioSesionTienda.recuperarPeferencias();
-
-
             btnImagen.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

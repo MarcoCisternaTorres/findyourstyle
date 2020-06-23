@@ -10,12 +10,12 @@
         android:id="@+id/txtView_horas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_x="-3dp"
+        android:layout_x="-19dp"
         android:layout_y="23dp"
         android:paddingLeft="160dp"
-        android:text="Horas"
+        android:text="Mis horas"
         android:textSize="30dp"></TextView>
+
     <ImageView
         android:id="@+id/notificacion_fragmentInicioTienda"
         android:layout_width="37dp"
@@ -25,9 +25,10 @@
         android:layout_x="349dp"
         android:layout_y="29dp"
         android:src="@mipmap/notificacion_icon" />
+
     <ImageView
         android:id="@+id/iconSalir_fragmentInicioback"
-        android:layout_width="36dp"
+        android:layout_width="30dp"
         android:layout_height="34dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
@@ -35,6 +36,81 @@
         android:layout_y="21dp"
         android:background="@drawable/back" />
 
-+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="29dp"
+        android:layout_y="103dp"
+        android:text="Agregar una nueva hora de autención"
+        android:textSize="20sp" />
+
+    <AbsoluteLayout
+        android:layout_width="388dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="100dp"
+        android:layout_x="10dp"
+        android:layout_y="148dp"
+        android:background="@color/blancoTrasparente">
+
+
+        <ImageView
+            android:id="@+id/iconCalendar_AgregarFecha"
+            android:layout_width="48dp"
+            android:layout_height="50dp"
+            android:layout_x="42dp"
+            android:layout_y="23dp"
+            android:src="@mipmap/calendar_icon" />
+
+        <ImageView
+            android:id="@+id/iconClock_AgregarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_x="174dp"
+            android:layout_y="23dp"
+            android:src="@mipmap/icon_clock" />
+
+        <ImageView
+            android:id="@+id/iconTick_carrAgregarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_x="321dp"
+            android:layout_y="23dp"
+            android:src="@mipmap/icon_tick" />
+
+        <TextView
+            android:id="@+id/txtHora_carAgregarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_x="240dp"
+            android:layout_y="23dp"
+            android:text="15 HRS"
+            android:textColor="@color/colorNegro"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txtFecha_carAgregarFecha"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_x="109dp"
+            android:layout_y="22dp"
+            android:text="03 DIC"
+            android:textColor="@color/colorNegro"
+            android:textSize="18dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+
+            android:orientation="vertical"
+            android:scrollbarStyle="insideInset" />
+
+
+    </AbsoluteLayout>
+
 
 </AbsoluteLayout>

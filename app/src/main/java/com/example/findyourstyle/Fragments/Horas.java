@@ -27,7 +27,7 @@ import java.util.Calendar;
  * Use the {@link Horas#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Horas extends Fragment implements View.OnClickListener {
+public class Horas extends Fragment  implements  View.OnClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,9 +37,7 @@ public class Horas extends Fragment implements View.OnClickListener {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-      ImageView iconCalendar_AgregarFecha,iconClock_AgregarHora;
-      TextView txtFecha_carAgregarFecha,txtFecha_carAgregarHora;
-      private int dia,mes,ano,hora,minutos;
+
     public Horas() {
 
         // Required empty public constructor
@@ -69,23 +67,28 @@ public class Horas extends Fragment implements View.OnClickListener {
 
 
     }
-
+    ImageView iconCalendar_AgregarFecha,iconClock_AgregarHora, iconTick;
+    TextView txtFecha_carAgregarFecha,txtFecha_carAgregarHora;
+    private int dia,mes,ano,hora,minutos;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.card_view_agregar_hora,container, false);
+        View view = inflater.inflate(R.layout.fragment_horas,container, false);
         iconCalendar_AgregarFecha= view.findViewById(R.id.iconCalendar_AgregarFecha);
         iconClock_AgregarHora = view.findViewById(R.id.iconClock_AgregarHora);
+        iconTick = view.findViewById(R.id.iconTick_carrAgregarHora);
         txtFecha_carAgregarFecha= view.findViewById(R.id.txtFecha_carAgregarFecha);
         txtFecha_carAgregarHora=view.findViewById(R.id.txtHora_carAgregarHora);
+
         iconCalendar_AgregarFecha.setOnClickListener(this);
         iconClock_AgregarHora.setOnClickListener(this);
+        iconTick.setOnClickListener(this);
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_horas, container, false);
+        return view;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+   @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
         if (v==iconCalendar_AgregarFecha){
@@ -100,10 +103,12 @@ public class Horas extends Fragment implements View.OnClickListener {
                 }
             },dia,mes,ano);
             datePickerDialog.show();
-        } if (v==iconClock_AgregarHora){
-    final Calendar c =Calendar.getInstance();
-    hora=c.get(Calendar.HOUR_OF_DAY);
-    minutos= c.get(Calendar.MINUTE);
+        }
+
+        if (v==iconClock_AgregarHora){
+             final Calendar c =Calendar.getInstance();
+             hora=c.get(Calendar.HOUR_OF_DAY);
+             minutos= c.get(Calendar.MINUTE);
 
             TimePickerDialog timePickerDialog= new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                 @Override
@@ -114,6 +119,15 @@ public class Horas extends Fragment implements View.OnClickListener {
             ,hora,minutos,false);
             timePickerDialog.show();
         }
+
+        if (v == iconTick){
+            agregarHoraBaseDatos();
+        }
+
+
+    }
+
+    private void  agregarHoraBaseDatos(){
 
     }
 }

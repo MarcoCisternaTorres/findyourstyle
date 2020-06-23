@@ -6,7 +6,7 @@
         android:icon="@mipmap/home_icono"
         android:iconTint="@color/colorNegro"/>
 
-    <item android:id="@+id/item_buscar"
+    <item android:id="@+id/item_productos"
         android:title="Productos"
         android:icon="@mipmap/tijeras_icon"
         android:iconTint="@color/colorNegro"/>
