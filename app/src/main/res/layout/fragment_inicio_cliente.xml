@@ -40,7 +40,8 @@
 
 
     <ImageView
-        android:layout_width="157dp"
+        android:id="@+id/imgCrearNuevoProducto"
+        android:layout_width="141dp"
         android:layout_height="141dp"
         android:layout_x="41dp"
         android:layout_y="155dp"
@@ -49,7 +50,7 @@
 
     <ImageView
 
-        android:layout_width="157dp"
+        android:layout_width="141dp"
         android:layout_height="141dp"
         android:layout_x="224dp"
         android:layout_y="153dp"
@@ -57,17 +58,17 @@
 
     <ImageView
 
-        android:layout_width="157dp"
+        android:layout_width="141dp"
         android:layout_height="141dp"
-        android:layout_x="222dp"
-        android:layout_y="347dp"
-        android:background="@drawable/settings__1_"/>
+        android:layout_x="230dp"
+        android:layout_y="409dp"
+        android:background="@drawable/settings__1_" />
 
     <ImageView
 
-        android:layout_width="157dp"
+        android:layout_width="141dp"
         android:layout_height="141dp"
-        android:layout_x="41dp"
-        android:layout_y="347dp"
-        android:background="@drawable/book"/>
+        android:layout_x="49dp"
+        android:layout_y="412dp"
+        android:background="@drawable/book" />
 </AbsoluteLayout>

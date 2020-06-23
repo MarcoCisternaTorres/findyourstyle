@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty()){
-                    guardarPreferencias();
+                    guardarPreferencias(correo, contrasenia);
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity  {
         requestQueue.add(stringRequest);
     }
 
-    private void guardarPreferencias(){
+    private void guardarPreferencias(String correo, String contrasenia){
         SharedPreferences preferences = getSharedPreferences("preferensiaLogin", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("correo_usuario", correo);

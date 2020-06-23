@@ -1,11 +1,19 @@
 package com.example.findyourstyle.Adampters;
 
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Modelo.ModeloBuscar;
 import com.example.findyourstyle.R;
 
@@ -17,9 +25,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProducto.productosHolder> {
     //NDCJ
     List<ModeloBuscar> listaProducto;
+    RequestQueue request;
+    Context context;
 
-    public  AdapterListaProducto(List<ModeloBuscar> listaProducto){
+    public  AdapterListaProducto(List<ModeloBuscar> listaProducto, Context context){
         this.listaProducto = listaProducto;
+        this.context = context;
+        request = Volley.newRequestQueue(context);
     }
     @NonNull
     @Override
@@ -38,11 +50,31 @@ public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProdu
         holder.direccion.setText(listaProducto.get(position).getDireccion());
         holder.precio.setText(listaProducto.get(position).getPrecio());
 
-        if(listaProducto.get(position).getImagen()!=null){
-            holder.imagen.setImageBitmap(listaProducto.get(position).getImagen());
+        if(listaProducto.get(position).getRutaImagen()!=null){
+            //holder.imagen.setImageBitmap(listaProducto.get(position).getImagen());
+            cargarImagenServidor(listaProducto.get(position).getRutaImagen(), holder);
         }else{
             holder.imagen.setImageResource(R.drawable.ic_launcher_background);
         }
+    }
+
+    private void cargarImagenServidor(String rutaImagen, final productosHolder holder){
+        String ip=context.getString(R.string.ip);
+        String url = ip+ "/findyourstyleBDR/" + rutaImagen;
+        url = url.replace(" ","%20");
+
+        ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                holder.imagen.setImageBitmap(response);
+            }
+        }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        request.add(imageRequest);
     }
 
     @Override

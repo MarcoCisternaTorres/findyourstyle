@@ -37,11 +37,11 @@ public class ModeloBuscar implements Serializable {
             byte[] byteCode= Base64.decode(dato,Base64.DEFAULT);
             //this.imagen= BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
 
-            //int alto=100;//alto en pixeles
-            //int ancho=150;//ancho en pixeles
+            int alto=800;//alto en pixeles
+            int ancho=600;//ancho en pixeles
 
-            this.imagen=BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
-            //this.imagen=Bitmap.createScaledBitmap(foto,alto,ancho,true);
+            Bitmap foto=BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
+            this.imagen=Bitmap.createScaledBitmap(foto,alto,ancho,true);
 
 
         }catch (Exception e){

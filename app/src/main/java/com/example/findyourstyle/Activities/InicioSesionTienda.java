@@ -1,6 +1,7 @@
 package com.example.findyourstyle.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -18,7 +20,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.findyourstyle.Fragments.AgregarProductoFragment;
+import com.example.findyourstyle.Modelo.CuentaTienda;
 import com.example.findyourstyle.R;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +37,7 @@ public class InicioSesionTienda extends AppCompatActivity {
     private  Button btnRegistrarTienda;
     private String correo;
     private String contrasenia;
+    CuentaTienda ct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +49,17 @@ public class InicioSesionTienda extends AppCompatActivity {
 
         btnIniciarSesion = (Button) findViewById(R.id.btnIniciarSesionCliente);
         btnRegistrarTienda = findViewById(R.id.btnRegistroNuevaTienda);
+        recuperarPeferencias();
+
+        final AgregarProductoFragment agregarProductoFragment = new AgregarProductoFragment();
+
+
+
 
         btnRegistrarTienda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent1 = new Intent(InicioSesionTienda.this, RegistroTiendaActivity.class);
                 startActivity(intent1);
             }
@@ -56,8 +70,8 @@ public class InicioSesionTienda extends AppCompatActivity {
             public void onClick(View v) {
                 correo = txtCorreoCliente.getText().toString();
                 contrasenia = etxtPasswordCliente.getText().toString();
-
                 if(!correo.isEmpty() && !contrasenia.isEmpty()){
+
                     final String ip = getString(R.string.ip);
                     validarUsuario(ip+"/findyourstyleBDR/validar_cliente.php");
                 }else {
@@ -102,19 +116,22 @@ public class InicioSesionTienda extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void guardarPreferencias(){
+    public  String guardarPreferencias(){
+        CuentaTienda cuentaTienda;
+        AgregarProductoFragment agregarProductoFragment = new AgregarProductoFragment();
         SharedPreferences preferences = getSharedPreferences("preferensiaLogin", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("correo_tienda", correo);
         editor.putString("contrasenia_tienda", contrasenia);
         editor.putBoolean("sesion", true);
         editor.commit();
+
+        return correo;
     }
 
-    private void recuperarPeferencias(){
+    public void recuperarPeferencias(){
         SharedPreferences preferences = getSharedPreferences("preferensiaLogin", Context.MODE_PRIVATE);
         txtCorreoCliente.setText(preferences.getString("correo_tienda", ""));
         etxtPasswordCliente.setText(preferences.getString("contrasenia_tienda", ""));
-
     }
 }

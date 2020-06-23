@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.AgregarProductoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/etxtNuevoProducto"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:layout_gravity="center"
+        android:layout_marginTop="-250dp"
+        android:hint="Nombre Producto"
+        />
+    <EditText
+        android:id="@+id/etxtPrecioNuevoProducto"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:layout_gravity="center"
+        android:layout_marginTop="-180dp"
+        android:hint="Precio Produto"
+
+        />
+    <Spinner
+        android:id="@+id/spNuevoProducto"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="-110dp"/>
+
+    <FrameLayout
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/estilo_frame_camera"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp">
+
+        <ImageView
+            android:id="@+id/imgNuevoProducto"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            />
+
+        <ImageView
+            android:id="@+id/btnAgregarNuevoProducto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="155dp"
+            android:layout_marginLeft="155dp"
+            android:src="@mipmap/camara_amarilla_icon" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnRegistroNuevoProducto"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:text="Agregar producto"
+        />
+
+    <TextView
+        android:id="@+id/txtIdCorreoTienda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="100dp"/>
+
+
+</FrameLayout>
