@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Horas">
+
+
+    <TextView
+        android:id="@+id/txtView_horas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_x="-3dp"
+        android:layout_y="23dp"
+        android:paddingLeft="160dp"
+        android:text="Horas"
+        android:textSize="30dp"></TextView>
+    <ImageView
+        android:id="@+id/notificacion_fragmentInicioTienda"
+        android:layout_width="37dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="25dp"
+        android:layout_x="349dp"
+        android:layout_y="29dp"
+        android:src="@mipmap/notificacion_icon" />
+    <ImageView
+        android:id="@+id/iconSalir_fragmentInicioback"
+        android:layout_width="36dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_x="15dp"
+        android:layout_y="21dp"
+        android:background="@drawable/back" />
+
++
+
+</AbsoluteLayout>

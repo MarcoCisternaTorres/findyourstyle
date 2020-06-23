@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.AjustesClientesFragment"
+    android:background="@drawable/degradado2">
+
+    <ImageView
+        android:id="@+id/notificacion_fragmentPerfilTienda2"
+        android:layout_width="29dp"
+        android:layout_height="32dp"
+
+        android:layout_x="353dp"
+        android:layout_y="33dp"
+        android:src="@mipmap/notificacion_icon" />
+
+    <ImageView
+        android:id="@+id/fechaAtras_fragmentPerfil"
+        android:layout_width="36dp"
+        android:layout_height="30dp"
+
+        android:layout_x="21dp"
+        android:layout_y="31dp"
+        android:src="@mipmap/icon_flecha_atras" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="112dp"
+        android:layout_y="25dp"
+        android:text="Configuracion"
+        android:textSize="30dp"></TextView>
+
+    <AbsoluteLayout
+        android:id="@+id/CNT_Config"
+        android:layout_width="367dp"
+        android:layout_height="277dp"
+        android:layout_x="22dp"
+        android:layout_y="122dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:backgroundTint="@color/blancoTrasparente"
+        android:padding="5dp">
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:layout_x="35dp"
+            android:layout_y="50dp"
+            android:text="Norificaciones" />
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:layout_x="35dp"
+            android:layout_y="120dp"
+            android:text="Sonido" />
+
+        <Switch
+            android:id="@+id/switch3"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:layout_x="35dp"
+            android:layout_y="195dp"
+            android:text="Vibracion" />
+
+</AbsoluteLayout>
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_x="292dp"
+        android:layout_y="520dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:backgroundTint="@color/blancoTrasparente" >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="170dp"
+            android:layout_height="212dp"
+            android:src="@drawable/error" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/TerminosYcondicionesCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="102dp"
+        android:layout_y="614dp"
+        android:text="Terminos Y condiciones de Uso"
+        android:textColor="@color/logo_background" />
+
+    <Button
+        android:id="@+id/brnEliminarTienda"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_x="26dp"
+        android:layout_y="530dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:backgroundTint="@color/blancoTrasparente"
+        android:text="Eliminar Cuenta" />
+
+</AbsoluteLayout>

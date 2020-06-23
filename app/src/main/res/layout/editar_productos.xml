@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="150dp"
-        android:layout_x="44dp"
+        android:layout_x="61dp"
         android:layout_y="113dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"

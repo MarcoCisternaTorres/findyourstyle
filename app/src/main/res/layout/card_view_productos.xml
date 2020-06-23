@@ -16,6 +16,14 @@
             android:layout_width="40dp"
             android:layout_height="39dp"
             android:layout_x="364dp"
+            android:layout_y="92dp"
+            android:background="@drawable/time" />
+
+        <ImageView
+
+            android:layout_width="40dp"
+            android:layout_height="39dp"
+            android:layout_x="364dp"
             android:layout_y="8dp"
             android:background="@drawable/pencil"/>
 

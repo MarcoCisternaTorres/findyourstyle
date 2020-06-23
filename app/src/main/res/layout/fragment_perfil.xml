@@ -23,15 +23,16 @@
         android:layout_marginLeft="360dp"
         android:src="@mipmap/notificacion_icon"
         />
+
     <TextView
         android:id="@+id/text_Perfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="150dp"
-        android:textSize="30dp"
         android:layout_marginTop="15dp"
+        android:paddingLeft="150dp"
         android:text="@string/txt_perfil"
-        android:textColor="@color/colorNegro"/>
+        android:textColor="@color/colorNegro"
+        android:textSize="30dp" />
 
     <ImageView
         android:id="@+id/imgPerfil_fragmentPerfil"

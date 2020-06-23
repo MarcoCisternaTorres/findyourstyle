@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.PerfilTiendaFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="38dp"
+        android:layout_y="302dp"
+        android:text="Nombre Dueño tienda" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="75dp"
+        android:layout_y="21dp"
+        android:text="Perfil De La tienda"
+        android:textSize="30dp"></TextView>
+
+    <ImageView
+        android:id="@+id/fechaAtras_fragmentPerfilTienda"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+
+        android:layout_x="23dp"
+        android:layout_y="35dp"
+        android:src="@mipmap/icon_flecha_atras" />
+
+    <ImageView
+        android:id="@+id/notificacion_fragmentPerfilTienda"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+
+        android:layout_x="359dp"
+        android:layout_y="34dp"
+        android:src="@mipmap/notificacion_icon" />
+
+    <ImageView
+        android:id="@+id/imgPerfil_fragmentPerfilTienda"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:layout_x="14dp"
+        android:layout_y="85dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <ImageView
+        android:id="@+id/iconcamera_fragmenPerfilTienda"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
+        android:layout_x="127dp"
+        android:layout_y="201dp"
+        android:src="@mipmap/camera_icon" />
+
+    <ImageView
+        android:id="@+id/iconConf_fragmenPerfilTienda"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
+        android:layout_x="336dp"
+        android:layout_y="172dp"
+        android:src="@mipmap/icon_settings" />
+
+    <ImageView
+        android:id="@+id/iconEdit_fragmenPerfilTienda"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
+        android:layout_x="340dp"
+        android:layout_y="118dp"
+        android:src="@mipmap/icon_edit" />
+
+    <TextView
+        android:id="@+id/txtNombre_Tienda_fragmentPerfilTiedna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_x="182dp"
+        android:layout_y="122dp"
+        android:text="Nombre Tienda"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/txtDireccionTienda_fragmentPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="130dp"
+        android:layout_x="174dp"
+        android:layout_y="163dp"
+        android:text="DireccionTienda"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_x="118dp"
+        android:layout_y="253dp"
+        android:text="DATOS PERSONALES"
+        android:textColor="@color/colorNegro"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnCerrarSesionCliente"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="590dp"
+        android:layout_marginEnd="88dp"
+        android:layout_x="95dp"
+        android:layout_y="564dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:backgroundTint="@color/blancoTrasparente"
+        android:hint="Cerrar sesión"
+        android:textColorHint="@color/colorNegro" />
+
+
+</AbsoluteLayout>
