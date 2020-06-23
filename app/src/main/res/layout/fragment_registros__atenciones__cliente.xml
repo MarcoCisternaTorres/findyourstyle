@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Registros_Atenciones_Cliente">
+
+
+    <ImageView
+        android:id="@+id/notificacion_fragmentPerfilTienda3"
+        android:layout_width="26dp"
+        android:layout_height="33dp"
+
+        android:layout_x="362dp"
+        android:layout_y="22dp"
+        android:src="@mipmap/notificacion_icon" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="75dp"
+        android:layout_y="21dp"
+        android:text="Registros de atencion"
+        android:textSize="27dp"></TextView>
+
+    <ImageView
+        android:id="@+id/fechaAtras_fragmentPerfilTienda2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+
+        android:layout_x="17dp"
+        android:layout_y="29dp"
+        android:src="@mipmap/icon_flecha_atras" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="548dp"
+        android:layout_x="0dp"
+        android:layout_y="93dp"></FrameLayout>
+</AbsoluteLayout>
