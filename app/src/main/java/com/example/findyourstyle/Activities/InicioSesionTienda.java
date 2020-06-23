@@ -122,6 +122,7 @@ public class InicioSesionTienda extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("preferensiaLogin", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("correo_tienda", correo);
+
         editor.putString("contrasenia_tienda", contrasenia);
         editor.putBoolean("sesion", true);
         editor.commit();
