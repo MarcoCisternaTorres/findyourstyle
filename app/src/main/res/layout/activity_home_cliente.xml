@@ -16,6 +16,11 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"/>
 
+    <TextView
+        android:id="@+id/xtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavegationTienda"

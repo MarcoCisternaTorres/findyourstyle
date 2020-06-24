@@ -16,21 +16,35 @@ import com.example.findyourstyle.Fragments.InicioClienteFragment;
 import com.example.findyourstyle.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
+
 public class HomeTiendaActivity extends AppCompatActivity {
 
     private Fragment inicioFragment;
     private Fragment horas;
     private Fragment horasFragment;
     private Fragment perfilFragment;
+    String correo;
+    String enviarCorreo;
+    TextView textView;
 
     private BottomNavigationView btnNavigationViewTienda;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_cliente);
+        textView = findViewById(R.id.xtt);
 
         inicioFragment = new InicioClienteFragment();
         horas = new Horas();
+
+       correo = getIntent().getStringExtra("correoTienda");
+       textView.setText(correo);
+       enviarCorreo = correo;
+
+        final Bundle bundle = new Bundle();
+        bundle.putString("correoTienda",correo);
+        inicioFragment.setArguments(bundle);
 
         btnNavigationViewTienda = findViewById(R.id.bottomNavegationTienda);
 
@@ -45,6 +59,7 @@ public class HomeTiendaActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.item_inicio:
+
                         setFragment(inicioFragment);
                         break;
                     case R.id.item_productos:

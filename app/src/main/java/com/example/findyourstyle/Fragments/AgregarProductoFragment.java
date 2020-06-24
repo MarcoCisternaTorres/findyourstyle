@@ -46,15 +46,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
-    public class AgregarProductoFragment extends Fragment {
-        private String correo;
-        private Object correoID;
+import static android.content.Intent.getIntent;
 
 
+public class AgregarProductoFragment extends Fragment {
+
+
+        String correoTienda;
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+                Bundle bundle = getArguments();
+                correoTienda = bundle.getString("correoTienda", "No hay correo");
 
 
         }
@@ -68,7 +71,8 @@ import java.util.Map;
         private Spinner spinnerNuevoProducto;
         private AsyncHttpClient asyncHttpClient;
         TextView correoIdTienda;
-        EditText recuperarCorreo, recuperarPass;
+
+
 
         StringRequest stringRequest;
         ProgressDialog progreso;
@@ -89,6 +93,7 @@ import java.util.Map;
             btnRegistrarProducto = view.findViewById(R.id.btnRegistroNuevoProducto);
             correoIdTienda = view.findViewById(R.id.txtIdCorreoTienda);
 
+            Toast.makeText(getContext(),"el correo es"+correoTienda,Toast.LENGTH_LONG).show();
 
 
             request = Volley.newRequestQueue(getContext());
@@ -241,7 +246,7 @@ import java.util.Map;
                     parametros.put("precio", precioP);
                     parametros.put("imagen",imagenP );
                     parametros.put("nombre_categoria_servicio", categoriaP);
-                   //parametros.put("correo_tienda", recuperarCorreo);
+                    parametros.put("correo_tienda", correoTienda);
 
                     return parametros;
                 }

@@ -71,7 +71,6 @@ public class InicioSesionTienda extends AppCompatActivity {
                 correo = txtCorreoCliente.getText().toString();
                 contrasenia = etxtPasswordCliente.getText().toString();
                 if(!correo.isEmpty() && !contrasenia.isEmpty()){
-
                     final String ip = getString(R.string.ip);
                     validarUsuario(ip+"/findyourstyleBDR/validar_cliente.php");
                 }else {
@@ -85,12 +84,15 @@ public class InicioSesionTienda extends AppCompatActivity {
     }
 
     private void validarUsuario(String URL){
+        final String c;
+        c = correo;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty()){
                     guardarPreferencias();
                     Intent intent = new Intent(InicioSesionTienda.this, HomeTiendaActivity.class);
+                    intent.putExtra("correoTienda", c);
                     startActivity(intent);
                     finish();
                 }else{
@@ -116,7 +118,7 @@ public class InicioSesionTienda extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public  String guardarPreferencias(){
+    public  void guardarPreferencias(){
         CuentaTienda cuentaTienda;
         AgregarProductoFragment agregarProductoFragment = new AgregarProductoFragment();
         SharedPreferences preferences = getSharedPreferences("preferensiaLogin", Context.MODE_PRIVATE);
@@ -127,7 +129,6 @@ public class InicioSesionTienda extends AppCompatActivity {
         editor.putBoolean("sesion", true);
         editor.commit();
 
-        return correo;
     }
 
     public void recuperarPeferencias(){

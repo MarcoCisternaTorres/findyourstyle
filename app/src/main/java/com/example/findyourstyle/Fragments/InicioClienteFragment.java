@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.findyourstyle.R;
 
@@ -50,36 +52,46 @@ public class InicioClienteFragment extends Fragment {
         return fragment;
     }
 
-
+     String correoTienda;
+    TextView textView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            correoTienda = getArguments().getString("correoTienda", "No hay correo");
         }
     }
+    AgregarProductoFragment agregarProductoFragment;
     private ImageView imgAgregarProducto;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inicio_cliente, container, false);
+        agregarProductoFragment = new AgregarProductoFragment();
 
         imgAgregarProducto = view.findViewById(R.id.imgCrearNuevoProducto);
+        Toast.makeText(getContext(),"El correo es "+ correoTienda, Toast.LENGTH_LONG).show();
+
+        final Bundle bundle = new Bundle();
+        bundle.putString("correoTienda",correoTienda);
+        agregarProductoFragment.setArguments(bundle);
+
 
         imgAgregarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AgregarProductoFragment agregarProductoFragment = new AgregarProductoFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.contenedorFragmentTienda, agregarProductoFragment);
-                transaction.commit();
+                setFragment(agregarProductoFragment);
             }
         });
 
         return view;
 
+    }
+    public void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contenedorFragmentTienda, fragment);
+        fragmentTransaction.commit();
     }
 }
