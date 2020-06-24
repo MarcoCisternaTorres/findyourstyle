@@ -23,7 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProducto.productosHolder> {
-    //NDCJ
+
     List<ModeloBuscar> listaProducto;
     RequestQueue request;
     Context context;

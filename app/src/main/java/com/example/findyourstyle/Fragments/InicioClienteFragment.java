@@ -63,6 +63,7 @@ public class InicioClienteFragment extends Fragment {
         }
     }
     AgregarProductoFragment agregarProductoFragment;
+    ProductoTiendaFragment productoTiendaFragment;
     private ImageView imgAgregarProducto;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +71,7 @@ public class InicioClienteFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inicio_cliente, container, false);
         agregarProductoFragment = new AgregarProductoFragment();
+        productoTiendaFragment = new ProductoTiendaFragment();
 
         imgAgregarProducto = view.findViewById(R.id.imgCrearNuevoProducto);
         Toast.makeText(getContext(),"El correo es "+ correoTienda, Toast.LENGTH_LONG).show();
@@ -77,6 +79,8 @@ public class InicioClienteFragment extends Fragment {
         final Bundle bundle = new Bundle();
         bundle.putString("correoTienda",correoTienda);
         agregarProductoFragment.setArguments(bundle);
+
+
 
 
         imgAgregarProducto.setOnClickListener(new View.OnClickListener() {

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/blancoTrasparente"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true"
     >
 
     <AbsoluteLayout
@@ -12,23 +15,23 @@
         android:background="@color/blancoTrasparente">
 
         <ImageView
-
-            android:layout_width="35dp"
-            android:layout_height="34dp"
-            android:layout_x="369dp"
-            android:layout_y="97dp"
+            android:id="@+id/imgHorasProductosTienda"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_x="335dp"
+            android:layout_y="98dp"
             android:background="@drawable/time" />
 
         <ImageView
-
+            android:id="@+id/imgEditarProductosTienda"
             android:layout_width="40dp"
-            android:layout_height="39dp"
-            android:layout_x="364dp"
-            android:layout_y="8dp"
-            android:background="@drawable/pencil"/>
+            android:layout_height="40dp"
+            android:layout_x="331dp"
+            android:layout_y="26dp"
+            android:background="@drawable/pencil" />
 
         <ImageView
-            android:id="@+id/img_card_view_buscar"
+            android:id="@+id/imgProductosTienda"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_x="19dp"
@@ -36,10 +39,9 @@
             android:src="@drawable/ic_launcher_background" />
 
         <TextView
-            android:id="@+id/txt_card_view_nombre_producto"
+            android:id="@+id/txtNombrePrductosTienda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_x="135dp"
             android:layout_y="34dp"
             android:text="Nombre de producto"
@@ -47,7 +49,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_card_view_tienda"
+            android:id="@+id/txtTiendaProductosTienda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_card_view_nombre_producto"
@@ -61,7 +63,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_card_view_direccion"
+            android:id="@+id/txtDireccionProductosTienda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_card_view_nombre_producto"
@@ -75,7 +77,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_card_view_precio"
+            android:id="@+id/txtPrecpProductosTienda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_card_view_tienda"
