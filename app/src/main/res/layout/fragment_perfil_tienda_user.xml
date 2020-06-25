@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.PerfilTiendaUser">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="3dp"
+        android:layout_y="263dp"
+        android:text="Descripcion"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="174dp"
+        android:layout_y="159dp"
+        android:text="nombre dueño"
+        android:textSize="18dp"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="157dp"
+        android:layout_y="24dp"
+        android:text="Tienda"
+        android:textSize="30dp"></TextView>
+
+    <ImageView
+        android:id="@+id/fechaAtras_fragmentPerfilTienda-user"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_x="23dp"
+        android:layout_y="35dp"
+        android:src="@mipmap/icon_flecha_atras" />
+
+    <ImageView
+        android:id="@+id/notificacion_fragmentPerfilTienda-user"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+
+        android:layout_x="352dp"
+        android:layout_y="36dp"
+        android:src="@mipmap/notificacion_icon" />
+
+    <ImageView
+        android:id="@+id/imgPerfil_fragmentPerfilTienda"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:layout_x="14dp"
+        android:layout_y="85dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/txtNombre_Tienda_fragmentPerfilTiedna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_x="177dp"
+        android:layout_y="91dp"
+        android:text="Nombre Tienda"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/txtDireccionTienda_fragmentPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="130dp"
+        android:layout_x="177dp"
+        android:layout_y="124dp"
+        android:text="DireccionTienda"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_x="4dp"
+        android:layout_y="421dp"
+        android:text="Productos"
+
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/descripcion_tienda-user"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_x="0dp"
+        android:layout_y="286dp"
+        android:lines="8" />
+
+    <RelativeLayout
+        android:scrollbars="horizontal"
+        android:layout_width="411dp"
+        android:layout_height="154dp"
+        android:layout_x="4dp"
+        android:layout_y="448dp"
+        />
+
+</AbsoluteLayout>

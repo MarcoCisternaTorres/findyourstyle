@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.RegistroTiendaActivity"
-    android:background="@drawable/degradado2">
+ >
 
     <TextView
         android:id="@+id/txtView_registrarseTienda"
@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="150dp"
-        android:layout_x="110dp"
-        android:layout_y="116dp"
+        android:layout_x="51dp"
+        android:layout_y="90dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
@@ -54,14 +54,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
         android:id="@+id/etxtContrasenia2RegistroTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
-        android:layout_x="114dp"
-        android:layout_y="404dp"
+        android:layout_x="56dp"
+        android:layout_y="320dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
@@ -76,8 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
-        android:layout_x="116dp"
-        android:layout_y="334dp"
+        android:layout_x="53dp"
+        android:layout_y="264dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
@@ -92,8 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
-        android:layout_x="107dp"
-        android:layout_y="188dp"
+        android:layout_x="50dp"
+        android:layout_y="152dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
@@ -105,8 +106,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="20dp"
-        android:layout_x="114dp"
-        android:layout_y="261dp"
+        android:layout_x="52dp"
+        android:layout_y="212dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:ems="10"
@@ -114,7 +115,6 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etxApellidoUsuarioRegistro" />
-
 
     <Button
         android:id="@+id/btnRegistrarTienda"
@@ -131,20 +131,34 @@
 
     <Spinner
         android:id="@+id/spinnerCetgoriaTienda"
-        android:layout_width="220dp"
+        android:layout_width="207dp"
         android:layout_height="45dp"
-        android:layout_x="111dp"
-        android:layout_y="481dp"
+        android:layout_x="54dp"
+        android:layout_y="378dp"
         android:backgroundTint="@color/colorNegro"
 
-       />
+        />
 
     <Spinner
         android:id="@+id/spinnerCiudadTienda"
-        android:layout_width="220dp"
+        android:layout_width="206dp"
         android:layout_height="45dp"
-        android:layout_x="112dp"
-        android:layout_y="546dp" />
+        android:layout_x="55dp"
+        android:layout_y="433dp" />
+
+    <EditText
+        android:id="@+id/descripcion_tienda"
+        android:layout_width="284dp"
+        android:layout_height="129dp"
+        android:layout_x="55dp"
+        android:layout_y="485dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:backgroundTint="@color/blancoTrasparente"
+        android:hint="Descripcion tienda"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:scrollbars="vertical" />
 
 
 </AbsoluteLayout>
