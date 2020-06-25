@@ -82,26 +82,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_x="4dp"
-        android:layout_y="421dp"
+        android:layout_x="-1dp"
+        android:layout_y="423dp"
         android:text="Productos"
 
         android:textSize="18dp" />
 
     <TextView
         android:id="@+id/descripcion_tienda-user"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_x="0dp"
         android:layout_y="286dp"
         android:lines="8" />
 
     <RelativeLayout
-        android:scrollbars="horizontal"
-        android:layout_width="411dp"
+        android:layout_width="415dp"
         android:layout_height="154dp"
-        android:layout_x="4dp"
+        android:layout_x="0dp"
         android:layout_y="448dp"
-        />
+        android:scrollbars="horizontal" />
 
 </AbsoluteLayout>
