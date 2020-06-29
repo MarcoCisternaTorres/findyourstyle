@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,8 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="-250dp"
-        android:layout_x="54dp"
-        android:layout_y="93dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:hint="Nombre Producto" />
 
@@ -22,9 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="-180dp"
-        android:layout_x="57dp"
-        android:layout_y="147dp"
-
         android:background="@drawable/estilo_borde_edit_text"
         android:hint="Precio Produto" />
 
@@ -34,16 +29,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="-110dp"
-        android:layout_x="64dp"
-        android:layout_y="206dp" />
+    />
 
     <FrameLayout
         android:layout_width="200dp"
         android:layout_height="200dp"
-
+        android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:layout_x="63dp"
-        android:layout_y="242dp"
         android:background="@drawable/estilo_frame_camera">
 
         <ImageView
@@ -67,8 +59,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="200dp"
-        android:layout_x="59dp"
-        android:layout_y="473dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:text="Editar Producto" />
 
@@ -83,10 +73,9 @@
         android:id="@+id/btnRegistroDeleteProducto"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_x="59dp"
-        android:layout_y="531dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="270dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:text="Eliminar Producto"></Button>
 
-</AbsoluteLayout>
+</FrameLayout>

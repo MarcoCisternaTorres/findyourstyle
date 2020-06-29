@@ -58,25 +58,18 @@ public class AgregarProductoFragment extends Fragment {
             super.onCreate(savedInstanceState);
                 Bundle bundle = getArguments();
                 correoTienda = bundle.getString("correoTienda", "No hay correo");
-
-
         }
 
-
-
-         EditText nombreProducto, precioProducto;
+        private EditText nombreProducto, precioProducto;
         private ImageView imgProducto;
         private ImageView btnImagen;
         private Button btnRegistrarProducto;
         private Spinner spinnerNuevoProducto;
         private AsyncHttpClient asyncHttpClient;
-        TextView correoIdTienda;
-
-
-
-        StringRequest stringRequest;
-        ProgressDialog progreso;
-        Bitmap bitmap;
+        private TextView correoIdTienda;
+        private StringRequest stringRequest;
+        private ProgressDialog progreso;
+        private Bitmap bitmap;
         RequestQueue request;
 
         @Override
@@ -92,9 +85,6 @@ public class AgregarProductoFragment extends Fragment {
             precioProducto = view.findViewById(R.id.etxtPrecioNuevoProducto);
             btnRegistrarProducto = view.findViewById(R.id.btnRegistroNuevoProducto);
             correoIdTienda = view.findViewById(R.id.txtIdCorreoTienda);
-
-            Toast.makeText(getContext(),"el correo es"+correoTienda,Toast.LENGTH_LONG).show();
-
 
             request = Volley.newRequestQueue(getContext());
             asyncHttpClient = new AsyncHttpClient();

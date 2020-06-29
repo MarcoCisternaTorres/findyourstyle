@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/iconSalir_fragmentInicioback"
-        android:layout_width="36dp"
+        android:layout_width="34dp"
         android:layout_height="34dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
@@ -41,8 +41,8 @@
 
     <ImageView
         android:id="@+id/imgCrearNuevoProducto"
-        android:layout_width="157dp"
-        android:layout_height="141dp"
+        android:layout_width="140dp"
+        android:layout_height="138dp"
         android:layout_x="41dp"
         android:layout_y="155dp"
         android:background="@drawable/hair_cut"
@@ -50,24 +50,24 @@
 
     <ImageView
 
-        android:layout_width="157dp"
-        android:layout_height="141dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_x="224dp"
         android:layout_y="153dp"
         android:background="@drawable/tienda"/>
 
     <ImageView
 
-        android:layout_width="157dp"
-        android:layout_height="141dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_x="222dp"
         android:layout_y="347dp"
         android:background="@drawable/settings__1_"/>
 
     <ImageView
 
-        android:layout_width="157dp"
-        android:layout_height="141dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_x="41dp"
         android:layout_y="347dp"
         android:background="@drawable/book"/>

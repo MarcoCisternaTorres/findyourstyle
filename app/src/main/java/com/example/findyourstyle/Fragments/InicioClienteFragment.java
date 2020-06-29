@@ -52,8 +52,7 @@ public class InicioClienteFragment extends Fragment {
         return fragment;
     }
 
-     String correoTienda;
-    TextView textView;
+    String correoTienda;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,16 +71,11 @@ public class InicioClienteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inicio_cliente, container, false);
         agregarProductoFragment = new AgregarProductoFragment();
         productoTiendaFragment = new ProductoTiendaFragment();
-
         imgAgregarProducto = view.findViewById(R.id.imgCrearNuevoProducto);
-        Toast.makeText(getContext(),"El correo es "+ correoTienda, Toast.LENGTH_LONG).show();
 
         final Bundle bundle = new Bundle();
         bundle.putString("correoTienda",correoTienda);
         agregarProductoFragment.setArguments(bundle);
-
-
-
 
         imgAgregarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,10 +83,9 @@ public class InicioClienteFragment extends Fragment {
                 setFragment(agregarProductoFragment);
             }
         });
-
         return view;
-
     }
+
     public void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.contenedorFragmentTienda, fragment);

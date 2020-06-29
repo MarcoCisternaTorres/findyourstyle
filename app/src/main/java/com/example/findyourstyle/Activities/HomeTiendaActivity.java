@@ -11,38 +11,41 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.findyourstyle.Fragments.DetalleFragment;
 import com.example.findyourstyle.Fragments.Horas;
 import com.example.findyourstyle.Fragments.InicioClienteFragment;
 import com.example.findyourstyle.Fragments.ProductoTiendaFragment;
+import com.example.findyourstyle.Interfaces.IDetalleFragment;
+import com.example.findyourstyle.Modelo.ProductoTienda;
 import com.example.findyourstyle.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 
-public class HomeTiendaActivity extends AppCompatActivity {
+public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFragment {
 
     private Fragment inicioFragment;
     private Fragment productosTienda;
     private Fragment horas;
     private Fragment horasFragment;
     private Fragment perfilFragment;
+    private Fragment detalle;
     String correo;
     String enviarCorreo;
-    TextView textView;
 
     private BottomNavigationView btnNavigationViewTienda;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_cliente);
-        textView = findViewById(R.id.xtt);
 
         inicioFragment = new InicioClienteFragment();
+
         productosTienda = new ProductoTiendaFragment();
         horas = new Horas();
+        detalle = new DetalleFragment();
 
-       correo = getIntent().getStringExtra("correoTienda");
-       textView.setText(correo);
+       correo = getIntent().getStringExtra("correoTienda");;
        enviarCorreo = correo;
 
         final Bundle bundle = new Bundle();
@@ -80,6 +83,20 @@ public class HomeTiendaActivity extends AppCompatActivity {
     public void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.contenedorFragmentTienda, fragment);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void enviarDetalle(ProductoTienda productoTienda) {
+
+        Bundle bundleEnvio  = new Bundle();
+        bundleEnvio.putSerializable("objeto", productoTienda);
+        detalle.setArguments(bundleEnvio);
+
+
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contenedorFragmentTienda, detalle);
         fragmentTransaction.commit();
     }
 }

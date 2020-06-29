@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,6 +28,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Adampters.AdapterListaProducto;
 import com.example.findyourstyle.Adampters.AdapterProductosTienda;
 import com.example.findyourstyle.Interfaces.IComunicaFragment;
+import com.example.findyourstyle.Interfaces.IDetalleFragment;
 import com.example.findyourstyle.Modelo.ModeloBuscar;
 import com.example.findyourstyle.Modelo.ProductoTienda;
 import com.example.findyourstyle.R;
@@ -97,6 +100,13 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
 
     Activity actividad;
     IComunicaFragment iComunicaFragment;
+
+    ImageView imgAgregarHoras;
+    Fragment horas;
+    Fragment detalleHoras;
+
+    Activity activity;
+    IDetalleFragment iDetalleFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -107,10 +117,16 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
         recyclerProductosTiendas.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerProductosTiendas.setHasFixedSize(true);
         recyclerProductosTiendas.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        imgAgregarHoras = view.findViewById(R.id.imgHorasProductosTienda);
+        horas = new Horas();
+        detalleHoras = new DetalleFragment();
 
         lista = new ArrayList<>();
         request = Volley.newRequestQueue(getContext());
         cargarWebService();
+
+
+
         return  view;
     }
 
@@ -155,6 +171,13 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
 
             AdapterProductosTienda adapterProductosTienda = new AdapterProductosTienda(lista,getContext());
             recyclerProductosTiendas.setAdapter(adapterProductosTienda);
+            adapterProductosTienda.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    iDetalleFragment.enviarDetalle(lista.get(recyclerProductosTiendas.getChildAdapterPosition(v)));
+                }
+            });
+
         }catch (JSONException e){
             e.printStackTrace();
             Toast.makeText(getContext(),"no se ha podido conectar con el servidor"+""+response, Toast.LENGTH_LONG).show();
@@ -163,4 +186,17 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
         }
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof  Activity){
+            this.actividad = (Activity) context;
+            iDetalleFragment = (IDetalleFragment) this.actividad;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
 }

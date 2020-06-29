@@ -23,11 +23,12 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterProductosTienda extends RecyclerView.Adapter<AdapterProductosTienda.productosTiendaHolder>{
+public class AdapterProductosTienda extends RecyclerView.Adapter<AdapterProductosTienda.productosTiendaHolder> implements View.OnClickListener{
     //NDCJ
     List<ProductoTienda> lista;
     RequestQueue request;
     Context context;
+    private View.OnClickListener listener;
 
     public  AdapterProductosTienda(List<ProductoTienda> lista, Context context){
         this.lista = lista;
@@ -41,6 +42,8 @@ public class AdapterProductosTienda extends RecyclerView.Adapter<AdapterProducto
         RecyclerView.LayoutParams layoutParams=new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         vista.setLayoutParams(layoutParams);
+
+        vista.setOnClickListener(this);
         return new AdapterProductosTienda.productosTiendaHolder(vista);
     }
 
@@ -57,6 +60,8 @@ public class AdapterProductosTienda extends RecyclerView.Adapter<AdapterProducto
         }else{
             holder.imagenProductotienda.setImageResource(R.drawable.ic_launcher_background);
         }
+
+
     }
 
     private void cargarImagenServidor(String rutaImagen, final AdapterProductosTienda.productosTiendaHolder holder){
@@ -83,9 +88,20 @@ public class AdapterProductosTienda extends RecyclerView.Adapter<AdapterProducto
         return lista.size();
     }
 
+    public void  setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (listener != null){
+            listener.onClick(v);
+        }
+    }
+
     public class productosTiendaHolder extends RecyclerView.ViewHolder {
         TextView nombreMiTienda, nombreProductoTienda, direccionTienda, precioProducto;
-        ImageView imagenProductotienda;
+        ImageView imagenProductotienda, imgNuevasHoras;
         public productosTiendaHolder(@NonNull View itemView) {
             super(itemView);
             nombreProductoTienda =  itemView.findViewById(R.id.txtNombrePrductosTienda);
@@ -93,6 +109,8 @@ public class AdapterProductosTienda extends RecyclerView.Adapter<AdapterProducto
             direccionTienda = itemView.findViewById(R.id.txtDireccionProductosTienda);
             precioProducto =  itemView.findViewById(R.id.txtPrecpProductosTienda);
             imagenProductotienda = itemView.findViewById(R.id.imgProductosTienda);
+
+            imgNuevasHoras = itemView.findViewById(R.id.imgHorasProductosTienda);
         }
     }
 }
