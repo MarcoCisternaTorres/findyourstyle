@@ -6,7 +6,7 @@
     tools:context=".Fragments.EditarYEliminarProductos">
 
     <EditText
-        android:id="@+id/etxtNuevoProducto"
+        android:id="@+id/etxtEditarProducto"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -15,7 +15,7 @@
         android:hint="Nombre Producto" />
 
     <EditText
-        android:id="@+id/etxtPrecioNuevoProducto"
+        android:id="@+id/etxtEditarPrecioProducto"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -24,7 +24,7 @@
         android:hint="Precio Produto" />
 
     <Spinner
-        android:id="@+id/spNuevoProducto"
+        android:id="@+id/spEditarProducto"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -39,17 +39,17 @@
         android:background="@drawable/estilo_frame_camera">
 
         <ImageView
-            android:id="@+id/btnAgregarNuevoProducto"
+            android:id="@+id/imgEditarP"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+        <ImageView
+            android:id="@+id/btnEditarNuevoProducto"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="155dp"
             android:layout_marginTop="155dp"
             android:src="@mipmap/camara_amarilla_icon" />
-
-        <ImageView
-            android:id="@+id/imgNuevoProducto"
-            android:layout_width="200dp"
-            android:layout_height="200dp" />
 
     </FrameLayout>
 

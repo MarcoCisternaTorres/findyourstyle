@@ -71,9 +71,14 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
         return fragment;
     }
 
+    String nombreProducto;
+    String correoTienda;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        nombreProducto = bundle.getString("nombreProducto", "No hay nombre");
+        correoTienda = bundle.getString("correoTienda", "No hay correo");
 
     }
 
@@ -84,8 +89,8 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
     TextView txtFecha_carAgregarFecha,txtFecha_carAgregarHora;
     String diaAtencion;
     String horaAtencion;
-    String correoTienda;
-    String nombrePoducto;
+
+
     private int dia,mes,ano,hora,minutos;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -97,8 +102,7 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
         txtFecha_carAgregarFecha= view.findViewById(R.id.txtFecha_carAgregarFecha);
         txtFecha_carAgregarHora=view.findViewById(R.id.txtHora_carAgregarHora);
 
-        correoTienda = "marco@gmail.com";
-        nombrePoducto = "corte de pelo hombre";
+
         request = Volley.newRequestQueue(getContext());
 
         iconCalendar_AgregarFecha.setOnClickListener(this);
@@ -144,7 +148,6 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
         }
 
         if (v == iconTick){
-
             agregarHoraBaseDatos();
         }
 
@@ -161,7 +164,7 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
         // Enviar datos al web service
         final String ip = getString(R.string.ip);
         String url = ip +"/findyourstyleBDR/agregarHoraAtencion.php?dia_atencion="+diaAtencion.toString()+
-                "&hora_atencion="+horaAtencion.toString()+"&nombre_producto="+nombrePoducto.toString()+"&correo_tienda="+correoTienda.toString();
+                "&hora_atencion="+horaAtencion.toString()+"&nombre_producto="+nombreProducto.toString()+"&correo_tienda="+correoTienda.toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
     }

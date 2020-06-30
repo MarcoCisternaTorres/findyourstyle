@@ -58,6 +58,7 @@ public class AgregarProductoFragment extends Fragment {
             super.onCreate(savedInstanceState);
                 Bundle bundle = getArguments();
                 correoTienda = bundle.getString("correoTienda", "No hay correo");
+
         }
 
         private EditText nombreProducto, precioProducto;

@@ -53,8 +53,12 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
         inicioFragment.setArguments(bundle);
 
         final Bundle bundleProducatodTienda = new Bundle();
-        bundle.putString("correoTienda",correo);
-        productosTienda.setArguments(bundle);
+        bundleProducatodTienda.putString("correoTienda",correo);
+        productosTienda.setArguments(bundleProducatodTienda);
+
+        final Bundle bundleCorreoHoras = new Bundle();
+        bundleCorreoHoras.putString("correoTienda",correo);
+        horas.setArguments(bundleCorreoHoras);
 
         btnNavigationViewTienda = findViewById(R.id.bottomNavegationTienda);
 
@@ -91,6 +95,7 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
 
         Bundle bundleEnvio  = new Bundle();
         bundleEnvio.putSerializable("objeto", productoTienda);
+        bundleEnvio.putString("correoTienda", correo);
         detalle.setArguments(bundleEnvio);
 
 

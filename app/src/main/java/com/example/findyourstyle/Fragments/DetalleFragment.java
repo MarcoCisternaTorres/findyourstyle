@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,7 @@ import com.example.findyourstyle.R;
  * Use the {@link DetalleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetalleFragment extends Fragment {
+public class DetalleFragment extends Fragment implements  View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,18 +58,18 @@ public class DetalleFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    String correoTienda;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        Bundle bundle = getArguments();
+        correoTienda = bundle.getString("correoTienda", "No hay correo");
     }
 
+
     private TextView nombreProducto, nombreTienda, direccion, precio;
-    private ImageView imgDetalle;
+    private ImageView imgDetalle, imgHora, imgEditar;
+    Fragment horas, editar;
     RequestQueue request;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +80,21 @@ public class DetalleFragment extends Fragment {
         nombreProducto = view.findViewById(R.id.txtNombreProductoDetalle);
         precio = view.findViewById(R.id.txtPrecioDetalle);
         imgDetalle = view.findViewById(R.id.imgDetalle);
+        imgHora = view.findViewById(R.id.imgAgregarHoraDetalle);
+        imgEditar = view.findViewById(R.id.imgEditarproducto);
         request = Volley.newRequestQueue(getContext());
+        horas = new Horas();
+        editar = new EditarYEliminarProductos();
+
+        final Bundle bundle = new Bundle();
+        bundle.putString("correoTienda",correoTienda);
+        horas.setArguments(bundle);
+
+
+
+        imgHora.setOnClickListener(this);
+        imgEditar.setOnClickListener(this);
+
 
         Bundle productos = new Bundle(getArguments());
         ProductoTienda productosTienda = null;
@@ -95,7 +110,19 @@ public class DetalleFragment extends Fragment {
                 imgDetalle.setImageResource(R.drawable.ic_launcher_background);
             }
 
+            final Bundle bundleNombreHoras = new Bundle();
+            bundleNombreHoras.putString("nombreProducto",productosTienda.getNombreProducto());
+            bundleNombreHoras.putString("correoTienda",correoTienda);
+            horas.setArguments(bundleNombreHoras);
+
+            final Bundle bundleEditarProducto= new Bundle();
+            bundleEditarProducto.putString("nombreProducto",productosTienda.getNombreProducto());
+            bundleEditarProducto.putString("correoTienda",correoTienda);
+            editar.setArguments(bundleEditarProducto);
+
+
         }
+
 
         return view;
     }
@@ -116,5 +143,21 @@ public class DetalleFragment extends Fragment {
             }
         });
         request.add(imageRequest);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == imgHora){
+            setFragment(horas);
+        }
+        if(v == imgEditar){
+            setFragment(editar);
+        }
+    }
+
+    public void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contenedorFragmentTienda, fragment);
+        fragmentTransaction.commit();
     }
 }

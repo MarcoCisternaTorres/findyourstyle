@@ -125,6 +125,10 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
         request = Volley.newRequestQueue(getContext());
         cargarWebService();
 
+        final Bundle bundle = new Bundle();
+        bundle.putString("correoTienda",correoTienda);
+        detalleHoras.setArguments(bundle);
+
 
 
         return  view;
