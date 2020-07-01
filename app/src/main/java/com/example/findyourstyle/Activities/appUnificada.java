@@ -33,7 +33,7 @@ public class appUnificada extends AppCompatActivity {
         btnBuscarTiendas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(v.getContext(), HomeActivity.class);
+                Intent intent1 = new Intent(v.getContext(), MainActivity.class);
                 startActivityForResult(intent1,0);
             }
         });

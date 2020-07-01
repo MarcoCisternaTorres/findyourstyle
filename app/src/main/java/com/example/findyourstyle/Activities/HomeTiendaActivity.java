@@ -98,8 +98,6 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
         bundleEnvio.putString("correoTienda", correo);
         detalle.setArguments(bundleEnvio);
 
-
-
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.contenedorFragmentTienda, detalle);
         fragmentTransaction.commit();

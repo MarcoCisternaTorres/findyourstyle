@@ -22,6 +22,7 @@ import com.example.findyourstyle.Modelo.ModeloBuscar;
 import com.example.findyourstyle.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements IComunicaFragment {
@@ -37,14 +38,15 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
     private Fragment buscarFragment;
     private Fragment agendaFragment;
     private Fragment perfilFragment;
+    private Fragment agendarHoras;
 
     ImageView btnAtras;
 
-
+    String correo, enviarCorreo;
     private MenuItem menuItem;
 
     //variables del fragment agendar productos
-    AgendarHoraFragment agendarHoraFragment;
+
 
     //adcla vhjeashvjs
     @Override
@@ -56,11 +58,17 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         buscarFragment          = new BuscarFragment();
         agendaFragment          = new AgendaFragment();
         perfilFragment          = new PerfilFragment();
+        agendarHoras = new AgendarHoraFragment();
 
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().add(R.id.contenedorFragment,buscarFragment).commit();
 
+        correo = getIntent().getStringExtra("correoUsuario");
+        enviarCorreo = correo;
 
+        final Bundle bundle = new Bundle();
+        bundle.putString("correoUsuario",correo);
+        buscarFragment.setArguments(bundle);
 
 
         setFragment(inicioFragment);
@@ -106,42 +114,19 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
 
     @Override
     public void enviarProducto(ModeloBuscar modeloBuscar) {
-        //logica para realizar el envio
-        agendarHoraFragment = new AgendarHoraFragment();
+        Bundle bundleEnvioPrducto  = new Bundle();
+        bundleEnvioPrducto.putSerializable("productos", modeloBuscar);
+        bundleEnvioPrducto.putString("correoUsuario", correo);
+        agendarHoras.setArguments(bundleEnvioPrducto);
 
-        //objeto bundle para transportar la informacion
-        Bundle bundleEnvio = new Bundle();
-
-        //enviar objeto con serializable
-        bundleEnvio.putSerializable("objeto", modeloBuscar);
-
-        //Pasamos el argumentos a AgendarHoraFrangment
-        agendarHoraFragment.setArguments(bundleEnvio);
-
-        //Abir fragment
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.contenedorFragment, agendarHoraFragment);
+        fragmentTransaction.replace(R.id.contenedorFragment, agendarHoras);
         fragmentTransaction.commit();
     }
 
     @Override
     public void enviarProductosMasBuscados(ModelLoMasBuscado modelLoMasBuscado) {
-        //logica para realizar el envio
-        agendarHoraFragment = new AgendarHoraFragment();
 
-        //objeto bundle para transportar la informacion
-        Bundle bundleEnvio = new Bundle();
-
-        //enviar objeto con serializable
-        bundleEnvio.putSerializable("objeto", modelLoMasBuscados);
-
-        //Pasamos el argumentos a AgendarHoraFrangment
-        agendarHoraFragment.setArguments(bundleEnvio);
-
-        //Abir fragment
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.contenedorFragment, agendarHoraFragment);
-        fragmentTransaction.commit();
     }
 
 
