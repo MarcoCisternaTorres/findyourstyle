@@ -1,6 +1,8 @@
 package com.example.findyourstyle.Modelo;
 
-public class ModelLoMasBuscado {
+import java.io.Serializable;
+
+public class ModelLoMasBuscado implements Serializable {
 
     private String  nombreProducto;
     private String  tienda;

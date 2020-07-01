@@ -1,5 +1,6 @@
 package com.example.findyourstyle.Fragments;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,10 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Adampters.AdapterAgendarHora;
 import com.example.findyourstyle.Modelo.HorasAtencion;
+import com.example.findyourstyle.Modelo.ModelLoMasBuscado;
 import com.example.findyourstyle.Modelo.ModeloBuscar;
+import com.example.findyourstyle.Modelo.ProductoTienda;
 import com.example.findyourstyle.R;
 
 import java.util.ArrayList;
@@ -56,14 +65,12 @@ public class AgendarHoraFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    String correoUsuario;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        Bundle bundle = getArguments();
+        correoUsuario = bundle.getString("correoUsuario", "No hay correo");
     }
 
     //cargar Recycler View
@@ -75,7 +82,7 @@ public class AgendarHoraFragment extends Fragment {
     TextView nombreProducto, nombreTienda, direccion, precio;
     ImageView imgProduto;
     ImageView btnAtras;
-
+    RequestQueue request;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -86,7 +93,6 @@ public class AgendarHoraFragment extends Fragment {
         //Recycler agendar horas
         recyclerAgendarHora = view.findViewById(R.id.recyclerView_agendarHora);
         modelHorasAtencion = new ArrayList<>();
-
         //para la imagen y descripcion del producto
         nombreProducto = view.findViewById(R.id.txtNombreProducto_agendarHora);
         nombreTienda = view.findViewById(R.id.txtTienda_agendarHora);
@@ -94,6 +100,26 @@ public class AgendarHoraFragment extends Fragment {
         precio = view.findViewById(R.id.txtPrecio_agendarHora);
         imgProduto = view.findViewById(R.id.imgAgendarHora);
         btnAtras = view.findViewById(R.id.fechaAtras_agendarHora);
+        request = Volley.newRequestQueue(getContext());
+
+
+        Bundle productosHora = new Bundle(getArguments());
+        ModeloBuscar productos = null;
+        if (productosHora != null){
+            productos = (ModeloBuscar) productosHora.getSerializable("productos");
+            nombreProducto.setText(productos.getNombreProducto());
+            nombreTienda.setText(productos.getNombreProducto());
+            direccion.setText(productos.getDireccion());
+            precio.setText(productos.getPrecio());
+
+            if(productos.getRutaImagen()!=null){
+                //holder.imagen.setImageBitmap(listaProducto.get(position).getImagen());
+                cargarImagenServidor(productos.getRutaImagen());
+            }else{
+                imgProduto.setImageResource(R.drawable.ic_launcher_background);
+            }
+        }
+
 
         //Icono para volver atras
         btnAtras.setOnClickListener(new View.OnClickListener() {
@@ -106,36 +132,25 @@ public class AgendarHoraFragment extends Fragment {
             }
         });
 
-        //Objeto bundle para recibir los paramentros por argumentos
-        Bundle objetoAgendarHora = getArguments();
-        ModeloBuscar modeloBuscar = null;
-
-        //Verificar si existen argumentos
-        if(objetoAgendarHora != null){
-            modeloBuscar = (ModeloBuscar) objetoAgendarHora.getSerializable("objeto");
-            //Establecar los datos en ñas vistas
-            nombreProducto.setText(modeloBuscar.getNombreProducto());
-            nombreTienda.setText(modeloBuscar.getTienda());
-            direccion.setText(modeloBuscar.getDireccion());
-            //imgProduto.setImageResource(modeloBuscar.getIdImagenBuscar());
-        }
-
-        cargarHorasDisponibles();
-        mostrarHorasDisponibles();
-
         return view;
     }
 
-    public void cargarHorasDisponibles(){
-        modelHorasAtencion.add(new HorasAtencion("10  DIC","15 HRS"));
-        modelHorasAtencion.add(new HorasAtencion("11  DIC","11 HRS"));
-        modelHorasAtencion.add(new HorasAtencion("11  DIC","11:30 HRS"));
-        modelHorasAtencion.add(new HorasAtencion("12  DIC","15 HRS"));
-    }
+    private void cargarImagenServidor(String rutaImagen){
+        String ip=getActivity().getString(R.string.ip);
+        String url = ip+ "/findyourstyleBDR/" + rutaImagen;
+        url = url.replace(" ","%20");
 
-    public void  mostrarHorasDisponibles() {
-        recyclerAgendarHora.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterAgendarHora = new AdapterAgendarHora(getContext(), modelHorasAtencion);
-        recyclerAgendarHora.setAdapter(adapterAgendarHora);
+        ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                imgProduto.setImageBitmap(response);
+            }
+        }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        request.add(imageRequest);
     }
 }

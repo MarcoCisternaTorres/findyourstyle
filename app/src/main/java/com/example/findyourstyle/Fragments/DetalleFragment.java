@@ -116,12 +116,12 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
             horas.setArguments(bundleNombreHoras);
 
             final Bundle bundleEditarProducto= new Bundle();
-            bundleEditarProducto.putString("nombreProducto",productosTienda.getNombreProducto());
-            bundleEditarProducto.putString("correoTienda",correoTienda);
-            editar.setArguments(bundleEditarProducto);
+        bundleEditarProducto.putString("nombreProducto",productosTienda.getNombreProducto());
+        bundleEditarProducto.putString("correoTienda",correoTienda);
+        editar.setArguments(bundleEditarProducto);
 
 
-        }
+    }
 
 
         return view;

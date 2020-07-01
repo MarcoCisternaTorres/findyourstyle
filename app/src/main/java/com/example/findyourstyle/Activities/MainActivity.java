@@ -80,12 +80,15 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void validarUsuario(String URL){
+        final String c;
+        c = correo;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty()){
                     guardarPreferencias(correo, contrasenia);
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    intent.putExtra("correoUsuario", c);
                     startActivity(intent);
                     finish();
                 }else{

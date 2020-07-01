@@ -50,6 +50,16 @@ import java.util.List;
  */
 public class BuscarFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject> {
 
+
+    String correoUsuario;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        correoUsuario = bundle.getString("correoUsuario", "No hay correo");
+
+    }
+
     RecyclerView recyclerViewBuscar;
     ArrayList<ModeloBuscar> listaProductos;
 
@@ -137,6 +147,13 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
 
             AdapterListaProducto adapterListaProducto = new AdapterListaProducto(listaProductos,actividad);
             recyclerViewBuscar.setAdapter(adapterListaProducto);
+            adapterListaProducto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    iComunicaFragment.enviarProducto(listaProductos.get(recyclerViewBuscar.getChildAdapterPosition(v)));
+                }
+            });
         }catch (JSONException e){
             e.printStackTrace();
             Toast.makeText(getContext(),"no se ha podido conectar con el servidor"+""+response, Toast.LENGTH_LONG).show();

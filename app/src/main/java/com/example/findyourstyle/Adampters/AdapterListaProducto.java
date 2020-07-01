@@ -22,11 +22,12 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProducto.productosHolder> {
+public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProducto.productosHolder> implements View.OnClickListener{
 
     List<ModeloBuscar> listaProducto;
     RequestQueue request;
     Context context;
+    private View.OnClickListener listener;
 
     public  AdapterListaProducto(List<ModeloBuscar> listaProducto, Context context){
         this.listaProducto = listaProducto;
@@ -40,6 +41,7 @@ public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProdu
         RecyclerView.LayoutParams layoutParams=new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         vista.setLayoutParams(layoutParams);
+        vista.setOnClickListener(this);
         return new productosHolder(vista);
     }
 
@@ -80,6 +82,17 @@ public class AdapterListaProducto extends RecyclerView.Adapter<AdapterListaProdu
     @Override
     public int getItemCount() {
         return listaProducto.size();
+    }
+
+    public void  setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (listener != null){
+            listener.onClick(v);
+        }
     }
 
     public class productosHolder extends RecyclerView.ViewHolder {
