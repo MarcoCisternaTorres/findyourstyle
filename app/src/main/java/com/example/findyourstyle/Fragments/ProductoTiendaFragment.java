@@ -148,10 +148,8 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(actividad, "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
-        System.out.println();
-        progress.hide();
-        Log.d("ERROR: ", error.toString());
+
+
     }
 
     @Override
@@ -184,7 +182,7 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
 
         }catch (JSONException e){
             e.printStackTrace();
-            Toast.makeText(getContext(),"no se ha podido conectar con el servidor"+""+response, Toast.LENGTH_LONG).show();
+
             progress.hide();
 
         }
