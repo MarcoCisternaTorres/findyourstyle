@@ -31,6 +31,14 @@
     <string name="txt_perfil">Pefil</string>
 
     <string name="ip">http://192.168.43.222/</string>    <!-- TODO: Remove or change this placeholder text -->
+    <string name="TXTterminos_y_condiciones">i.	Se adquirirán las licencias para los softwares que se utilizarán en el desarrollo de esta solución informática de manera autentica para evitar los inconvenientes legales en el futuro.
+ii.	Sobre la protección de la vida lay 19.628 que estipula El tratamiento de los datos de carácter personal en registros o bancos de datos por organismos públicos o por particulares se sujetará a las disposiciones de esta ley, con excepción del que se efectúe en ejercicio de las libertades de emitir opinión y de informar, el que se regulará por la ley a que se refiere el artículo 19, N° 12, de la Constitución Política.
+iii.	Ley N.° 17.336 que estipula la protección de los derechos que, por el solo hecho de la creación de la obra, adquieren los autores de obras de la inteligencia en los dominios literarios, artísticos y científicos, cualquiera que sea su forma de expresión, y los derechos conexos que ella determina.
+iv.	Oficio N.º 4467 de Servicio de Impuestos Internos que trata sobre tributario del IVA aplicable a la transferencia mediante medios electrónicos de bienes protegidos por la Ley N.° 17.336, sobre propiedad intelectual, dentro de los cuales se encuentran los programas computacionales.
+v.	Para distribuir esta aplicación además se deben pasar una serie filtros y cumplir con los requisitos que estipula Google Play
+        vi. Usted concede a darnos acceso a su dispositivo asi como fotos, acceso a la camara etc.
+        vii. Ademas los datos de su cuenta no seran eliminado para la veracidad de los datos extistentes ademas de la capacidad de reactivar la cuenta con su correo.
+    </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

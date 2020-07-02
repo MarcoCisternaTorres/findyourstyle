@@ -123,8 +123,8 @@
         android:layout_height="57dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="25dp"
-        android:layout_x="115dp"
-        android:layout_y="632dp"
+        android:layout_x="88dp"
+        android:layout_y="644dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:text="Registrarse"
         app:layout_constraintStart_toStartOf="parent"
@@ -195,6 +195,14 @@
         android:layout_y="318dp"
         android:text="Imagen Tienda"
         android:textColor="@color/logo_background" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="92dp"
+        android:layout_y="621dp"
+        android:text="Terminos y condiciones de uso" />
 
 
 </AbsoluteLayout>

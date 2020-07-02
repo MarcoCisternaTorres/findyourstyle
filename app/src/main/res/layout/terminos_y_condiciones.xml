@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.AjustesUsuario"
+    >
+
+    <TextView
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_x="58dp"
+        android:layout_y="17dp"
+        android:text="TERMINOS Y CONDICIONES DE USO"
+        android:textColor="#ffff"
+        android:textSize="25dp"></TextView>
+
+    <ImageView
+        android:id="@+id/icon_back"
+        android:layout_width="37dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_x="15dp"
+        android:layout_y="21dp"
+        android:background="@drawable/back" />
+    <TextView
+        android:layout_width="380dp"
+        android:layout_height="376dp"
+        android:layout_x="19dp"
+        android:layout_y="102dp"
+
+        android:background="@color/blancoTrasparente"
+        android:padding="5dp"
+        android:scrollbars="vertical"
+        android:text="@string/TXTterminos_y_condiciones"
+        android:textSize="12dp" />
+</AbsoluteLayout>
