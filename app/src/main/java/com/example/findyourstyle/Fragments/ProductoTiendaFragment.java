@@ -117,7 +117,7 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
         recyclerProductosTiendas.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerProductosTiendas.setHasFixedSize(true);
         recyclerProductosTiendas.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        imgAgregarHoras = view.findViewById(R.id.imgHorasProductosTienda);
+
         horas = new Horas();
         detalleHoras = new DetalleFragment();
 

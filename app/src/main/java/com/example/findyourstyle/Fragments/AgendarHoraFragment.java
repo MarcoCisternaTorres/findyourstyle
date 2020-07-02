@@ -1,5 +1,6 @@
 package com.example.findyourstyle.Fragments;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -221,7 +222,10 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
             adapterHorasUsuario.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(),"Casi reservas una hora", Toast.LENGTH_SHORT).show();
+                    String fecha_atencion = listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getFecha_atencion();
+                    String hora_atencion = listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getHora_atencion();
+                    reservarHoraAtencion(fecha_atencion, hora_atencion);
+
                 }
             });
 
@@ -229,6 +233,46 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
             e.printStackTrace();
 
         }
+    }
+
+    public  void reservarHoraAtencion(final String fecha_atencion, final String hora_atencion){
+
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/agendarHora.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext(),"Hora reservada exitosamente", Toast.LENGTH_SHORT).show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"Hora no reservada", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String correoU = correoUsuario;
+                String nombreP = nombreProducto.getText().toString();
+                String nombreT = nombreTienda.getText().toString();
+                String fechaA = fecha_atencion;
+                String horaA = hora_atencion;
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_usuario", correoU);
+                parametros.put("nombre_producto", nombreP);
+                parametros.put("nombre_tienda",nombreT );
+                parametros.put("dia_atencion", fechaA);
+                parametros.put("hora_atencion", horaA);
+
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+
     }
 
 

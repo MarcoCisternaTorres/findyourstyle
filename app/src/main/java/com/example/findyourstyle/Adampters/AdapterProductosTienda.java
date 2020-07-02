@@ -110,7 +110,7 @@ public class AdapterProductosTienda extends RecyclerView.Adapter<AdapterProducto
             precioProducto =  itemView.findViewById(R.id.txtPrecpProductosTienda);
             imagenProductotienda = itemView.findViewById(R.id.imgProductosTienda);
 
-            imgNuevasHoras = itemView.findViewById(R.id.imgHorasProductosTienda);
+
         }
     }
 }
