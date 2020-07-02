@@ -22,7 +22,7 @@
             android:src="@mipmap/calendar_icon"
             />
         <TextView
-            android:id="@+id/txtFecha_carAgendarHora"
+            android:id="@+id/txtFechaAgendarHora"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_toRightOf="@id/iconCalendar_cardAgendarHora"
@@ -41,7 +41,7 @@
             android:layout_marginLeft="80dp"/>
 
         <TextView
-            android:id="@+id/txtHora_carAgendarHora"
+            android:id="@+id/txtHoraAgendarHora"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_toRightOf="@id/iconClock_cardAgendarHora"
@@ -63,11 +63,11 @@
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:scrollbarStyle="insideInset"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_toRightOf="@id/txtHoraAgendarHora"
             android:orientation="vertical"
-            android:layout_toRightOf="@id/txtHora_carAgendarHora"
-            android:layout_marginLeft="70dp"/>
+            android:scrollbarStyle="insideInset" />
 
 
     </RelativeLayout>

@@ -50,8 +50,8 @@ public class AdapterAgendarHora extends RecyclerView.Adapter<AdapterAgendarHora.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtFecha = itemView.findViewById(R.id.txtFecha_carAgendarHora);
-            textHora = itemView.findViewById(R.id.txtHora_carAgendarHora);
+            txtFecha = itemView.findViewById(R.id.txtFechaAgendarHora);
+            textHora = itemView.findViewById(R.id.txtHoraAgendarHora);
 
         }
     }

@@ -153,8 +153,8 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
                     JSONObject jsonObj = new JSONObject(response);
                     JSONArray jsonArreglo = jsonObj.optJSONArray("producto");
                     for (int i = 0; i < jsonArreglo.length(); i++) {
-                        etxtNombreProducto.setText(jsonArreglo.getJSONObject(i).optString("nombre_producto"));
-                        etxtPrecio.setText(jsonArreglo.getJSONObject(i).optString("precio"));
+                        etxtNombreProducto.setText(jsonArreglo.getJSONObject(i).optString("nombre_producto").toString());
+                        etxtPrecio.setText(jsonArreglo.getJSONObject(i).optString("precio").toString());
 
                         cargarImagenServidor(jsonArreglo.getJSONObject(i).optString("ruta_imagen"));
 

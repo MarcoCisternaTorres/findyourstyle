@@ -5,36 +5,52 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Adampters.AdapterAgendarHora;
+import com.example.findyourstyle.Adampters.AdapterHorasUsuario;
+import com.example.findyourstyle.Modelo.CategoriaServicio;
 import com.example.findyourstyle.Modelo.HorasAtencion;
+import com.example.findyourstyle.Modelo.HorasUsuario;
 import com.example.findyourstyle.Modelo.ModelLoMasBuscado;
 import com.example.findyourstyle.Modelo.ModeloBuscar;
 import com.example.findyourstyle.Modelo.ProductoTienda;
 import com.example.findyourstyle.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AgendarHoraFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AgendarHoraFragment extends Fragment {
+public class AgendarHoraFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject>{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -83,6 +99,10 @@ public class AgendarHoraFragment extends Fragment {
     ImageView imgProduto;
     ImageView btnAtras;
     RequestQueue request;
+    ArrayList<HorasUsuario> listaHorasUsuario;
+    private StringRequest stringRequest;
+    JsonObjectRequest jsonObjectRequest;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -91,7 +111,12 @@ public class AgendarHoraFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_agendar_hora, container, false);
 
         //Recycler agendar horas
-        recyclerAgendarHora = view.findViewById(R.id.recyclerView_agendarHora);
+        recyclerAgendarHora = view.findViewById(R.id.recyclerViewAgendarHora);
+        recyclerAgendarHora.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerAgendarHora.setHasFixedSize(true);
+        recyclerAgendarHora.setLayoutManager(new GridLayoutManager(getContext(), 1));
+
+
         modelHorasAtencion = new ArrayList<>();
         //para la imagen y descripcion del producto
         nombreProducto = view.findViewById(R.id.txtNombreProducto_agendarHora);
@@ -101,6 +126,7 @@ public class AgendarHoraFragment extends Fragment {
         imgProduto = view.findViewById(R.id.imgAgendarHora);
         btnAtras = view.findViewById(R.id.fechaAtras_agendarHora);
         request = Volley.newRequestQueue(getContext());
+        listaHorasUsuario = new ArrayList<>();
 
 
         Bundle productosHora = new Bundle(getArguments());
@@ -108,7 +134,7 @@ public class AgendarHoraFragment extends Fragment {
         if (productosHora != null){
             productos = (ModeloBuscar) productosHora.getSerializable("productos");
             nombreProducto.setText(productos.getNombreProducto());
-            nombreTienda.setText(productos.getNombreProducto());
+            nombreTienda.setText(productos.getTienda());
             direccion.setText(productos.getDireccion());
             precio.setText(productos.getPrecio());
 
@@ -118,8 +144,9 @@ public class AgendarHoraFragment extends Fragment {
             }else{
                 imgProduto.setImageResource(R.drawable.ic_launcher_background);
             }
-        }
 
+        }
+        cargarHorasDisponibles();
 
         //Icono para volver atras
         btnAtras.setOnClickListener(new View.OnClickListener() {
@@ -153,4 +180,56 @@ public class AgendarHoraFragment extends Fragment {
         });
         request.add(imageRequest);
     }
+
+    private void cargarHorasDisponibles() {
+
+        final String ip = getString(R.string.ip);
+        String nombreTi = nombreTienda.getText().toString();
+        String nombrePro= nombreProducto.getText().toString();
+
+        String url = ip + "/findyourstyleBDR/consultarHorasUsuarios.php?nombre_tienda="+nombreTi+"&nombre_producto="+nombrePro;
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
+        request.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+        System.out.println();
+        Log.d("ERROR: ", error.toString());
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        HorasUsuario horasUsuario = null;
+        JSONArray jsonArray =  response.optJSONArray("hora_atencion");
+        try{
+            for(int i = 0; i < jsonArray.length();i++){
+                horasUsuario = new HorasUsuario();
+                JSONObject jsonObject = null;
+                jsonObject = jsonArray.getJSONObject(i);
+
+                horasUsuario.setHora_atencion(jsonObject.optString("hora_atencion"));
+                horasUsuario.setFecha_atencion(jsonObject.optString("dia_atencion"));
+
+                listaHorasUsuario.add(horasUsuario);
+            }
+
+
+            AdapterHorasUsuario adapterHorasUsuario = new AdapterHorasUsuario(listaHorasUsuario,getContext());
+            recyclerAgendarHora.setAdapter(adapterHorasUsuario);
+            adapterHorasUsuario.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(),"Casi reservas una hora", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }catch (JSONException e){
+            e.printStackTrace();
+
+        }
+    }
+
+
 }
