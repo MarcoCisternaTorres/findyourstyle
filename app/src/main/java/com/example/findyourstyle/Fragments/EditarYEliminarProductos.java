@@ -107,7 +107,7 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
     private AsyncHttpClient asyncHttpClient;
     private Bitmap bitmap;
     Button btnEditar, btnEliminar;
-    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+    AlertDialog.Builder alert;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -122,6 +122,7 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
         btnEliminar = view.findViewById(R.id.btnDeleteProducto);
         asyncHttpClient = new AsyncHttpClient();
         request = Volley.newRequestQueue(getContext());
+        alert = new AlertDialog.Builder(getContext());
 
         btnEditar.setOnClickListener(this);
         imgTraerProducto.setOnClickListener(this);
@@ -135,7 +136,7 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
     public void onClick(View v) {
         if(v == btnEditar){
 
-            alert.setMessage("¿Desea Guardar Los Cambios?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            alert.setMessage("¿Desea Editar Los Cambios?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     editarProducto();
@@ -145,7 +146,9 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
-            });
+            });AlertDialog titulo = alert.create();
+            titulo.setTitle("Alerta");
+            titulo.show();
         }
         if(v == imgTraerProducto){
             cargarImagen();

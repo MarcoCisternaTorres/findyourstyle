@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contenedorFragmentProductosTienda"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/blancoTrasparente"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true"
+    >
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:background="@color/blancoTrasparente">
+
+
+        <ImageView
+            android:id="@+id/imgProductoAgendado"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_x="19dp"
+            android:layout_y="30dp"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/txtNombrePrductosTienda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="135dp"
+            android:layout_y="34dp"
+            android:text="Nombre de producto"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtNombreCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_card_view_nombre_producto"
+
+            android:layout_toEndOf="@id/img_card_view_buscar"
+            android:layout_toRightOf="@id/img_card_view_buscar"
+            android:layout_x="135dp"
+            android:layout_y="63dp"
+            android:text="Nombre Cliente"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtFechaAtencion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_card_view_nombre_producto"
+
+            android:layout_toEndOf="@id/txt_card_view_tienda"
+            android:layout_toRightOf="@id/img_card_view_buscar"
+            android:layout_x="135dp"
+            android:layout_y="87dp"
+            android:text="Fecha Atencion"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtHoraAtecion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_card_view_tienda"
+            android:layout_toEndOf="@id/img_card_view_buscar"
+            android:layout_toRightOf="@id/img_card_view_buscar"
+            android:layout_x="136dp"
+            android:layout_y="113dp"
+            android:text="Hora atencion"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+    </AbsoluteLayout>
+</androidx.cardview.widget.CardView>
