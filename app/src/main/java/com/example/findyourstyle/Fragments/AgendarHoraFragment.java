@@ -1,6 +1,8 @@
 package com.example.findyourstyle.Fragments;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -103,7 +105,9 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
     ArrayList<HorasUsuario> listaHorasUsuario;
     private StringRequest stringRequest;
     JsonObjectRequest jsonObjectRequest;
-
+    AlertDialog.Builder alert;
+    String fecha_atencion;
+    String hora_atencion;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -128,7 +132,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         btnAtras = view.findViewById(R.id.fechaAtras_agendarHora);
         request = Volley.newRequestQueue(getContext());
         listaHorasUsuario = new ArrayList<>();
-
+        alert = new AlertDialog.Builder(getContext());
 
         Bundle productosHora = new Bundle(getArguments());
         ModeloBuscar productos = null;
@@ -222,9 +226,24 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
             adapterHorasUsuario.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String fecha_atencion = listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getFecha_atencion();
-                    String hora_atencion = listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getHora_atencion();
-                    reservarHoraAtencion(fecha_atencion, hora_atencion);
+
+                    fecha_atencion= listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getFecha_atencion();
+                     hora_atencion= listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getHora_atencion();
+alert.setMessage("¿Desea agendar esta hora de atencion?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                reservarHoraAtencion(fecha_atencion, hora_atencion);
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        dialog.cancel();
+    }
+});
+                    AlertDialog titulo = alert.create();
+                    titulo.setTitle("Alerta");
+                    titulo.show();
+
 
                 }
             });
