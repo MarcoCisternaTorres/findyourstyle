@@ -1,6 +1,8 @@
 package com.example.findyourstyle.Fragments;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -63,6 +65,7 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
     private String mParam1;
     private String mParam2;
 
+
     public EditarYEliminarProductos() {
         // Required empty public constructor
     }
@@ -104,7 +107,7 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
     private AsyncHttpClient asyncHttpClient;
     private Bitmap bitmap;
     Button btnEditar, btnEliminar;
-
+    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -131,7 +134,18 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if(v == btnEditar){
-            editarProducto();
+
+            alert.setMessage("¿Desea Guardar Los Cambios?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    editarProducto();
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
         }
         if(v == imgTraerProducto){
             cargarImagen();
