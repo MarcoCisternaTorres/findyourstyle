@@ -146,7 +146,8 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
-            });AlertDialog titulo = alert.create();
+            });
+            AlertDialog titulo = alert.create();
             titulo.setTitle("Alerta");
             titulo.show();
         }
@@ -154,7 +155,20 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
             cargarImagen();
         }
         if(v == btnEliminar){
-            eliminarProducto();
+            alert.setMessage("¿Esta seguro que desea eliminar?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    eliminarProducto();
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog titulo = alert.create();
+            titulo.setTitle("Alerta");
+            titulo.show();
         }
     }
     private void cargarWebService() {

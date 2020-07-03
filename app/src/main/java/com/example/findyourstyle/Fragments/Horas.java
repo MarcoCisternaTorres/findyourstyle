@@ -1,8 +1,10 @@
 package com.example.findyourstyle.Fragments;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -73,13 +75,14 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
 
     String nombreProducto;
     String correoTienda;
+    AlertDialog.Builder alert;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
         nombreProducto = bundle.getString("nombreProducto", "No hay nombre");
         correoTienda = bundle.getString("correoTienda", "No hay correo");
-
+        alert = new AlertDialog.Builder(getContext());
     }
 
     ProgressDialog progreso;
@@ -129,6 +132,7 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
                 }
             },dia,mes,ano);
             datePickerDialog.show();
+
         }
 
         if (v==iconClock_AgregarHora){
@@ -148,7 +152,21 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
         }
 
         if (v == iconTick){
-            agregarHoraBaseDatos();
+            alert.setMessage("Desea agregar la hora?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    agregarHoraBaseDatos();
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog titulo = alert.create();
+            titulo.setTitle("Alerta");
+            titulo.show();
+
         }
 
 
