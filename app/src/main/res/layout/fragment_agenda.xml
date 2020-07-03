@@ -7,12 +7,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <CalendarView
-        android:id="@+id/ViewCalendario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp" />
-
     <ImageView
         android:id="@+id/fechaAtras_fragmentAgenda"
         android:layout_width="20dp"
@@ -39,5 +33,19 @@
         android:layout_marginTop="15dp"
         android:text="@string/txt_agenda"
         android:textColor="@color/colorNegro"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mis Horas Agendadas"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-270dp"
+        android:textColor="@color/colorNegro" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAgenda"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="150dp"/>
 
 </FrameLayout>

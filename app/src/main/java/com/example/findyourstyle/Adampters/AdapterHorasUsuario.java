@@ -55,6 +55,7 @@ public class AdapterHorasUsuario extends RecyclerView.Adapter<AdapterHorasUsuari
         this.listener = listener;
     }
 
+
     @Override
     public void onClick(View v) {
         if (listener != null){

@@ -70,6 +70,10 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         bundle.putString("correoUsuario",correo);
         buscarFragment.setArguments(bundle);
 
+        final Bundle bundleAgenda = new Bundle();
+        bundleAgenda.putString("correoUsuario",correo);
+        agendaFragment.setArguments(bundle);
+
 
         setFragment(inicioFragment);
 

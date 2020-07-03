@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/blancoTrasparente"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blancoTrasparente"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/iconCalendar_cardAgendarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/calendar_icon"
+            />
+
+        <TextView
+            android:id="@+id/txtFechaAgenda"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/iconCalendar_cardAgendarHora"
+            android:text="03 DIC"
+            android:textColor="@color/colorNegro"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/iconClock_cardAgendarHora"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/icon_clock"
+            android:layout_toRightOf="@id/iconCalendar_cardAgendarHora"
+            android:layout_marginLeft="130dp"/>
+
+
+        <TextView
+            android:id="@+id/txtHoraAgenda"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="29dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/iconClock_cardAgendarHora"
+            android:text="15 HRS"
+            android:textColor="@color/colorNegro"
+            android:textSize="18dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_toRightOf="@id/txtHoraAgenda"
+            android:orientation="vertical"
+            android:scrollbarStyle="insideInset" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
