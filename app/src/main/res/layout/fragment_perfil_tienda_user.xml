@@ -7,6 +7,16 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ImageView
+        android:id="@+id/notificacion_fragmentBuscar12"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="20dp"
+        android:layout_x="315dp"
+        android:layout_y="18dp"
+        android:background="@drawable/logo_findyourstyle" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

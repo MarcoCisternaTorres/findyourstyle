@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.DetalleFragment">
 
+    <ImageView
+        android:id="@+id/notificacion_fragmentBuscar11"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/logo_findyourstyle" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

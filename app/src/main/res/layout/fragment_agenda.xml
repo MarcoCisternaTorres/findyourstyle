@@ -8,21 +8,20 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
+        android:id="@+id/notificacion_fragmentBuscar9"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/logo_findyourstyle" />
+
+    <ImageView
         android:id="@+id/fechaAtras_fragmentAgenda"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:src="@mipmap/icon_flecha_atras"/>
-
-    <ImageView
-        android:id="@+id/notificacion_fragmentAgenda"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="360dp"
-        android:src="@mipmap/notificacion_icon"
-        />
 
     <TextView
         android:id="@+id/text_agenda"

@@ -6,6 +6,16 @@
     tools:context=".Fragments.Horas">
 
 
+    <ImageView
+        android:id="@+id/notificacion_fragmentBuscar5"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="20dp"
+        android:layout_x="308dp"
+        android:layout_y="18dp"
+        android:background="@drawable/logofysstore" />
+
     <TextView
         android:id="@+id/txtView_horas"
         android:layout_width="wrap_content"

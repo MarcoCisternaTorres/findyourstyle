@@ -6,6 +6,16 @@
     tools:context=".Fragments.AgregarProductoFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/txtMisPrductosagrega"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="20dp"
+        android:text="Agregar Productos"
+        android:textSize="30dp" />
+
     <ImageView
         android:id="@+id/fechaAtras_agendarHora2"
         android:layout_width="20dp"

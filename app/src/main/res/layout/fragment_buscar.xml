@@ -17,6 +17,14 @@
         android:layout_marginLeft="25dp"
         android:src="@mipmap/icon_flecha_atras"/>
 
+    <ImageView
+        android:id="@+id/notificacion_fragmentBuscar"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/logo_findyourstyle" />
+
 
     <TextView
         android:id="@+id/text_buscar"

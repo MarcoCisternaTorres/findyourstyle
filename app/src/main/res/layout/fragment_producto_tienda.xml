@@ -8,6 +8,14 @@
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
+        android:id="@+id/notificacion_fragmentBuscar2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/logofysstore" />
+
+    <ImageView
         android:id="@+id/fechaAtras_fragmentPerfilTienda-user"
         android:layout_width="20dp"
         android:layout_height="20dp"

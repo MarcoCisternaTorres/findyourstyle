@@ -6,11 +6,21 @@
     tools:context=".Fragments.Registros_Atenciones_Cliente">
 
 
+    <ImageView
+        android:id="@+id/notificacion_fragmentBuscar14"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="20dp"
+        android:layout_x="324dp"
+        android:layout_y="11dp"
+        android:background="@drawable/logo_findyourstyle" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="75dp"
+        android:layout_x="50dp"
         android:layout_y="21dp"
         android:text="Registros de atencion"
         android:textSize="27dp"></TextView>
