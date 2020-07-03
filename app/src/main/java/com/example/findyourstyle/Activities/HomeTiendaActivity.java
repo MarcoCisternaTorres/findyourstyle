@@ -28,10 +28,9 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
     private Fragment inicioFragment;
     private Fragment productosTienda;
     private Fragment horas;
-    private Fragment horasFragment;
+    private Fragment horasAgendadasTiendaFragment;
     private Fragment perfilFragment;
     private Fragment detalle;
-
     String correo;
     String enviarCorreo;
 
@@ -42,6 +41,7 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
         setContentView(R.layout.activity_home_cliente);
 
         inicioFragment = new InicioClienteFragment();
+        horasAgendadasTiendaFragment = new HorasAgendadasTiendaFragment();
 
         productosTienda = new ProductoTiendaFragment();
         horas = new Horas();
@@ -61,6 +61,10 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
         final Bundle bundleCorreoHoras = new Bundle();
         bundleCorreoHoras.putString("correoTienda",correo);
         horas.setArguments(bundleCorreoHoras);
+
+        final Bundle bundleCorreoHorasAgendadas = new Bundle();
+        bundleCorreoHorasAgendadas.putString("correoTienda",correo);
+        horasAgendadasTiendaFragment.setArguments(bundleCorreoHorasAgendadas);
 
 
 
@@ -82,6 +86,10 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
                         break;
                     case R.id.item_productos:
                         setFragment(productosTienda);
+                        break;
+                    case R.id.item_agenda_tienda:
+                        setFragment(horasAgendadasTiendaFragment);
+                        break;
                 }
                 return true;
             }

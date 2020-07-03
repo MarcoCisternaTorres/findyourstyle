@@ -71,8 +71,8 @@ public class HorasAgendadasTiendaFragment extends Fragment implements Response.E
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundleCorreoHorasAgendadas = getArguments();
-        correoTienda = bundleCorreoHorasAgendadas.getString("correoTienda", "No hay correo");
+        Bundle bundle = getArguments();
+        correoTienda = bundle.getString("correoTienda", "No hay correo");
 
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
