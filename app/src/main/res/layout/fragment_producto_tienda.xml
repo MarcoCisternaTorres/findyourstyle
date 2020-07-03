@@ -7,6 +7,14 @@
     tools:context=".Fragments.ProductoTiendaFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/fechaAtras_fragmentPerfilTienda-user"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_x="23dp"
+        android:layout_y="35dp"
+        android:src="@mipmap/icon_flecha_atras" />
+
     <TextView
         android:id="@+id/txtMisPrductos"
         android:layout_width="wrap_content"

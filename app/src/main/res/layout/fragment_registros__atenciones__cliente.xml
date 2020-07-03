@@ -6,15 +6,6 @@
     tools:context=".Fragments.Registros_Atenciones_Cliente">
 
 
-    <ImageView
-        android:id="@+id/notificacion_fragmentPerfilTienda3"
-        android:layout_width="26dp"
-        android:layout_height="33dp"
-
-        android:layout_x="362dp"
-        android:layout_y="22dp"
-        android:src="@mipmap/notificacion_icon" />
-
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"

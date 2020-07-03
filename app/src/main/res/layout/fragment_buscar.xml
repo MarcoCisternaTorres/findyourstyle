@@ -17,15 +17,6 @@
         android:layout_marginLeft="25dp"
         android:src="@mipmap/icon_flecha_atras"/>
 
-    <ImageView
-        android:id="@+id/notificacion_fragmentBuscar"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="360dp"
-        android:src="@mipmap/notificacion_icon"
-        />
-
 
     <TextView
         android:id="@+id/text_buscar"
@@ -55,14 +46,6 @@
         android:layout_marginTop="80dp"
         android:layout_marginLeft="270dp"
         android:src="@mipmap/icono_buscar" />
-
-    <ImageView
-        android:id="@+id/imgIconFiltrar"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="340dp"
-        android:src="@mipmap/ic_filter" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_buscar"

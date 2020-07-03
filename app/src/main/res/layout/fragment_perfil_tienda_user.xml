@@ -40,15 +40,6 @@
         android:src="@mipmap/icon_flecha_atras" />
 
     <ImageView
-        android:id="@+id/notificacion_fragmentPerfilTienda-user"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-
-        android:layout_x="352dp"
-        android:layout_y="36dp"
-        android:src="@mipmap/notificacion_icon" />
-
-    <ImageView
         android:id="@+id/imgPerfil_fragmentPerfilTienda"
         android:layout_width="150dp"
         android:layout_height="150dp"

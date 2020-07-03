@@ -15,15 +15,6 @@
         android:layout_marginLeft="25dp"
         android:src="@drawable/icon_exit"/>
 
-    <ImageView
-        android:id="@+id/notificacion_fragmentInicio"
-        android:layout_width="20dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="360dp"
-        android:src="@mipmap/notificacion_icon"
-        />
-
 
     <TextView
         android:id="@+id/text_inicio"

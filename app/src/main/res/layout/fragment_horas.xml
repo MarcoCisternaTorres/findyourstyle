@@ -17,16 +17,6 @@
         android:textSize="30dp"></TextView>
 
     <ImageView
-        android:id="@+id/notificacion_fragmentInicioTienda"
-        android:layout_width="37dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="360dp"
-        android:layout_marginTop="25dp"
-        android:layout_x="349dp"
-        android:layout_y="29dp"
-        android:src="@mipmap/notificacion_icon" />
-
-    <ImageView
         android:id="@+id/iconSalir_fragmentInicioback"
         android:layout_width="30dp"
         android:layout_height="34dp"
