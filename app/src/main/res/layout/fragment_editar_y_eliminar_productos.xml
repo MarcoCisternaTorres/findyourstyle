@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.EditarYEliminarProductos">
 
+    <ImageView
+        android:id="@+id/fechaAtras_agendarHora3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@mipmap/icon_flecha_atras" />
+
     <EditText
         android:id="@+id/etxtEditarProducto"
         android:layout_width="280dp"
