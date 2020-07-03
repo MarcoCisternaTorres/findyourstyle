@@ -8,4 +8,6 @@
     <color name="orchid">#DA70D6</color>
     <color name="blancoTrasparente">#80FFFFFF</color>
     <color name="silver">#C0C0C0</color>
+    <color name="mas_blanco_transparente">#5EFFFFFF</color>
+    <color name="rojo_transaprente">#ABFD0000</color>
 </resources>

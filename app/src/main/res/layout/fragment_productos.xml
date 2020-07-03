@@ -44,7 +44,8 @@
         android:layout_height="502dp"
         android:layout_marginBottom="60dp"
         android:layout_x="-2dp"
-        android:layout_y="138dp">
+        android:layout_y="138dp"
+        android:backgroundTint="@color/blancoTrasparente">
 
     </FrameLayout>
 
