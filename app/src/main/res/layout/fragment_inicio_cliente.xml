@@ -65,7 +65,7 @@
         android:background="@drawable/settings__1_"/>
 
     <ImageView
-
+        android:id="@+id/imgHorasAgnedadas"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_x="41dp"

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.findyourstyle.Fragments.DetalleFragment;
 import com.example.findyourstyle.Fragments.Horas;
+import com.example.findyourstyle.Fragments.HorasAgendadasTiendaFragment;
 import com.example.findyourstyle.Fragments.InicioClienteFragment;
 import com.example.findyourstyle.Fragments.ProductoTiendaFragment;
 import com.example.findyourstyle.Interfaces.IDetalleFragment;
@@ -30,6 +31,7 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
     private Fragment horasFragment;
     private Fragment perfilFragment;
     private Fragment detalle;
+
     String correo;
     String enviarCorreo;
 
@@ -59,6 +61,8 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
         final Bundle bundleCorreoHoras = new Bundle();
         bundleCorreoHoras.putString("correoTienda",correo);
         horas.setArguments(bundleCorreoHoras);
+
+
 
         btnNavigationViewTienda = findViewById(R.id.bottomNavegationTienda);
 
