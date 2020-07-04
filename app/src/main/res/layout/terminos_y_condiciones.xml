@@ -14,7 +14,9 @@
         android:layout_y="17dp"
         android:text="TERMINOS Y CONDICIONES DE USO"
         android:textColor="#ffff"
-        android:textSize="25dp"></TextView>
+        android:textSize="25dp"
+        ></TextView>
+
 
     <ImageView
         android:id="@+id/icon_back"

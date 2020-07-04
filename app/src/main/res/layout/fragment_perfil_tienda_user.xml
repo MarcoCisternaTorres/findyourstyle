@@ -7,6 +7,7 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <ImageView
         android:id="@+id/notificacion_fragmentBuscar12"
         android:layout_width="75dp"

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.EditarYEliminarProductos">
 
+
     <ImageView
         android:id="@+id/notificacion_fragmentBuscar4"
         android:layout_width="75dp"
@@ -29,7 +30,14 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
         android:src="@mipmap/icon_flecha_atras" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/etxtEditarProducto"
         android:layout_width="280dp"
@@ -102,5 +110,6 @@
         android:layout_marginTop="270dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:text="Eliminar Producto"></Button>
-
+    </FrameLayout>
+</ScrollView>
 </FrameLayout>

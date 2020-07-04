@@ -25,6 +25,13 @@
         android:layout_x="15dp"
         android:layout_y="21dp"
         android:background="@drawable/back" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:layout_width="380dp"
         android:layout_height="376dp"
@@ -45,4 +52,6 @@
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:text="Acepto los terminos y desactivo mi cuenta"></Button>
+    </AbsoluteLayout>
+    </ScrollView>
 </AbsoluteLayout>

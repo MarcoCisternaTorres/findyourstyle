@@ -6,6 +6,7 @@
     tools:context=".Fragments.InicioClienteFragment">
 
 
+
     <ImageView
         android:id="@+id/notificacion_fragmentBuscar8"
         android:layout_width="75dp"
@@ -71,4 +72,5 @@
         android:layout_x="41dp"
         android:layout_y="347dp"
         android:background="@drawable/book"/>
+
 </AbsoluteLayout>

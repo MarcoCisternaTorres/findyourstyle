@@ -24,6 +24,14 @@
         android:layout_marginTop="25dp"
         android:src="@mipmap/icon_flecha_atras" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <EditText
         android:id="@+id/etxtNuevoProducto"
         android:layout_width="280dp"
@@ -93,6 +101,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="650dp"
         android:layout_marginLeft="100dp"/>
-
-
+    </FrameLayout>
+    </ScrollView>
 </FrameLayout>
