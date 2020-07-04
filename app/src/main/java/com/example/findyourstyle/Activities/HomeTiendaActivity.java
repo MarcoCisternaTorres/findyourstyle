@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.example.findyourstyle.Fragments.DetalleFragment;
 import com.example.findyourstyle.Fragments.Horas;
+import com.example.findyourstyle.Fragments.HorasAgendadasTiendaFragment;
 import com.example.findyourstyle.Fragments.InicioClienteFragment;
+import com.example.findyourstyle.Fragments.PerfilTiendaFragment;
 import com.example.findyourstyle.Fragments.ProductoTiendaFragment;
 import com.example.findyourstyle.Interfaces.IDetalleFragment;
 import com.example.findyourstyle.Modelo.ProductoTienda;
@@ -27,8 +29,8 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
     private Fragment inicioFragment;
     private Fragment productosTienda;
     private Fragment horas;
-    private Fragment horasFragment;
-    private Fragment perfilFragment;
+    private Fragment horasAgendadasTiendaFragment;
+    private Fragment perfilTiendaFragment;
     private Fragment detalle;
     String correo;
     String enviarCorreo;
@@ -40,7 +42,8 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
         setContentView(R.layout.activity_home_cliente);
 
         inicioFragment = new InicioClienteFragment();
-
+        horasAgendadasTiendaFragment = new HorasAgendadasTiendaFragment();
+        perfilTiendaFragment = new PerfilTiendaFragment();
         productosTienda = new ProductoTiendaFragment();
         horas = new Horas();
         detalle = new DetalleFragment();
@@ -60,6 +63,12 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
         bundleCorreoHoras.putString("correoTienda",correo);
         horas.setArguments(bundleCorreoHoras);
 
+        final Bundle bundleCorreoHorasAgendadas = new Bundle();
+        bundleCorreoHorasAgendadas.putString("correoTienda",correo);
+        horasAgendadasTiendaFragment.setArguments(bundleCorreoHorasAgendadas);
+
+
+
         btnNavigationViewTienda = findViewById(R.id.bottomNavegationTienda);
 
 
@@ -78,6 +87,13 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
                         break;
                     case R.id.item_productos:
                         setFragment(productosTienda);
+                        break;
+                    case R.id.item_agenda_tienda:
+                        setFragment(horasAgendadasTiendaFragment);
+                        break;
+                    case R.id.item_perfil_tienda:
+                        setFragment(perfilTiendaFragment);
+                        break;
                 }
                 return true;
             }

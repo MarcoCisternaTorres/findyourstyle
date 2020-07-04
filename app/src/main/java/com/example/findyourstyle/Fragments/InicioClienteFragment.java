@@ -63,7 +63,9 @@ public class InicioClienteFragment extends Fragment {
     }
     AgregarProductoFragment agregarProductoFragment;
     ProductoTiendaFragment productoTiendaFragment;
-    private ImageView imgAgregarProducto;
+    HorasAgendadasTiendaFragment horasAgendadasTiendaFragment;
+
+    private ImageView imgAgregarProducto, imgHorasAgendadas;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,16 +73,29 @@ public class InicioClienteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inicio_cliente, container, false);
         agregarProductoFragment = new AgregarProductoFragment();
         productoTiendaFragment = new ProductoTiendaFragment();
+        horasAgendadasTiendaFragment = new HorasAgendadasTiendaFragment();
         imgAgregarProducto = view.findViewById(R.id.imgCrearNuevoProducto);
+        imgHorasAgendadas = view.findViewById(R.id.imgHorasAgnedadas);
 
         final Bundle bundle = new Bundle();
         bundle.putString("correoTienda",correoTienda);
         agregarProductoFragment.setArguments(bundle);
 
+        final Bundle bundleCorreoHorasAgendadas = new Bundle();
+        bundleCorreoHorasAgendadas.putString("correoTienda",correoTienda);
+        horasAgendadasTiendaFragment.setArguments(bundleCorreoHorasAgendadas);
+
         imgAgregarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setFragment(agregarProductoFragment);
+            }
+        });
+
+        imgHorasAgendadas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(horasAgendadasTiendaFragment);
             }
         });
         return view;

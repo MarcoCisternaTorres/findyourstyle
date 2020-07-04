@@ -78,7 +78,7 @@ public class PerfilFragment extends Fragment {
 
         imgPerfil = view.findViewById(R.id.imgPerfil_fragmentPerfil);
         btnCerrar = view.findViewById(R.id.btnCerrarSesionUsuario);
-        btnCamara = view.findViewById(R.id.iconcamera_fragmenPerfil);
+
 
         perfilFragment          = new PerfilFragment();
 
