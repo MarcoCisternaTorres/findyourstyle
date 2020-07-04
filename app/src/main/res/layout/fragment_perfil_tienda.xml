@@ -18,13 +18,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="38dp"
-        android:layout_y="302dp"
-        android:text="Nombre Dueño tienda" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_x="75dp"
         android:layout_y="21dp"
         android:text="Perfil De La tienda"
@@ -44,44 +37,16 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
 
-        android:layout_x="14dp"
-        android:layout_y="85dp"
+        android:layout_x="43dp"
+        android:layout_y="97dp"
         android:src="@drawable/ic_launcher_background" />
-
-    <ImageView
-        android:id="@+id/iconcamera_fragmenPerfilTienda"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-
-        android:layout_x="127dp"
-        android:layout_y="201dp"
-        android:src="@mipmap/camera_icon" />
-
-    <ImageView
-        android:id="@+id/iconConf_fragmenPerfilTienda"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-
-        android:layout_x="336dp"
-        android:layout_y="172dp"
-        android:src="@mipmap/icon_settings" />
-
-    <ImageView
-        android:id="@+id/iconEdit_fragmenPerfilTienda"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-
-        android:layout_x="340dp"
-        android:layout_y="118dp"
-        android:src="@mipmap/icon_edit" />
 
     <TextView
         android:id="@+id/txtNombre_Tienda_fragmentPerfilTiedna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_x="182dp"
-        android:layout_y="122dp"
+        android:layout_x="214dp"
+        android:layout_y="116dp"
         android:text="Nombre Tienda"
         android:textSize="18dp" />
 
@@ -91,20 +56,35 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="200dp"
         android:layout_marginTop="130dp"
-        android:layout_x="174dp"
-        android:layout_y="163dp"
+        android:layout_x="213dp"
+        android:layout_y="172dp"
         android:text="DireccionTienda"
         android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_x="118dp"
-        android:layout_y="253dp"
-        android:text="DATOS PERSONALES"
+        android:layout_x="145dp"
+        android:layout_y="284dp"
+        android:text="OTROS DATOS"
         android:textColor="@color/colorNegro"
         android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="42dp"
+        android:layout_y="361dp"
+        android:text="Ciudad Tienda"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="41dp"
+        android:layout_y="416dp"
+        android:text="Categoria Tienda"
+        android:textSize="18dp" />
 
     <Button
         android:id="@+id/btnCerrarSesionCliente"
@@ -113,11 +93,25 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="590dp"
         android:layout_marginEnd="88dp"
-        android:layout_x="95dp"
-        android:layout_y="564dp"
+        android:layout_x="97dp"
+        android:layout_y="597dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:backgroundTint="@color/blancoTrasparente"
         android:hint="Cerrar sesión"
+        android:textColorHint="@color/colorNegro" />
+
+    <Button
+        android:id="@+id/btnEditarPerfilCliente"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="590dp"
+        android:layout_marginEnd="88dp"
+        android:layout_x="96dp"
+        android:layout_y="498dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:backgroundTint="@color/blancoTrasparente"
+        android:hint="Editar datos"
         android:textColorHint="@color/colorNegro" />
 
 

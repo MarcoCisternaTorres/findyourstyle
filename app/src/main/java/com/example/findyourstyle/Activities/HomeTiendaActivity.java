@@ -15,6 +15,7 @@ import com.example.findyourstyle.Fragments.DetalleFragment;
 import com.example.findyourstyle.Fragments.Horas;
 import com.example.findyourstyle.Fragments.HorasAgendadasTiendaFragment;
 import com.example.findyourstyle.Fragments.InicioClienteFragment;
+import com.example.findyourstyle.Fragments.PerfilTiendaFragment;
 import com.example.findyourstyle.Fragments.ProductoTiendaFragment;
 import com.example.findyourstyle.Interfaces.IDetalleFragment;
 import com.example.findyourstyle.Modelo.ProductoTienda;
@@ -29,7 +30,7 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
     private Fragment productosTienda;
     private Fragment horas;
     private Fragment horasAgendadasTiendaFragment;
-    private Fragment perfilFragment;
+    private Fragment perfilTiendaFragment;
     private Fragment detalle;
     String correo;
     String enviarCorreo;
@@ -42,7 +43,7 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
 
         inicioFragment = new InicioClienteFragment();
         horasAgendadasTiendaFragment = new HorasAgendadasTiendaFragment();
-
+        perfilTiendaFragment = new PerfilTiendaFragment();
         productosTienda = new ProductoTiendaFragment();
         horas = new Horas();
         detalle = new DetalleFragment();
@@ -89,6 +90,9 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
                         break;
                     case R.id.item_agenda_tienda:
                         setFragment(horasAgendadasTiendaFragment);
+                        break;
+                    case R.id.item_perfil_tienda:
+                        setFragment(perfilTiendaFragment);
                         break;
                 }
                 return true;

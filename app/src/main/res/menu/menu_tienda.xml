@@ -16,7 +16,7 @@
         android:icon="@mipmap/icon_clock"
         android:iconTint="@color/colorNegro"/>
 
-    <item android:id="@+id/item_perfil"
+    <item android:id="@+id/item_perfil_tienda"
         android:title="Perfil"
         android:icon="@mipmap/people_icon"
         android:iconTint="@color/colorNegro"/>
