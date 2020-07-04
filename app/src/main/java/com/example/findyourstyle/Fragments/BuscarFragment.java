@@ -110,7 +110,7 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
     private void cargarWebService() {
         progress = new ProgressDialog(getContext());
         progress.setMessage("Cargando");
-        progress.show();
+
 
         final String ip = getString(R.string.ip);
 
@@ -120,7 +120,7 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
     }
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(actividad, "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(actividad, "No existen productos disponibles", Toast.LENGTH_LONG).show();
         System.out.println();
         progress.hide();
         Log.d("ERROR: ", error.toString());

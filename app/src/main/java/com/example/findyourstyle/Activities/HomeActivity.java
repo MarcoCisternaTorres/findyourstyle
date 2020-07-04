@@ -60,8 +60,7 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         perfilFragment          = new PerfilFragment();
         agendarHoras = new AgendarHoraFragment();
 
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().add(R.id.contenedorFragment,buscarFragment).commit();
+
 
         correo = getIntent().getStringExtra("correoUsuario");
         enviarCorreo = correo;
@@ -73,6 +72,14 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         final Bundle bundleAgenda = new Bundle();
         bundleAgenda.putString("correoUsuario",correo);
         agendaFragment.setArguments(bundle);
+
+        final Bundle bundleInicio = new Bundle();
+        bundleInicio.putString("correoUsuario",correo);
+        inicioFragment.setArguments(bundleInicio);
+
+        final Bundle bundlePerfil = new Bundle();
+        bundlePerfil.putString("correoUsuario",correo);
+        perfilFragment.setArguments(bundlePerfil);
 
 
         setFragment(inicioFragment);

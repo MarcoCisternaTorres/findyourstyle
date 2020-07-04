@@ -98,7 +98,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
     ArrayList<HorasAtencion> modelHorasAtencion;
 
     //declaramos las variables para llamar al objeto
-    TextView nombreProducto, nombreTienda, direccion, precio;
+    TextView nombreProducto, nombreTienda, direccion, precio, txtMesajeNoHayHoras;
     ImageView imgProduto;
     ImageView btnAtras;
     RequestQueue request;
@@ -121,7 +121,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         recyclerAgendarHora.setHasFixedSize(true);
         recyclerAgendarHora.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-
+        txtMesajeNoHayHoras = view.findViewById(R.id.mensajeNoHayHoras);
         modelHorasAtencion = new ArrayList<>();
         //para la imagen y descripcion del producto
         nombreProducto = view.findViewById(R.id.txtNombreProducto_agendarHora);
@@ -180,7 +180,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "no se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
             }
         });
         request.add(imageRequest);
@@ -199,7 +199,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getContext(), "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+        txtMesajeNoHayHoras.setText("No hay horas disponibles");
         System.out.println();
         Log.d("ERROR: ", error.toString());
     }

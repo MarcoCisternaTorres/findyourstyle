@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,6 +45,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class RegistrarseActivity extends AppCompatActivity  {
 
@@ -105,17 +107,22 @@ public class RegistrarseActivity extends AppCompatActivity  {
         registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nombre_usuario.getText().toString().isEmpty() && apellido_usuario.getText().toString().isEmpty()){
-                    if (contrasenia_usuario.getText().toString().equals(contrasenia2.getText().toString())) {
-                        if (bitmap != null) {
-                            cargarWebService();
-                        } else {
-                            Toast.makeText(RegistrarseActivity.this, "Debe ingresar una imagen", Toast.LENGTH_SHORT).show();
-                        }
+                if(!nombre_usuario.getText().toString().isEmpty() && !apellido_usuario.getText().toString().isEmpty() && !correo_usuario.getText().toString().isEmpty() && !contrasenia_usuario.getText().toString().isEmpty() && !contrasenia2.getText().toString().isEmpty()){
+                    if (validarEmail(correo_usuario.getText().toString())){
+                        if (contrasenia_usuario.getText().toString().equals(contrasenia2.getText().toString())) {
+                            if (bitmap != null) {
+                                cargarWebService();
+                            } else {
+                                Toast.makeText(RegistrarseActivity.this, "Debe ingresar una imagen", Toast.LENGTH_SHORT).show();
+                            }
 
-                    } else {
-                        Toast.makeText(RegistrarseActivity.this, "Las contraseñas no son iguales", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegistrarseActivity.this, "Las contraseñas no son iguales", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        correo_usuario.setError("Email no válido");
                     }
+
 
 
                 }else {
@@ -286,5 +293,10 @@ public class RegistrarseActivity extends AppCompatActivity  {
         request.add(stringRequest);
 
 
+    }
+
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 }

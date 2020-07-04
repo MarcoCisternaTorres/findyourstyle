@@ -43,6 +43,14 @@ public class InicioFragment extends Fragment {
         // Required empty public constructor
     }
 
+    String correoUsuario;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        correoUsuario = bundle.getString("correoUsuario", "No hay correo");
+    }
+
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

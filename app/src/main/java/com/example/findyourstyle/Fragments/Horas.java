@@ -151,25 +151,26 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
             timePickerDialog.show();
         }
 
-        if (v == iconTick){
-            alert.setMessage("Desea agregar la hora?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    agregarHoraBaseDatos();
-                }
-            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-            AlertDialog titulo = alert.create();
-            titulo.setTitle("Alerta");
-            titulo.show();
-
+        if (v == iconTick) {
+            if (horaAtencion != null && diaAtencion != null) {
+                alert.setMessage("Desea agregar la hora?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        agregarHoraBaseDatos();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog titulo = alert.create();
+                titulo.setTitle("Alerta");
+                titulo.show();
+            }else {
+                Toast.makeText(getContext(),"Debe ingresar una Hora y Fecha de atención", Toast.LENGTH_SHORT).show();
+            }
         }
-
-
     }
 
 

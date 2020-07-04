@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import cz.msebera.android.httpclient.Header;
 
 import android.provider.MediaStore;
@@ -108,6 +109,7 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
     private Bitmap bitmap;
     Button btnEditar, btnEliminar;
     AlertDialog.Builder alert;
+    Fragment fragmentDetalle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -123,6 +125,7 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
         asyncHttpClient = new AsyncHttpClient();
         request = Volley.newRequestQueue(getContext());
         alert = new AlertDialog.Builder(getContext());
+        fragmentDetalle = new DetalleFragment();
 
         btnEditar.setOnClickListener(this);
         imgTraerProducto.setOnClickListener(this);
@@ -140,6 +143,10 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     editarProducto();
+                    final Bundle bundle = new Bundle();
+                    bundle.putString("correoTienda",correoTienda);
+                    fragmentDetalle.setArguments(bundle);
+                    setFragment(fragmentDetalle);
                 }
             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
@@ -426,6 +433,11 @@ public class EditarYEliminarProductos extends Fragment implements View.OnClickLi
             }
         };
         request.add(stringRequest);
+    }
+    public void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contenedorFragment, fragment);
+        fragmentTransaction.commit();
     }
 
 }

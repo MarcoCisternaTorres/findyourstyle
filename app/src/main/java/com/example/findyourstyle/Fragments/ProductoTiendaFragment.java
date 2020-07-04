@@ -137,7 +137,7 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
     private void cargarWebService(){
         progress = new ProgressDialog(getContext());
         progress.setMessage("Cargando");
-        progress.show();
+
 
         final String ip = getString(R.string.ip);
 
@@ -148,7 +148,7 @@ public class ProductoTiendaFragment extends Fragment implements Response.ErrorLi
 
     @Override
     public void onErrorResponse(VolleyError error) {
-
+        Toast.makeText(getContext(),"No has registrado productos", Toast.LENGTH_LONG).show();
 
     }
 

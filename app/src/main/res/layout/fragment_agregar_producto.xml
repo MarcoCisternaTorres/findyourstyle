@@ -41,8 +41,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="-180dp"
         android:hint="Precio Produto"
-
+        android:ems="10"
+        android:inputType="number"
         />
+
+
 
     <Spinner
         android:id="@+id/spNuevoProducto"
