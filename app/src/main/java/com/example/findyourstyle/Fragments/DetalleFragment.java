@@ -63,6 +63,10 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
         correoTienda = bundle.getString("correoTienda", "No hay correo");
     }
 
@@ -104,7 +108,6 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
             precio.setText(productosTienda.getPrecio());
 
             if(productosTienda.getRutaImagen()!=null){
-                //holder.imagen.setImageBitmap(listaProducto.get(position).getImagen());
                 cargarImagenServidor(productosTienda.getRutaImagen());
             }else{
                 imgDetalle.setImageResource(R.drawable.ic_launcher_background);

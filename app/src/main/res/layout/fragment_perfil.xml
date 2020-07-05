@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contenedorFragmentPerfilUsuario"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.PerfilFragment">
@@ -34,7 +35,7 @@
         android:textSize="30dp" />
 
     <ImageView
-        android:id="@+id/imgPerfil_fragmentPerfil"
+        android:id="@+id/imgPerfilFragmentPerfil"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginLeft="40dp"
@@ -42,19 +43,19 @@
         android:src="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/txtNombre_fragmentPerfil"
+        android:id="@+id/txtNombreFragmentPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="130dp"
         android:layout_marginLeft="200dp"
         android:text="Nombre Usurio"
         android:textSize="18dp"/>
 
     <TextView
-        android:id="@+id/txtApellido_fragmentPerfil"
+        android:id="@+id/txtApellidoFragmentPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="180dp"
         android:layout_marginLeft="200dp"
         android:text="Apellido Usurio"
         android:textSize="18dp"/>
@@ -63,17 +64,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="-70dp"
         android:text="DATOS PERSONALES"
         android:textColor="@color/colorNegro"
         android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnEditarUsuario"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="560dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:hint="Editar Perfil"
+        android:textColorHint="@color/colorNegro" />
 
     <Button
         android:id="@+id/btnCerrarSesionUsuario"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="590dp"
+        android:layout_marginTop="650dp"
         android:layout_marginEnd="88dp"
         android:background="@drawable/estilo_borde_edit_text"
         android:hint="Cerrar sesión"

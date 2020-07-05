@@ -100,8 +100,17 @@ public class AgregarProductoFragment extends Fragment {
             btnRegistrarProducto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!nombreProducto.getText().toString().isEmpty() && !precioProducto.getText().toString().isEmpty()) {
+                        try{
+                            int p = Integer.parseInt(precioProducto.getText().toString());
+                            cargarWebService();
+                        }catch (NumberFormatException e){
+                            Toast.makeText(getContext(),"El precio ingresado no es valido",Toast.LENGTH_SHORT).show();
+                        }
 
-                    cargarWebService();
+                    }else {
+                        Toast.makeText(getContext(),"Existen campos vacios", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 

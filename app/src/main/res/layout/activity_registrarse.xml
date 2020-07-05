@@ -121,11 +121,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/icon_flecha_atras" />
 
-    <ImageView
-        android:id="@+id/imgNuevoProducto"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-         />
 
     <Spinner
         android:id="@+id/spinnerCiudadUsuario"
