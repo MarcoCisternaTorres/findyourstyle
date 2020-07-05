@@ -82,7 +82,7 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         perfilFragment.setArguments(bundlePerfil);
 
 
-        setFragment(inicioFragment);
+        setFragment(buscarFragment);
 
         modeloBuscar = new ArrayList<>();
 
@@ -94,7 +94,7 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
                 switch (menuItem.getItemId()){
 
                     case R.id.item_inicio:
-                        setFragment(inicioFragment);
+                        setFragment(buscarFragment);
                         break;
 
                     case R.id.item_buscar:

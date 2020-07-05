@@ -67,6 +67,10 @@ public class HomeTiendaActivity extends AppCompatActivity implements IDetalleFra
         bundleCorreoHorasAgendadas.putString("correoTienda",correo);
         horasAgendadasTiendaFragment.setArguments(bundleCorreoHorasAgendadas);
 
+        final Bundle bundlePerfil = new Bundle();
+        bundlePerfil.putString("correoTienda",correo);
+        perfilTiendaFragment.setArguments(bundle);
+
 
 
         btnNavigationViewTienda = findViewById(R.id.bottomNavegationTienda);

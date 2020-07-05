@@ -6,131 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/degradado"
     tools:context=".Activities.RegistrarseActivity">
-
-    <Button
-        android:id="@+id/btnRegistrarse"
-        android:layout_width="220dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="728dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:text="Registrarse"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etxtNombreUsuarioRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="124dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:ems="10"
-        android:hint="Nombre"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etxApellidoUsuarioRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:ems="10"
-        android:hint="Apellido"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxtNombreUsuarioRegistro" />
-
-    <EditText
-        android:id="@+id/etxtCorreoRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:ems="10"
-        android:hint="Correo electronico"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxApellidoUsuarioRegistro" />
-
-    <EditText
-        android:id="@+id/etxtContraseniaRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxtCorreoRegistro" />
-
-    <EditText
-        android:id="@+id/etxtContrasenia2Registro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:ems="10"
-        android:hint="Confirmar Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxtContraseniaRegistro" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/estilo_frame_camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCiudadUsuario">
-
-        <ImageView
-            android:id="@+id/imgPerfil"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            />
-
-        <ImageView
-            android:id="@+id/btnAgregarImagenPerfil"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="155dp"
-            android:layout_marginTop="155dp"
-            android:src="@mipmap/camara_amarilla_icon" />
-    </FrameLayout>
-
-    <ImageView
-        android:id="@+id/imgVolverAtrasRegistro"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/icon_flecha_atras" />
-
-
-    <Spinner
-        android:id="@+id/spinnerCiudadUsuario"
-        android:layout_width="220dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxtContrasenia2Registro" />
-
     <TextView
         android:id="@+id/txtView_registrarse"
         android:layout_width="wrap_content"
@@ -144,6 +19,144 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imgVolverAtrasRegistro"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/icon_flecha_atras" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <EditText
+                android:id="@+id/etxApellidoUsuarioRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/estilo_borde_edit_text"
+                android:ems="10"
+                android:hint="Apellido"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etxtNombreUsuarioRegistro" />
+
+            <EditText
+                android:id="@+id/etxtCorreoRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/estilo_borde_edit_text"
+                android:ems="10"
+                android:hint="Correo electronico"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etxApellidoUsuarioRegistro" />
+
+            <EditText
+                android:id="@+id/etxtContraseniaRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/estilo_borde_edit_text"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etxtCorreoRegistro" />
+
+            <EditText
+                android:id="@+id/etxtContrasenia2Registro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="52dp"
+                android:background="@drawable/estilo_borde_edit_text"
+                android:ems="10"
+                android:hint="Confirmar Contraseña"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etxtContraseniaRegistro" />
+
+            <EditText
+                android:id="@+id/etxtNombreUsuarioRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="124dp"
+                android:background="@drawable/estilo_borde_edit_text"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/estilo_frame_camera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.435"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerCiudadUsuario">
+
+                <ImageView
+                    android:id="@+id/imgPerfil"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp" />
+
+                <ImageView
+                    android:id="@+id/btnAgregarImagenPerfil"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="155dp"
+                    android:layout_marginTop="155dp"
+                    android:src="@mipmap/camara_amarilla_icon" />
+            </FrameLayout>
+
+            <Spinner
+                android:id="@+id/spinnerCiudadUsuario"
+                android:layout_width="220dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="48dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etxtContrasenia2Registro" />
+
+            <Button
+                android:id="@+id/btnRegistrarse"
+                android:layout_width="220dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/estilo_borde_edit_text"
+                android:text="Registrarse"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

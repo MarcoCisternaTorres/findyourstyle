@@ -1,22 +1,31 @@
 package com.example.findyourstyle.Activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import cz.msebera.android.httpclient.Header;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Modelo.CategoriaTienda;
 import com.example.findyourstyle.Modelo.Ciudad;
@@ -27,9 +36,13 @@ import org.json.JSONObject;
 
 import com.loopj.android.http.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class RegistroTiendaActivity extends AppCompatActivity implements  Response.Listener<JSONObject>,Response.ErrorListener{
+public class RegistroTiendaActivity extends AppCompatActivity {
 
     private EditText nombreTienda;
     private EditText direccionTienda;
@@ -53,6 +66,11 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
     //Conexion con el web service prara el spinner ciudad
     private AsyncHttpClient ciudadTienda;
     Spinner spCiudadTienda;
+    ImageView imgAgregarPerfilTienda, imgPerfilTienda;
+    private Bitmap bitmap;
+    String imagenTienda;
+    private StringRequest stringRequest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +82,8 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
         correoTienda = findViewById(R.id.etxtCorreoRegistroTienda);
         contraseniaTienda = findViewById(R.id.etxtContraseniaRegistroTienda);
         getContraseniaTienda2 = findViewById(R.id.etxtContrasenia2RegistroTienda);
+        imgAgregarPerfilTienda =findViewById(R.id.imgAgregarImagenPerfilTienda);
+        imgPerfilTienda = findViewById(R.id.imgAgregarPerfilTienda);
 
         btnRegistrarTienda = findViewById(R.id.btnRegistrarTienda);
 
@@ -75,6 +95,13 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
 
         llenarSpinnner();
         llenarSpinnnerCiudad();
+
+        imgAgregarPerfilTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarImagen();
+            }
+        });
 
         btnRegistrarTienda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,39 +115,109 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
         });
     }
 
-    private void cargarWebService(){
+    private void cargarImagen() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent.createChooser(intent, "Seleccione una Apliacación"), 10);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 10 && data != null) {
+            Uri path;
+            path =data.getData();
+            imgPerfilTienda.setImageURI(path);
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), path);
+                imgPerfilTienda.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            bitmap=redimensionarImagen(bitmap,800,800);
+        }
+    }
+
+    private Bitmap redimensionarImagen(Bitmap bitmap, float anchoNuevo, float altoNuevo) {
+
+        int ancho=bitmap.getWidth();
+        int alto=bitmap.getHeight();
+
+        if(ancho>anchoNuevo || alto>altoNuevo){
+            float escalaAncho=anchoNuevo/ancho;
+            float escalaAlto= altoNuevo/alto;
+
+            Matrix matrix=new Matrix();
+            matrix.postScale(escalaAncho,escalaAlto);
+
+            return Bitmap.createBitmap(bitmap,0,0,ancho,alto,matrix,false);
+
+        }else{
+            return bitmap;
+        }
+
+
+    }
+
+    private void cargarWebService() {
         //Barra de progreso
         progreso = new ProgressDialog(this);
         progreso.setMessage("Cargando...");
         progreso.show();
         // Enviar datos al web service
         final String ip = getString(R.string.ip);
-        String url = ip +"/findyourstyleBDR/wsJSONRegistroTienda.php?nombre_tienda="+nombreTienda.getText().toString()+
-                "&correo_tienda="+correoTienda.getText().toString()+"&contrasenia_tienda="+contraseniaTienda.getText().toString()+"&direccion_tienda="+direccionTienda.getText().toString()+"&nombre_categoria="+spCategoriaTienda.getSelectedItem().toString()+
-                "&nombre_ciudad="+spCiudadTienda.getSelectedItem().toString();
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
-        request.add(jsonObjectRequest);
+        String url = ip + "/findyourstyleBDR/wsJSONRegistroTienda.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
+                progreso.hide();
+                nombreTienda.setText("");
+                direccionTienda.setText("");
+                correoTienda.setText("");
+                contraseniaTienda.setText("");
+                getContraseniaTienda2.setText("");
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progreso.hide();
+                Toast.makeText(getApplicationContext(), "No se puede registrar" + error.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String nombreT = nombreTienda.getText().toString();
+                String direccionT= direccionTienda.getText().toString();
+                String correoT = correoTienda.getText().toString();
+                String contraseniaT = contraseniaTienda.getText().toString();
+                String categoriaT = spCategoriaTienda.getSelectedItem().toString();
+                String ciudad = spCiudadTienda.getSelectedItem().toString();
+                String imagenT = convertirImagenString(bitmap);
+
+
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("nombre_tienda", nombreT);
+                parametros.put("correo_tienda", correoT);
+                parametros.put("contrasenia_tienda",contraseniaT );
+                parametros.put("direccion_tienda", direccionT);
+                parametros.put("nombre_categoria", categoriaT);
+                parametros.put("nombre_ciudad", ciudad);
+                parametros.put("imagen", imagenT);
+
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+
+
     }
-
-    @Override
-    public void onResponse(JSONObject response) {
-        Toast.makeText(this,"Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
-        progreso.hide();
-        nombreTienda.setText("");
-        direccionTienda.setText("");
-        correoTienda.setText("");
-        contraseniaTienda.setText("");
-        getContraseniaTienda2.setText("");
-    }
-
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        progreso.hide();
-        Toast.makeText(this,"No se puede registrar"+error.toString(),Toast.LENGTH_SHORT).show();
-        //Long.bitCount(i,"ERROR",error.toString());
-
-    }
-
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
@@ -198,6 +295,16 @@ public class RegistroTiendaActivity extends AppCompatActivity implements  Respon
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private String convertirImagenString(Bitmap bitmap){
+        ByteArrayOutputStream array = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
+        byte [] imageByte = array.toByteArray();
+        String imagenString = Base64.encodeToString(imageByte,Base64.DEFAULT);
+
+
+        return imagenString;
     }
 
 }

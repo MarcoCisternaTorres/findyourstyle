@@ -72,8 +72,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="-50dp"
-
         android:text="Horas "
         android:textSize="20dp"
         android:textColor="@color/colorNegro"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewDetalleHora"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="370dp"/>
+
 </FrameLayout>

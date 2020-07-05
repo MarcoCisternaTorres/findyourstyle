@@ -73,10 +73,8 @@ public class RegistrarseActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //View vista = inflater.inflate(R.layout.activity_registrarse, container, false);
-
         setContentView(R.layout.activity_registrarse);
+
         volverAtras = (ImageView) findViewById(R.id.imgVolverAtrasRegistro);
         btnImgPerfil = findViewById(R.id.btnAgregarImagenPerfil);
         imgPerfil = findViewById(R.id.imgPerfil);

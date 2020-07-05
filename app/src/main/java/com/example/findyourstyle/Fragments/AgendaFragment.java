@@ -101,7 +101,7 @@ public class AgendaFragment extends Fragment {
                     adapterAgendaUsuario.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(getContext(),"Hola perro", Toast.LENGTH_SHORT).show();
+
                         }
                     });
 

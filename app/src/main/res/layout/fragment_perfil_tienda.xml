@@ -33,7 +33,7 @@
         android:src="@mipmap/icon_flecha_atras" />
 
     <ImageView
-        android:id="@+id/imgPerfil_fragmentPerfilTienda"
+        android:id="@+id/imgPerfilFragmentPerfilTienda"
         android:layout_width="150dp"
         android:layout_height="150dp"
 
@@ -42,7 +42,7 @@
         android:src="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/txtNombre_Tienda_fragmentPerfilTiedna"
+        android:id="@+id/txtNombre_Tienda_fragmentPerfilTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="214dp"
@@ -51,7 +51,7 @@
         android:textSize="18dp" />
 
     <TextView
-        android:id="@+id/txtDireccionTienda_fragmentPerfil"
+        android:id="@+id/txtDireccionFragmentPerfilTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="200dp"
@@ -71,6 +71,7 @@
         android:textSize="20dp" />
 
     <TextView
+        android:id="@+id/CiudadTiendaPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="42dp"
@@ -79,6 +80,7 @@
         android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/CategoriaTiendaPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="41dp"

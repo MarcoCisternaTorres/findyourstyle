@@ -228,8 +228,8 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
                 public void onClick(View v) {
 
                     fecha_atencion= listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getFecha_atencion();
-                     hora_atencion= listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getHora_atencion();
-alert.setMessage("¿Desea agendar esta hora de atencion?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    hora_atencion= listaHorasUsuario.get(recyclerAgendarHora.getChildAdapterPosition(v)).getHora_atencion();
+                    alert.setMessage("¿Desea agendar esta hora de atencion?").setCancelable(false).setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 reservarHoraAtencion(fecha_atencion, hora_atencion);
