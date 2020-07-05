@@ -108,6 +108,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
     AlertDialog.Builder alert;
     String fecha_atencion;
     String hora_atencion;
+    BuscarFragment buscarFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -120,7 +121,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         recyclerAgendarHora.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerAgendarHora.setHasFixedSize(true);
         recyclerAgendarHora.setLayoutManager(new GridLayoutManager(getContext(), 1));
-
+        buscarFragment = new BuscarFragment();
         txtMesajeNoHayHoras = view.findViewById(R.id.mensajeNoHayHoras);
         modelHorasAtencion = new ArrayList<>();
         //para la imagen y descripcion del producto
@@ -133,6 +134,10 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         request = Volley.newRequestQueue(getContext());
         listaHorasUsuario = new ArrayList<>();
         alert = new AlertDialog.Builder(getContext());
+
+        final Bundle bundle = new Bundle();
+        bundle.putString("correoUsuario",correoUsuario);
+        buscarFragment.setArguments(bundle);
 
         Bundle productosHora = new Bundle(getArguments());
         ModeloBuscar productos = null;
@@ -157,7 +162,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarFragment buscarFragment = new BuscarFragment();
+
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.contenedorFragment, buscarFragment);
                 transaction.commit();

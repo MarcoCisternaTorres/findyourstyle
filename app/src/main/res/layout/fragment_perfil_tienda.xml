@@ -11,42 +11,43 @@
         android:layout_height="75dp"
         android:layout_marginLeft="320dp"
         android:layout_marginTop="20dp"
-        android:layout_x="323dp"
+        android:layout_x="315dp"
         android:layout_y="17dp"
         android:background="@drawable/logofysstore" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="75dp"
-        android:layout_y="21dp"
+        android:layout_x="62dp"
+        android:layout_y="32dp"
         android:text="Perfil De La tienda"
+        android:textColor="@color/colorNegro"
         android:textSize="30dp"></TextView>
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/fechaAtras_fragmentPerfilTienda"
         android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_height="14dp"
 
-        android:layout_x="23dp"
-        android:layout_y="35dp"
-        android:src="@mipmap/icon_flecha_atras" />
+        android:layout_x="24dp"
+        android:layout_y="49dp"
+        android:src="@mipmap/icon_flecha_atras" />-->
 
     <ImageView
         android:id="@+id/imgPerfilFragmentPerfilTienda"
         android:layout_width="150dp"
         android:layout_height="150dp"
 
-        android:layout_x="43dp"
-        android:layout_y="97dp"
+        android:layout_x="40dp"
+        android:layout_y="140dp"
         android:src="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/txtNombre_Tienda_fragmentPerfilTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="214dp"
-        android:layout_y="116dp"
+        android:layout_x="213dp"
+        android:layout_y="161dp"
         android:text="Nombre Tienda"
         android:textSize="18dp" />
 
@@ -56,16 +57,16 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="200dp"
         android:layout_marginTop="130dp"
-        android:layout_x="213dp"
-        android:layout_y="172dp"
+        android:layout_x="209dp"
+        android:layout_y="240dp"
         android:text="DireccionTienda"
         android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="145dp"
-        android:layout_y="284dp"
+        android:layout_x="139dp"
+        android:layout_y="337dp"
         android:text="OTROS DATOS"
         android:textColor="@color/colorNegro"
         android:textSize="20dp" />
@@ -74,8 +75,8 @@
         android:id="@+id/CiudadTiendaPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="42dp"
-        android:layout_y="361dp"
+        android:layout_x="36dp"
+        android:layout_y="405dp"
         android:text="Ciudad Tienda"
         android:textSize="18dp" />
 
@@ -83,13 +84,13 @@
         android:id="@+id/CategoriaTiendaPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="41dp"
-        android:layout_y="416dp"
+        android:layout_x="35dp"
+        android:layout_y="474dp"
         android:text="Categoria Tienda"
         android:textSize="18dp" />
 
     <Button
-        android:id="@+id/btnCerrarSesionCliente"
+        android:id="@+id/btnCerrarSesionTienda"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -102,19 +103,7 @@
         android:hint="Cerrar sesión"
         android:textColorHint="@color/colorNegro" />
 
-    <Button
-        android:id="@+id/btnEditarPerfilCliente"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="590dp"
-        android:layout_marginEnd="88dp"
-        android:layout_x="96dp"
-        android:layout_y="498dp"
-        android:background="@drawable/estilo_borde_edit_text"
-        android:backgroundTint="@color/blancoTrasparente"
-        android:hint="Editar datos"
-        android:textColorHint="@color/colorNegro" />
+
 
 
 </AbsoluteLayout>

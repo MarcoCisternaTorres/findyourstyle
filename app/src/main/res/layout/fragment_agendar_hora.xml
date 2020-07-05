@@ -19,8 +19,8 @@
         android:id="@+id/text_agendar_hora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:paddingLeft="100dp"
+        android:layout_marginTop="-350dp"
+        android:layout_gravity="center"
         android:text="Agendar Hora"
         android:textColor="@color/colorNegro"
         android:textSize="30dp" />
@@ -29,7 +29,7 @@
         android:id="@+id/fechaAtras_agendarHora"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="25dp"
         android:src="@mipmap/icon_flecha_atras"/>
 
@@ -37,7 +37,7 @@
         android:id="@+id/imgAgendarHora"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="110dp"
         android:layout_marginLeft="20dp"
         android:src="@drawable/ic_launcher_background"/>
 
@@ -45,7 +45,7 @@
         android:id="@+id/txtNombreProducto_agendarHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="115dp"
         android:layout_marginLeft="200dp"
         android:text="Nombre Producto"
         android:textSize="17dp"/>
@@ -53,7 +53,7 @@
         android:id="@+id/txtTienda_agendarHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="150dp"
         android:layout_marginLeft="200dp"
         android:text="Nombre Tienda"
         android:textSize="17dp"/>
@@ -62,18 +62,27 @@
         android:id="@+id/txtDireccion_agendarHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="165dp"
+        android:layout_marginTop="185dp"
         android:layout_marginLeft="200dp"
         android:text="Dirección"
+        android:textSize="17dp"/>
+
+    <TextView
+        android:id="@+id/txtSignoPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="200dp"
+        android:text="$"
         android:textSize="17dp"/>
 
     <TextView
         android:id="@+id/txtPrecio_agendarHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="200dp"
-        android:text="$ Precio"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="220dp"
+        android:text="Precio"
         android:textSize="17dp"/>
 
     <TextView
@@ -81,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="-80dp"
+        android:layout_marginTop="-60dp"
         android:text="Horas disponibles"
         android:textSize="20dp"
         android:textColor="@color/colorNegro"/>
@@ -90,7 +99,7 @@
         android:id="@+id/recyclerViewAgendarHora"
         android:layout_width="match_parent"
         android:layout_height="360dp"
-        android:layout_marginTop="360dp"/>
+        android:layout_marginTop="390dp"/>
 
 
 </FrameLayout>

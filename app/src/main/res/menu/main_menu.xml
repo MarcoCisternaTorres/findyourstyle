@@ -6,10 +6,10 @@
         android:icon="@mipmap/home_icono"
         android:iconTint="@color/colorNegro"/>
 
-    <item android:id="@+id/item_buscar"
+   <!-- <item android:id="@+id/item_buscar"
         android:title="Buscar"
         android:icon="@mipmap/icono_buscar"
-        android:iconTint="@color/colorNegro"/>
+        android:iconTint="@color/colorNegro"/>-->
 
     <item android:id="@+id/item_agenda"
         android:title="Agenda"

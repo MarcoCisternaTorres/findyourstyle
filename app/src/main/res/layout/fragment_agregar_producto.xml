@@ -11,7 +11,7 @@
         android:id="@+id/txtMisPrductosagrega"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="90dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
         android:text="Agregar Productos"
         android:textSize="30dp" />
@@ -21,16 +21,10 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="32dp"
         android:src="@mipmap/icon_flecha_atras" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
     <EditText
         android:id="@+id/etxtNuevoProducto"
@@ -38,7 +32,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/estilo_borde_edit_text"
         android:layout_gravity="center"
-        android:layout_marginTop="-250dp"
+        android:layout_marginTop="-200dp"
         android:hint="Nombre Producto"
         />
     <EditText
@@ -47,7 +41,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/estilo_borde_edit_text"
         android:layout_gravity="center"
-        android:layout_marginTop="-180dp"
+        android:layout_marginTop="-110dp"
         android:hint="Precio Produto"
         android:ems="10"
         android:inputType="number"
@@ -60,14 +54,14 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="-110dp"/>
+        android:layout_marginTop="-30dp"/>
 
     <FrameLayout
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:background="@drawable/estilo_frame_camera"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="150dp">
 
         <ImageView
             android:id="@+id/imgNuevoProducto"
@@ -90,7 +84,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/estilo_borde_edit_text"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="330dp"
         android:text="Agregar producto"
         />
     <TextView
@@ -104,6 +98,5 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="650dp"
         android:layout_marginLeft="100dp"/>
-    </FrameLayout>
-    </ScrollView>
+
 </FrameLayout>

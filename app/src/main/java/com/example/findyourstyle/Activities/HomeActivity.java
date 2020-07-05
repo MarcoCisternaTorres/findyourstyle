@@ -97,9 +97,9 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
                         setFragment(buscarFragment);
                         break;
 
-                    case R.id.item_buscar:
+                    /*case R.id.item_buscar:
                         setFragment(buscarFragment);
-                        break;
+                        break;*/
 
                     case R.id.item_agenda:
                         setFragment(agendaFragment);

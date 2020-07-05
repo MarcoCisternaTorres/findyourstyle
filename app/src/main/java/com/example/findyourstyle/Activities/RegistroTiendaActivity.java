@@ -106,10 +106,18 @@ public class RegistroTiendaActivity extends AppCompatActivity {
         btnRegistrarTienda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(contraseniaTienda.getText().toString().equals(contraseniaTienda.getText().toString())){
-                    cargarWebService();
+                if(!nombreTienda.getText().toString().isEmpty() && !direccionTienda.getText().toString().isEmpty() && !contraseniaTienda.getText().toString().isEmpty() && getContraseniaTienda2.getText().toString().isEmpty() && !correoTienda.getText().toString().isEmpty()) {
+                    if (contraseniaTienda.getText().toString().equals(contraseniaTienda.getText().toString())) {
+                        if (bitmap != null) {
+                            cargarWebService();
+                        }else {
+                            Toast.makeText(RegistroTiendaActivity.this, "Debe ingresar una imagen", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(RegistroTiendaActivity.this, "Las contraseñas no son igual", Toast.LENGTH_SHORT).show();
+                    }
                 }else {
-                    Toast.makeText(RegistroTiendaActivity.this,"Las contraseñas no son igual", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistroTiendaActivity.this, "Existen campos vacios", Toast.LENGTH_SHORT).show();
                 }
             }
         });

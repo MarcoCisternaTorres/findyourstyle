@@ -91,19 +91,11 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
 
         listaProductos = new ArrayList<>();
         request = Volley.newRequestQueue(getContext());
-        btnAtras = view.findViewById(R.id.fechaAtras_fragmentBuscar);
+       // btnAtras = view.findViewById(R.id.fechaAtras_fragmentBuscar);
 
         cargarWebService();
 
-        btnAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InicioFragment inicioFragment = new InicioFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.contenedorFragment, inicioFragment);
-                transaction.commit();
-            }
-        });
+
         return view;
     }
 

@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,10 +89,11 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
     ProgressDialog progreso;
     RequestQueue request, requestSpinner;
     JsonObjectRequest jsonObjectRequest, jsonObjectRequestSpninner;
-    ImageView iconCalendar_AgregarFecha,iconClock_AgregarHora, iconTick;
+    ImageView iconCalendar_AgregarFecha,iconClock_AgregarHora, iconTick, imgVolverAtras;
     TextView txtFecha_carAgregarFecha,txtFecha_carAgregarHora;
     String diaAtencion;
     String horaAtencion;
+    DetalleFragment detalleFragment;
 
 
     private int dia,mes,ano,hora,minutos;
@@ -104,6 +106,8 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
         iconTick = view.findViewById(R.id.iconTick_carrAgregarHora);
         txtFecha_carAgregarFecha= view.findViewById(R.id.txtFecha_carAgregarFecha);
         txtFecha_carAgregarHora=view.findViewById(R.id.txtHora_carAgregarHora);
+        //imgVolverAtras = view.findViewById(R.id.iconSalir_fragmentInicioback);
+        detalleFragment = new DetalleFragment();
 
 
         request = Volley.newRequestQueue(getContext());
@@ -111,6 +115,15 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
         iconCalendar_AgregarFecha.setOnClickListener(this);
         iconClock_AgregarHora.setOnClickListener(this);
         iconTick.setOnClickListener(this);
+        //imgVolverAtras.setOnClickListener(this);
+
+        final Bundle bundleNombreProducto = new Bundle();
+        bundleNombreProducto.putString("nombreProducto",nombreProducto);
+        detalleFragment.setArguments(bundleNombreProducto);
+
+        final Bundle bundle = new Bundle();
+        bundle.putString("correoTienda",correoTienda);
+        detalleFragment.setArguments(bundle);
 
         // Inflate the layout for this fragment
         return view;
@@ -171,6 +184,10 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
                 Toast.makeText(getContext(),"Debe ingresar una Hora y Fecha de atención", Toast.LENGTH_SHORT).show();
             }
         }
+
+        /*if (v == imgVolverAtras){
+            setFragment(detalleFragment);
+        }*/
     }
 
 
@@ -198,5 +215,11 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
     public void onResponse(JSONObject response) {
         Toast.makeText(getContext(),"Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
         progreso.hide();
+    }
+
+    public void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contenedorFragmentTienda, fragment);
+        fragmentTransaction.commit();
     }
 }

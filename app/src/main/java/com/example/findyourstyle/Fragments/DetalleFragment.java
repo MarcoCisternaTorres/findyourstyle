@@ -86,16 +86,18 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         correoTienda = bundle.getString("correoTienda", "No hay correo");
+
     }
 
 
     private TextView nombreProducto, nombreTienda, direccion, precio;
-    private ImageView imgDetalle, imgHora, imgEditar;
+    private ImageView imgDetalle, imgHora, imgEditar, imgVolverAtras;
     Fragment horas, editar;
     RequestQueue request;
     private StringRequest stringRequest;
     RecyclerView recyclerHorasProductos;
     ArrayList<HorasTiendaDetalle> listaHorasDetalle;
+    ProductoTiendaFragment productoTiendaFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -106,12 +108,14 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         recyclerHorasProductos.setHasFixedSize(true);
         recyclerHorasProductos.setLayoutManager(new GridLayoutManager(getContext(), 1));
         listaHorasDetalle = new ArrayList<>();
+        productoTiendaFragment = new ProductoTiendaFragment();
 
         nombreProducto = view.findViewById(R.id.txtNombreProductoDetalle);
         precio = view.findViewById(R.id.txtPrecioDetalle);
         imgDetalle = view.findViewById(R.id.imgDetalle);
         imgHora = view.findViewById(R.id.imgAgregarHoraDetalle);
-        imgEditar = view.findViewById(R.id.imgEditarproducto);
+        //imgEditar = view.findViewById(R.id.imgEditarproducto);
+        imgEditar = view.findViewById(R.id.iconVolverAtrasDetalle);
         request = Volley.newRequestQueue(getContext());
         horas = new Horas();
         editar = new EditarYEliminarProductos();
@@ -123,7 +127,12 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
 
 
         imgHora.setOnClickListener(this);
+//        imgEditar.setOnClickListener(this);
         imgEditar.setOnClickListener(this);
+        
+        final Bundle bundleProducatodTienda = new Bundle();
+        bundleProducatodTienda.putString("correoTienda",correoTienda);
+        productoTiendaFragment.setArguments(bundleProducatodTienda);
 
 
         Bundle productos = new Bundle(getArguments());
@@ -179,8 +188,11 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         if(v == imgHora){
             setFragment(horas);
         }
-        if(v == imgEditar){
+        /*if(v == imgEditar){
             setFragment(editar);
+        }*/
+        if(v == imgEditar){
+            setFragment(productoTiendaFragment);
         }
     }
 

@@ -15,27 +15,20 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/logofysstore" />
 
-    <ImageView
-        android:id="@+id/fechaAtras_fragmentPerfilTienda-user"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_x="23dp"
-        android:layout_y="35dp"
-        android:src="@mipmap/icon_flecha_atras" />
-
     <TextView
         android:id="@+id/txtMisPrductos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/colorNegro"
         android:text="Mis Productos"
         android:textSize="30dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProductosTiendas"
         android:layout_width="match_parent"
-        android:layout_height="620dp"
-        android:layout_marginTop="120dp" />
+        android:layout_height="600dp"
+        android:layout_marginTop="140dp" />
 
 </FrameLayout>

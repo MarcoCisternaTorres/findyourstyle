@@ -146,7 +146,7 @@ public class PerfilFragment extends Fragment {
         txtNombreUsuario = view.findViewById(R.id.txtNombreFragmentPerfil);
         txtApellidoUsuario = view.findViewById(R.id.txtApellidoFragmentPerfil);
         btnCerrar = view.findViewById(R.id.btnCerrarSesionUsuario);
-        btnEditarPerfil =view.findViewById(R.id.btnEditarUsuario);
+        //btnEditarPerfil =view.findViewById(R.id.btnEditarUsuario);
         request = Volley.newRequestQueue(getContext());
 
 
@@ -158,12 +158,12 @@ public class PerfilFragment extends Fragment {
         editarPerfilUsuario.setArguments(bundleEditarUsuario);
         conusultarPerfilUsuario();
 
-        btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
+       /* btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setFragment(editarPerfilUsuario);
             }
-        });
+        });*/
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

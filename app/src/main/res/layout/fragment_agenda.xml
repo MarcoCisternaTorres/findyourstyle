@@ -15,13 +15,13 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/logo_findyourstyle" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/fechaAtras_fragmentAgenda"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="45dp"
         android:layout_marginLeft="25dp"
-        android:src="@mipmap/icon_flecha_atras"/>
+        android:src="@mipmap/icon_flecha_atras"/-->
 
     <TextView
         android:id="@+id/text_agenda"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="150dp"
         android:textSize="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="35dp"
         android:text="@string/txt_agenda"
         android:textColor="@color/colorNegro"/>
     <TextView
@@ -38,13 +38,13 @@
         android:text="Mis Horas Agendadas"
         android:textSize="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="-270dp"
+        android:layout_marginTop="-250dp"
         android:textColor="@color/colorNegro" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAgenda"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginTop="150dp"/>
+        android:layout_height="550dp"
+        android:layout_marginTop="200dp"/>
 
 </FrameLayout>

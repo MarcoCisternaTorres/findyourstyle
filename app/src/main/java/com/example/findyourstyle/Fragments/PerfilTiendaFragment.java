@@ -1,5 +1,8 @@
 package com.example.findyourstyle.Fragments;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -8,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +24,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.findyourstyle.Activities.InicioSesionTienda;
+import com.example.findyourstyle.Activities.MainActivity;
 import com.example.findyourstyle.R;
 
 import org.json.JSONArray;
@@ -84,6 +90,7 @@ public class PerfilTiendaFragment extends Fragment {
     RequestQueue request;
     private StringRequest stringRequest;
     String rutaImagen;
+    Button cerrarSesion;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,10 +102,22 @@ public class PerfilTiendaFragment extends Fragment {
         direccionTienda = view.findViewById(R.id.txtDireccionFragmentPerfilTienda);
         ciudadTienda = view.findViewById(R.id.CiudadTiendaPerfil);
         categoriaTienda = view.findViewById(R.id.CategoriaTiendaPerfil);
+        cerrarSesion = view.findViewById(R.id.btnCerrarSesionTienda);
 
         request = Volley.newRequestQueue(getContext());
 
         conusultarPerfilTienda();
+
+        cerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferences = getActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
+                preferences.edit().clear().commit();
+                Intent intent = new Intent(getContext(), InicioSesionTienda.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
         return view;
     }
 

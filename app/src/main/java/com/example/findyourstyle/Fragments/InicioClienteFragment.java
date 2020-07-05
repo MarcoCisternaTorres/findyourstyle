@@ -63,9 +63,10 @@ public class InicioClienteFragment extends Fragment {
     }
     AgregarProductoFragment agregarProductoFragment;
     ProductoTiendaFragment productoTiendaFragment;
+    PerfilTiendaFragment perfilTiendaFragment;
     HorasAgendadasTiendaFragment horasAgendadasTiendaFragment;
 
-    private ImageView imgAgregarProducto, imgHorasAgendadas;
+    private ImageView imgAgregarProducto, imgHorasAgendadas, imgPerfilTienda;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,8 +75,10 @@ public class InicioClienteFragment extends Fragment {
         agregarProductoFragment = new AgregarProductoFragment();
         productoTiendaFragment = new ProductoTiendaFragment();
         horasAgendadasTiendaFragment = new HorasAgendadasTiendaFragment();
+        perfilTiendaFragment = new PerfilTiendaFragment();
         imgAgregarProducto = view.findViewById(R.id.imgCrearNuevoProducto);
         imgHorasAgendadas = view.findViewById(R.id.imgHorasAgnedadas);
+        imgPerfilTienda = view.findViewById(R.id.imgAccesoPerfilTienda);
 
         final Bundle bundle = new Bundle();
         bundle.putString("correoTienda",correoTienda);
@@ -84,6 +87,10 @@ public class InicioClienteFragment extends Fragment {
         final Bundle bundleCorreoHorasAgendadas = new Bundle();
         bundleCorreoHorasAgendadas.putString("correoTienda",correoTienda);
         horasAgendadasTiendaFragment.setArguments(bundleCorreoHorasAgendadas);
+
+        final Bundle bundlePerfil = new Bundle();
+        bundlePerfil.putString("correoTienda",correoTienda);
+        perfilTiendaFragment.setArguments(bundlePerfil);
 
         imgAgregarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +103,13 @@ public class InicioClienteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 setFragment(horasAgendadasTiendaFragment);
+            }
+        });
+
+        imgPerfilTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(perfilTiendaFragment);
             }
         });
         return view;

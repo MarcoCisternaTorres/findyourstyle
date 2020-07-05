@@ -20,36 +20,36 @@
         android:id="@+id/txtView_horas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="-19dp"
-        android:layout_y="23dp"
-        android:paddingLeft="160dp"
+        android:layout_x="125dp"
+        android:layout_y="36dp"
         android:text="Mis horas"
+        android:textColor="@color/colorNegro"
         android:textSize="30dp"></TextView>
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/iconSalir_fragmentInicioback"
         android:layout_width="30dp"
         android:layout_height="34dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
-        android:layout_x="15dp"
-        android:layout_y="21dp"
-        android:background="@drawable/back" />
+        android:layout_x="26dp"
+        android:layout_y="40dp"
+        android:background="@drawable/back" />-->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="29dp"
-        android:layout_y="103dp"
-        android:text="Agregar una nueva hora de autención"
+        android:layout_x="38dp"
+        android:layout_y="132dp"
+        android:text="Agregar una nueva hora de atención"
         android:textSize="20sp" />
 
     <AbsoluteLayout
         android:layout_width="388dp"
         android:layout_height="99dp"
         android:layout_marginTop="100dp"
-        android:layout_x="10dp"
-        android:layout_y="148dp"
+        android:layout_x="2dp"
+        android:layout_y="190dp"
         android:background="@color/blancoTrasparente">
 
 
