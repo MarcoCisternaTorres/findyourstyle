@@ -188,15 +188,15 @@
         android:text="Ciudad"
         android:textColor="@color/logo_background" />
 
-    <ImageView
-        android:id="@+id/Foto_Perfil_Tienda"
-        android:layout_width="106dp"
-        android:layout_height="82dp"
-        android:layout_x="170dp"
-        android:layout_y="687dp"
-        app:srcCompat="@drawable/agregarimg" />
+            <ImageView
+                android:id="@+id/Foto_Perfil_Tienda"
+                android:layout_width="106dp"
+                android:layout_height="82dp"
+                android:layout_x="227dp"
+                android:layout_y="668dp"
+                app:srcCompat="@drawable/agregarimg" />
 
-    <TextView
+            <TextView
         android:id="@+id/textView5"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
