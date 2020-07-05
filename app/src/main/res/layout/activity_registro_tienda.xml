@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.RegistroTiendaActivity"
-    android:background="@drawable/degradado2"
+
  >
 
     <TextView
@@ -38,6 +38,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/icon_flecha_atras" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <AbsoluteLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
 
 
     <EditText
@@ -203,5 +212,6 @@
         android:layout_x="115dp"
         android:layout_y="993dp"
         android:text="Terminos y condiciones de uso" />
-
+        </AbsoluteLayout>
+    </ScrollView>
 </AbsoluteLayout>
