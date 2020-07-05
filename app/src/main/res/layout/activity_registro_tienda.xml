@@ -192,8 +192,8 @@
                 android:id="@+id/Foto_Perfil_Tienda"
                 android:layout_width="106dp"
                 android:layout_height="82dp"
-                android:layout_x="227dp"
-                android:layout_y="668dp"
+                android:layout_x="205dp"
+                android:layout_y="664dp"
                 app:srcCompat="@drawable/agregarimg" />
 
             <TextView
