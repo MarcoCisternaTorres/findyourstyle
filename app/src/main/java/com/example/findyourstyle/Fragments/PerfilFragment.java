@@ -128,7 +128,7 @@ public class PerfilFragment extends Fragment {
     }
     private ImageView imgPerfil;
     private Button btnCerrar, btnEditarPerfil;
-    TextView txtNombreUsuario, txtApellidoUsuario;
+    TextView txtNombreUsuario, txtApellidoUsuario, txtNombreCiudad;
     RequestQueue request;
     private StringRequest stringRequest;
     String rutaImagen;
@@ -145,6 +145,7 @@ public class PerfilFragment extends Fragment {
         imgPerfil = view.findViewById(R.id.imgPerfilFragmentPerfil);
         txtNombreUsuario = view.findViewById(R.id.txtNombreFragmentPerfil);
         txtApellidoUsuario = view.findViewById(R.id.txtApellidoFragmentPerfil);
+        txtNombreCiudad = view.findViewById(R.id.NombreCiudadUsuario);
         btnCerrar = view.findViewById(R.id.btnCerrarSesionUsuario);
         //btnEditarPerfil =view.findViewById(R.id.btnEditarUsuario);
         request = Volley.newRequestQueue(getContext());
@@ -197,6 +198,7 @@ public class PerfilFragment extends Fragment {
                         txtNombreUsuario.setText(jsonArreglo.getJSONObject(i).optString("nombre_usuario"));
                         txtApellidoUsuario.setText(jsonArreglo.getJSONObject(i).optString("apellido_usuario"));
                         rutaImagen = jsonArreglo.getJSONObject(i).optString("ruta_imagen");
+                        txtNombreCiudad.setText(jsonArreglo.getJSONObject(i).optString("nombre_ciudad"));
 
                         if(rutaImagen!=null){
                             cargarImagenServidor(rutaImagen);

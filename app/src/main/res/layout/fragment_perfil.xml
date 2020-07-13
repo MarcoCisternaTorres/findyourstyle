@@ -28,37 +28,80 @@
         android:id="@+id/text_Perfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:paddingLeft="150dp"
+        android:layout_marginTop="-340dp"
+        android:layout_gravity="center"
         android:text="@string/txt_perfil"
         android:textColor="@color/colorNegro"
         android:textSize="30dp" />
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imgPerfilFragmentPerfil"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="120dp"
-        android:src="@drawable/ic_launcher_background" />
+        android:layout_gravity="center"
+        android:layout_marginTop="-190dp"
+        android:src="@drawable/ic_launcher_background"
+        app:civ_border_width="1dp"
+        />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="50dp"
+        android:text="Nombre"
+        android:textSize="15dp"/>
 
     <TextView
         android:id="@+id/txtNombreFragmentPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="200dp"
-        android:text="Nombre Usurio"
-        android:textSize="18dp"/>
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="325dp"
+        android:text=""
+        android:textColor="@color/colorNegro"
+        android:textSize="22dp" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="380dp"
+        android:layout_marginLeft="50dp"
+        android:text="Apellido"
+        android:textSize="15dp"/>
 
     <TextView
         android:id="@+id/txtApellidoFragmentPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="200dp"
-        android:text="Apellido Usurio"
-        android:textSize="18dp"/>
+        android:layout_marginTop="405dp"
+        android:layout_marginLeft="50dp"
+        android:text=""
+        android:textSize="22dp"
+        android:textColor="@color/colorNegro"/>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="460dp"
+        android:layout_marginLeft="50dp"
+        android:text="Ciudad"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/NombreCiudadUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="485dp"
+        android:layout_marginLeft="50dp"
+
+        android:textColor="@color/colorNegro"
+        android:textSize="22dp"/>
 
     <!--<TextView
         android:layout_width="wrap_content"
