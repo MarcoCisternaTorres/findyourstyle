@@ -109,6 +109,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
     String fecha_atencion;
     String hora_atencion;
     BuscarFragment buscarFragment;
+    AgendarHoraFragment agendarHoraFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -134,6 +135,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         request = Volley.newRequestQueue(getContext());
         listaHorasUsuario = new ArrayList<>();
         alert = new AlertDialog.Builder(getContext());
+        agendarHoraFragment = new AgendarHoraFragment();
 
         final Bundle bundle = new Bundle();
         bundle.putString("correoUsuario",correoUsuario);
@@ -267,6 +269,7 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 Toast.makeText(getContext(),"Hora reservada exitosamente", Toast.LENGTH_SHORT).show();
 
             }
@@ -298,6 +301,10 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         request.add(stringRequest);
 
     }
-
+    public void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contenedorFragment, fragment);
+        fragmentTransaction.commit();
+    }
 
 }

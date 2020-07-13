@@ -102,7 +102,7 @@ public class InicioSesionTienda extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(InicioSesionTienda.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(InicioSesionTienda.this,"Servidor no encontrado",Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

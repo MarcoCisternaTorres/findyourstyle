@@ -6,29 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/degradado"
     tools:context=".Activities.RegistrarseActivity">
-    <TextView
-        android:id="@+id/txtView_registrarse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:paddingLeft="160dp"
-        android:text="Registro"
-        android:textColor="@color/colorNegro"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/imgVolverAtrasRegistro"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/icon_flecha_atras" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -42,6 +20,15 @@
             android:layout_height="wrap_content">
 
 
+            <ImageView
+                android:id="@+id/imgVolverAtrasRegistro"
+                android:layout_width="21dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/icon_flecha_atras" />
 
             <EditText
                 android:id="@+id/etxApellidoUsuarioRegistro"
@@ -154,6 +141,20 @@
                 android:text="Registrarse"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+            <TextView
+                android:id="@+id/txtView_registrarse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+                android:text="Registro"
+                android:textColor="@color/colorNegro"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.384"
+                app:layout_constraintStart_toStartOf="@+id/imgVolverAtrasRegistro"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

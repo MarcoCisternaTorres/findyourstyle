@@ -11,6 +11,7 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,6 +42,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class RegistroTiendaActivity extends AppCompatActivity {
 
@@ -48,7 +50,8 @@ public class RegistroTiendaActivity extends AppCompatActivity {
     private EditText direccionTienda;
     private EditText correoTienda;
     private EditText contraseniaTienda;
-    private EditText getContraseniaTienda2;
+    private EditText contraseniaTienda2;
+    ImageView imgVolverAtras;
 
     private Button btnRegistrarTienda;
 
@@ -81,9 +84,10 @@ public class RegistroTiendaActivity extends AppCompatActivity {
         direccionTienda = findViewById(R.id.txtDireccionTienda);
         correoTienda = findViewById(R.id.etxtCorreoRegistroTienda);
         contraseniaTienda = findViewById(R.id.etxtContraseniaRegistroTienda);
-        getContraseniaTienda2 = findViewById(R.id.etxtContrasenia2RegistroTienda);
+        contraseniaTienda2 = findViewById(R.id.etxtContrasenia2RegistroTienda);
         imgAgregarPerfilTienda =findViewById(R.id.imgAgregarImagenPerfilTienda);
         imgPerfilTienda = findViewById(R.id.imgAgregarPerfilTienda);
+        imgVolverAtras = findViewById(R.id.imgVolverAtrasRegistroTienda);
 
         btnRegistrarTienda = findViewById(R.id.btnRegistrarTienda);
 
@@ -106,19 +110,31 @@ public class RegistroTiendaActivity extends AppCompatActivity {
         btnRegistrarTienda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!nombreTienda.getText().toString().isEmpty() && !direccionTienda.getText().toString().isEmpty() && !contraseniaTienda.getText().toString().isEmpty() && getContraseniaTienda2.getText().toString().isEmpty() && !correoTienda.getText().toString().isEmpty()) {
-                    if (contraseniaTienda.getText().toString().equals(contraseniaTienda.getText().toString())) {
-                        if (bitmap != null) {
-                            cargarWebService();
-                        }else {
-                            Toast.makeText(RegistroTiendaActivity.this, "Debe ingresar una imagen", Toast.LENGTH_SHORT).show();
+                if(!nombreTienda.getText().toString().isEmpty() && !direccionTienda.getText().toString().isEmpty() && !contraseniaTienda.getText().toString().isEmpty() && !contraseniaTienda2.getText().toString().isEmpty() && !correoTienda.getText().toString().isEmpty()) {
+
+                        if (contraseniaTienda.getText().toString().equals(contraseniaTienda.getText().toString())) {
+                            if (bitmap != null) {
+                                cargarWebService();
+                            } else {
+                                Toast.makeText(RegistroTiendaActivity.this, "Debe ingresar una imagen", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(RegistroTiendaActivity.this, "Las contraseñas no son igual", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(RegistroTiendaActivity.this, "Las contraseñas no son igual", Toast.LENGTH_SHORT).show();
-                    }
+
+                    
                 }else {
                     Toast.makeText(RegistroTiendaActivity.this, "Existen campos vacios", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        imgVolverAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegistroTiendaActivity.this, InicioSesionTienda.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -186,7 +202,7 @@ public class RegistroTiendaActivity extends AppCompatActivity {
                 direccionTienda.setText("");
                 correoTienda.setText("");
                 contraseniaTienda.setText("");
-                getContraseniaTienda2.setText("");
+                contraseniaTienda2.setText("");
 
             }
         }, new Response.ErrorListener() {
@@ -313,6 +329,11 @@ public class RegistroTiendaActivity extends AppCompatActivity {
 
 
         return imagenString;
+    }
+
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 
 }

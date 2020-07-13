@@ -9,36 +9,7 @@
 
  >
 
-    <TextView
-        android:id="@+id/txtView_registrarseTienda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_x="0dp"
-        android:layout_y="15dp"
-        android:paddingLeft="160dp"
-        android:text="Registro"
-        android:textColor="@color/logo_background"
-        android:textSize="30dp"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imgVolverAtrasRegistro"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_x="11dp"
-        android:layout_y="24dp"
-        android:background="@drawable/back"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/icon_flecha_atras" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,9 +19,21 @@
             android:layout_height="wrap_content">
 
 
+            <ImageView
+                android:id="@+id/imgVolverAtrasRegistroTienda"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_x="30dp"
+                android:layout_y="27dp"
+                android:background="@drawable/back"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/icon_flecha_atras" />
 
-
-    <EditText
+            <EditText
         android:id="@+id/etxtNombreTiendaRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -210,6 +193,23 @@
                 android:layout_x="99dp"
                 android:layout_y="931dp"
                 android:text="Terminos y condiciones de uso" />
+
+            <TextView
+                android:id="@+id/txtView_registrarseTienda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+
+                android:layout_x="138dp"
+                android:layout_y="20dp"
+                android:text="Registro"
+
+                android:textColor="@color/logo_background"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </AbsoluteLayout>
     </ScrollView>
 </AbsoluteLayout>

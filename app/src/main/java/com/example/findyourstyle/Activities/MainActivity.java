@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity  {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Servidor no encontrado",Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

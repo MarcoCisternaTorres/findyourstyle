@@ -189,7 +189,7 @@ public class PerfilTiendaFragment extends Fragment {
         }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "No se puede conectar "+error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Imagen no registrada", Toast.LENGTH_LONG).show();
             }
         });
         request.add(imageRequest);
