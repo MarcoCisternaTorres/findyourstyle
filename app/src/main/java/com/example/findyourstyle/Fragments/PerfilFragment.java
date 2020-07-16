@@ -45,6 +45,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Activities.HomeActivity;
 import com.example.findyourstyle.Activities.MainActivity;
 import com.example.findyourstyle.BuildConfig;
+import com.example.findyourstyle.FramentCrudUsuario.EditarApellidoUsuarioFragment;
+import com.example.findyourstyle.FramentCrudUsuario.EditarCiudadUsuarioFragment;
+import com.example.findyourstyle.FramentCrudUsuario.EditarNombreUsuarioFragment;
 import com.example.findyourstyle.R;
 
 import org.json.JSONArray;
@@ -133,7 +136,7 @@ public class PerfilFragment extends Fragment {
     private StringRequest stringRequest;
     String rutaImagen;
 
-    private Fragment perfilFragment, editarPerfilUsuario;
+    private Fragment perfilFragment, editarPerfilUsuario, editarNombre, editarApellido, editarCiudad;
 
 
     @Override
@@ -153,6 +156,9 @@ public class PerfilFragment extends Fragment {
 
         perfilFragment = new PerfilFragment();
         editarPerfilUsuario = new EditarPerfilUsuarioFragment();
+        editarNombre = new EditarNombreUsuarioFragment();
+        editarApellido = new EditarApellidoUsuarioFragment();
+        editarCiudad = new EditarCiudadUsuarioFragment();
 
         final Bundle bundleEditarUsuario = new Bundle();
         bundleEditarUsuario.putString("correoUsuario",correoUsuario);
@@ -165,6 +171,24 @@ public class PerfilFragment extends Fragment {
                 setFragment(editarPerfilUsuario);
             }
         });*/
+       txtNombreUsuario.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               setFragment(editarNombre);
+           }
+       });
+       txtApellidoUsuario.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               setFragment(editarApellido);
+           }
+       });
+       txtNombreCiudad.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               setFragment(editarCiudad);
+           }
+       });
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,6 +199,7 @@ public class PerfilFragment extends Fragment {
                 getActivity().finish();
             }
         });
+
 
         // Inflate the layout for this fragment
         return view;

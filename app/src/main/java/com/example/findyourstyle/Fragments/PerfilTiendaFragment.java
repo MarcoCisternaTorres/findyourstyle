@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Activities.InicioSesionTienda;
 import com.example.findyourstyle.Activities.MainActivity;
+import com.example.findyourstyle.FragmentCrudTienda.EditarCategoriaTiendaFragment;
+import com.example.findyourstyle.FragmentCrudTienda.EditarCiudadTiendaFragment;
+import com.example.findyourstyle.FragmentCrudTienda.EditarDireccionTiendaFragment;
+import com.example.findyourstyle.FragmentCrudTienda.EditarNombreTiendaFragment;
+import com.example.findyourstyle.FragmentCrudTienda.EditarNombreTiendaFragment;
 import com.example.findyourstyle.R;
 
 import org.json.JSONArray;
@@ -80,7 +86,6 @@ public class PerfilTiendaFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
         Bundle bundle = getArguments();
         correoTienda = bundle.getString("correoTienda", "No hay correo");
     }
@@ -91,18 +96,24 @@ public class PerfilTiendaFragment extends Fragment {
     private StringRequest stringRequest;
     String rutaImagen;
     Button cerrarSesion;
+    private Fragment editarNombreTienda, editarCategoria, editarCiudad, editarDireccion;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_perfil_tienda, container, false);
-        imgPerfilTienda = view.findViewById(R.id.imgPerfilFragmentPerfilTienda);
+        imgPerfilTienda = view.findViewById(R.id.imgPerfilTienda_fragmentPerfilTienda);
         nombreTienda = view.findViewById(R.id.txtNombre_Tienda_fragmentPerfilTienda);
         direccionTienda = view.findViewById(R.id.txtDireccionFragmentPerfilTienda);
         ciudadTienda = view.findViewById(R.id.CiudadTiendaPerfil);
         categoriaTienda = view.findViewById(R.id.CategoriaTiendaPerfil);
         cerrarSesion = view.findViewById(R.id.btnCerrarSesionTienda);
+
+        editarNombreTienda = new EditarNombreTiendaFragment();
+        editarCategoria = new EditarCategoriaTiendaFragment();
+        editarCiudad = new EditarCiudadTiendaFragment();
+        editarDireccion = new EditarDireccionTiendaFragment();
 
         request = Volley.newRequestQueue(getContext());
 
@@ -118,7 +129,52 @@ public class PerfilTiendaFragment extends Fragment {
                 getActivity().finish();
             }
         });
+
+        nombreTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(editarNombreTienda);
+            }
+        });
+        categoriaTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(editarCategoria);
+            }
+        });
+        ciudadTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(editarCiudad);
+            }
+        });
+        direccionTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(editarDireccion);
+            }
+        });
+
+        final Bundle bundleEditarNombre = new Bundle();
+        bundleEditarNombre.putString("correoTienda",correoTienda);
+        editarNombreTienda.setArguments(bundleEditarNombre);
+
+        final Bundle bundleEditarDireccion = new Bundle();
+        bundleEditarDireccion.putString("correoTienda",correoTienda);
+        editarDireccion.setArguments(bundleEditarDireccion);
+
+        final Bundle bundleEditarCategoria = new Bundle();
+        bundleEditarCategoria.putString("correoTienda",correoTienda);
+        editarCategoria.setArguments(bundleEditarCategoria);
+
+        final Bundle bundleEditarCiudad = new Bundle();
+        bundleEditarCiudad.putString("correoTienda",correoTienda);
+        editarCiudad.setArguments(bundleEditarCiudad);
+
         return view;
+
+
+
     }
 
     public  void conusultarPerfilTienda(){
@@ -193,5 +249,11 @@ public class PerfilTiendaFragment extends Fragment {
             }
         });
         request.add(imageRequest);
+    }
+
+    public void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contenedorFragmentTienda, fragment);
+        fragmentTransaction.commit();
     }
 }
