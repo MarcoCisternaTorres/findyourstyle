@@ -34,6 +34,7 @@ import com.example.findyourstyle.Activities.MainActivity;
 import com.example.findyourstyle.FragmentCrudTienda.EditarCategoriaTiendaFragment;
 import com.example.findyourstyle.FragmentCrudTienda.EditarCiudadTiendaFragment;
 import com.example.findyourstyle.FragmentCrudTienda.EditarDireccionTiendaFragment;
+import com.example.findyourstyle.FragmentCrudTienda.EditarImagenTiendaFragment;
 import com.example.findyourstyle.FragmentCrudTienda.EditarNombreTiendaFragment;
 import com.example.findyourstyle.FragmentCrudTienda.EditarNombreTiendaFragment;
 import com.example.findyourstyle.R;
@@ -105,7 +106,7 @@ public class PerfilTiendaFragment extends Fragment {
     Button cerrarSesion;
     private Bitmap bitmap;
     String imagenPerfil;
-    private Fragment editarNombreTienda, editarCategoria, editarCiudad, editarDireccion;
+    private Fragment editarNombreTienda, editarCategoria, editarCiudad, editarDireccion, editarImagen;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -124,6 +125,7 @@ public class PerfilTiendaFragment extends Fragment {
         editarCategoria = new EditarCategoriaTiendaFragment();
         editarCiudad = new EditarCiudadTiendaFragment();
         editarDireccion = new EditarDireccionTiendaFragment();
+        editarImagen = new EditarImagenTiendaFragment();
 
         request = Volley.newRequestQueue(getContext());
 
@@ -216,7 +218,6 @@ public class PerfilTiendaFragment extends Fragment {
                         ciudadTienda.setText(jsonArreglo.getJSONObject(i).optString("nombre_ciudad"));
                         categoriaTienda.setText(jsonArreglo.getJSONObject(i).optString("nombre_categoria"));
 
-
                         if(rutaImagen!=null){
                             cargarImagenServidor(rutaImagen);
                         }else{
@@ -252,7 +253,7 @@ public class PerfilTiendaFragment extends Fragment {
 
     private void cargarImagenServidor(String rutaImagen){
         String ip=getActivity().getString(R.string.ip);
-        String url = ip+ "/findyourstyleBDR/" + rutaImagen;
+        String url = ip+ "/findyourstyleBDR/consultaPerfilTienda/" + rutaImagen;
         url = url.replace(" ","%20");
 
         ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {

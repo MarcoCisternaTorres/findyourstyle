@@ -38,13 +38,20 @@
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imgPerfilFragmentPerfil"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="-190dp"
         android:src="@drawable/ic_launcher_background"
         app:civ_border_width="1dp"
         />
+    <ImageView
+        android:id="@+id/imgEditarImagenUsuario"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="250dp"
+        android:src="@mipmap/camara_amarilla_icon" />
 
     <TextView
 

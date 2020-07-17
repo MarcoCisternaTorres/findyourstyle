@@ -191,7 +191,7 @@ public class RegistroTiendaActivity extends AppCompatActivity {
         progreso.show();
         // Enviar datos al web service
         final String ip = getString(R.string.ip);
-        String url = ip + "/findyourstyleBDR/wsJSONRegistroTienda.php?";
+        String url = ip + "/findyourstyleBDR/consultaPerfilTienda/wsJSONRegistroTienda.php?";
 
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

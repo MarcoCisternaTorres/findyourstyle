@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentCrudTienda.EditarImagenTiendaFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/imgEditarPerfilTienda"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="-190dp"
+    android:src="@drawable/ic_launcher_background"
+    app:civ_border_width="1dp" />
+
+    <ImageView
+        android:id="@+id/imgEditarImagenPerfilTienda"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="240dp"
+        android:src="@mipmap/camara_amarilla_icon" />
+
+    <Button
+        android:id="@+id/btnEditarImagenTienda"
+        android:layout_width="250dp"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:background="@drawable/estilo_borde_edit_text"
+        android:text="Editar Imagen" />
+
+</FrameLayout>

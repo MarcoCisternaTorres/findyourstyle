@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -49,12 +50,15 @@ import com.example.findyourstyle.FramentCrudUsuario.EditarApellidoUsuarioFragmen
 import com.example.findyourstyle.FramentCrudUsuario.EditarCiudadUsuarioFragment;
 import com.example.findyourstyle.FramentCrudUsuario.EditarNombreUsuarioFragment;
 import com.example.findyourstyle.R;
+import com.loopj.android.http.Base64;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.nio.channels.InterruptedByTimeoutException;
 import java.util.HashMap;
 import java.util.Map;
@@ -129,13 +133,13 @@ public class PerfilFragment extends Fragment {
 
 
     }
-    private ImageView imgPerfil;
+    private ImageView imgPerfil, imgEditarImagen;
     private Button btnCerrar, btnEditarPerfil;
     TextView txtNombreUsuario, txtApellidoUsuario, txtNombreCiudad;
     RequestQueue request;
     private StringRequest stringRequest;
     String rutaImagen;
-
+    private Bitmap bitmap;
     private Fragment perfilFragment, editarPerfilUsuario, editarNombre, editarApellido, editarCiudad;
 
 
@@ -146,6 +150,7 @@ public class PerfilFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
         imgPerfil = view.findViewById(R.id.imgPerfilFragmentPerfil);
+        imgEditarImagen = view.findViewById(R.id.imgEditarImagenUsuario);
         txtNombreUsuario = view.findViewById(R.id.txtNombreFragmentPerfil);
         txtApellidoUsuario = view.findViewById(R.id.txtApellidoFragmentPerfil);
         txtNombreCiudad = view.findViewById(R.id.NombreCiudadUsuario);
@@ -215,6 +220,12 @@ public class PerfilFragment extends Fragment {
                 getActivity().finish();
             }
         });
+        imgEditarImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarImagen();
+            }
+        });
 
 
         // Inflate the layout for this fragment
@@ -276,7 +287,7 @@ public class PerfilFragment extends Fragment {
 
     private void cargarImagenServidor(String rutaImagen){
         String ip=getActivity().getString(R.string.ip);
-        String url = ip+ "/findyourstyleBDR/" + rutaImagen;
+        String url = ip+ "/findyourstyleBDR/consultaPerfilUsuario/" + rutaImagen;
         url = url.replace(" ","%20");
 
         ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
@@ -299,6 +310,93 @@ public class PerfilFragment extends Fragment {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.contenedorFragment, fragment);
         fragmentTransaction.commit();
+    }
+
+    private void cargarImagen() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent.createChooser(intent, "Seleccione una Apliacación"), 10);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 10) {
+            Uri path = data.getData();
+            imgPerfil.setImageURI(path);
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), path);
+                imgPerfil.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            bitmap=redimensionarImagen(bitmap,800,800);
+        }
+        editarImagen();
+    }
+
+    private Bitmap redimensionarImagen(Bitmap bitmap, float anchoNuevo, float altoNuevo) {
+
+        int ancho = bitmap.getWidth();
+        int alto = bitmap.getHeight();
+
+        if (ancho > anchoNuevo || alto > altoNuevo) {
+            float escalaAncho = anchoNuevo / ancho;
+            float escalaAlto = altoNuevo / alto;
+
+            Matrix matrix = new Matrix();
+            matrix.postScale(escalaAncho, escalaAlto);
+
+            return Bitmap.createBitmap(bitmap, 0, 0, ancho, alto, matrix, false);
+
+        } else {
+            return bitmap;
+        }
+
+    }
+
+    public  void editarImagen(){
+        // Enviar datos al web service
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaPerfilUsuario/editarImagenUsuario.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext(),"Imagen editada exitosamente", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"La imagen no se ha editado", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String correoU = correoUsuario;
+                String nombreU = txtNombreUsuario.getText().toString();
+                String imagenU = convertirImagenString(bitmap);
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_usuario", correoU);
+                parametros.put("nombre_usuario", nombreU);
+                parametros.put("imagen", imagenU);
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+    }
+
+    private String convertirImagenString(Bitmap bitmap){
+        ByteArrayOutputStream array = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
+        byte [] imageByte = array.toByteArray();
+        String imagenString = Base64.encodeToString(imageByte,Base64.DEFAULT);
+
+
+        return imagenString;
     }
 
 }
