@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -74,6 +75,7 @@ public class EditarDireccionTiendaFragment extends Fragment {
         correoTienda = bundle.getString("correoTienda", "No hay correo");
     }
     EditText direccionTienda;
+    Button  btnEditarDireccion;
     RequestQueue request;
     private StringRequest stringRequest;
     @Override
@@ -82,8 +84,16 @@ public class EditarDireccionTiendaFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_editar_direccion_tienda, container, false);
         direccionTienda = view.findViewById(R.id.etxtEditarCiudadTienda);
+        btnEditarDireccion = view.findViewById(R.id.btnEditarDirecionTienda);
         request = Volley.newRequestQueue(getContext());
         conusultarPerfilTienda();
+
+        btnEditarDireccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editarDireccionTienda();
+            }
+        });
         return  view;
     }
 
@@ -120,6 +130,41 @@ public class EditarDireccionTiendaFragment extends Fragment {
 
                 Map<String,String> parametros = new HashMap<>();
                 parametros.put("correo_tienda", correoT);
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+    }
+
+    public  void editarDireccionTienda(){
+        // Enviar datos al web service
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaPerfilTienda/editarDireccionTienda.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                direccionTienda.setText("");
+                Toast.makeText(getContext(),"Dirección editada exitosamente", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"La dirección no se ha editado", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String direccionT = direccionTienda.getText().toString();
+                String correoT = correoTienda;
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_tienda", correoT);
+                parametros.put("direccion_tienda", direccionT);
+
                 return parametros;
             }
         };

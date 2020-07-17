@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -76,15 +77,23 @@ public class EditarNombreTiendaFragment extends Fragment {
     EditText nombreTienda;
     RequestQueue request;
     private StringRequest stringRequest;
+    Button btnEditarNombre;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_editar_nombre_tienda, container, false);
         nombreTienda = view.findViewById(R.id.etxtEditarNombreTienda);
+        btnEditarNombre = view.findViewById(R.id.btnEditarNombreTienda);
         request = Volley.newRequestQueue(getContext());
 
         conusultarPerfilTienda();
+        btnEditarNombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editarNombreTienda();
+            }
+        });
 
         return view;
     }
@@ -122,6 +131,41 @@ public class EditarNombreTiendaFragment extends Fragment {
 
                 Map<String,String> parametros = new HashMap<>();
                 parametros.put("correo_tienda", correoT);
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+    }
+
+    public  void editarNombreTienda(){
+        // Enviar datos al web service
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaPerfilTienda/editarNombreTienda.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                nombreTienda.setText("");
+                Toast.makeText(getContext(),"Nombre editado exitosamente", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"El nombre no se ha editado", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String nombreT = nombreTienda.getText().toString();
+                String correoT = correoTienda;
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_tienda", correoT);
+                parametros.put("nombre_tienda", nombreT);
+
                 return parametros;
             }
         };

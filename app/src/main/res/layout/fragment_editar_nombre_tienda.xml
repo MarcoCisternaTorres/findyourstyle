@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentCrud.EditarNombreTiendaFragment">
+    tools:context=".FragmentCrudTienda.EditarNombreTiendaFragment">
 
     <ImageView
         android:layout_width="30dp"
@@ -29,6 +29,7 @@
       android:background="@drawable/estilo_borde_edit_text"/>
 
     <Button
+        android:id="@+id/btnEditarNombreTienda"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -81,6 +82,7 @@ public class EditarCiudadTiendaFragment extends Fragment {
     }
 
     Spinner spCiudadTienda;
+    Button btnEditarCiudad;
     RequestQueue request;
     private StringRequest stringRequest;
     private AsyncHttpClient asyncHttpClient;
@@ -91,10 +93,18 @@ public class EditarCiudadTiendaFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_editar_ciudad_tienda, container, false);
         spCiudadTienda = view.findViewById(R.id.spEditarCiudadTienda);
+        btnEditarCiudad = view.findViewById(R.id.btnEditarCiudad);
         request = Volley.newRequestQueue(getContext());
         asyncHttpClient = new AsyncHttpClient();
         conusultarPerfilTienda();
         llenarSpinnner();
+
+        btnEditarCiudad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editarCiudadTienda();
+            }
+        });
 
 
         return  view;
@@ -192,5 +202,38 @@ public class EditarCiudadTiendaFragment extends Fragment {
         //Devuelve un valor entero (si encontro una coincidencia devuelve la
         // posición 0 o N, de lo contrario devuelve 0 = posición inicial)
         return posicion;
+    }
+
+    public  void editarCiudadTienda(){
+        // Enviar datos al web service
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaPerfilTienda/editarCiudadTienda.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext(),"Ciudad editada exitosamente", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"La Ciudad no se ha editado", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String categoriaT = spCiudadTienda.getSelectedItem().toString();
+                String correoT = correoTienda;
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_tienda", correoT);
+                parametros.put("nombre_ciudad", categoriaT);
+
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
     }
 }

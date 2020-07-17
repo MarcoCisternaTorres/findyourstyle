@@ -16,6 +16,7 @@
         android:layout_y="17dp"
         android:background="@drawable/logofysstore" />
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +46,13 @@
         android:layout_y="88dp"
         android:src="@drawable/ic_launcher_background"
         app:civ_border_width="1dp" />
+    <ImageView
+        android:id="@+id/imgEditarImagenTienda"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_x="221dp"
+        android:layout_y="229dp"
+        android:src="@mipmap/camara_amarilla_icon" />
 
     <TextView
         android:id="@+id/txtNombre_Tienda_fragmentPerfilTienda"

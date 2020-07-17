@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -80,6 +81,7 @@ public class EditarCategoriaTiendaFragment extends Fragment {
         correoTienda = bundle.getString("correoTienda", "No hay correo");
     }
     Spinner spCategoriaTienda;
+    Button btnEditarCategoria;
     RequestQueue request;
     private StringRequest stringRequest;
     private AsyncHttpClient asyncHttpClient;
@@ -89,10 +91,18 @@ public class EditarCategoriaTiendaFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_editar_categoria_tienda, container, false);
         spCategoriaTienda = view.findViewById(R.id.spEditarCategoriaTienda);
+        btnEditarCategoria = view.findViewById(R.id.btnEditarCategoriaTienda);
         request = Volley.newRequestQueue(getContext());
         asyncHttpClient = new AsyncHttpClient();
         conusultarPerfilTienda();
         llenarSpinnner();
+
+        btnEditarCategoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editarCategoriaTienda();
+            }
+        });
 
         return  view;
     }
@@ -189,5 +199,38 @@ public class EditarCategoriaTiendaFragment extends Fragment {
         //Devuelve un valor entero (si encontro una coincidencia devuelve la
         // posición 0 o N, de lo contrario devuelve 0 = posición inicial)
         return posicion;
+    }
+
+    public  void editarCategoriaTienda(){
+        // Enviar datos al web service
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaPerfilTienda/editarCategoriaTienda.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext(),"Categoria editada exitosamente", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"La categoria no se ha editado", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String categoriaT = spCategoriaTienda.getSelectedItem().toString();
+                String correoT = correoTienda;
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_tienda", correoT);
+                parametros.put("nombre_categoria", categoriaT);
+
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
     }
 }

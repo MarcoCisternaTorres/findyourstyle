@@ -232,13 +232,6 @@ public class EditarPerfilUsuarioFragment extends Fragment {
                     imagenPerfil = null;
                 }
 
-
-
-
-
-
-
-
                 Map<String,String> parametros = new HashMap<>();
                 parametros.put("correo_usuario", correoU);
                 parametros.put("nombre_usuario", nombreU);

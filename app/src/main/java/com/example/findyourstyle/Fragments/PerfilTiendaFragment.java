@@ -4,11 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,11 +37,14 @@ import com.example.findyourstyle.FragmentCrudTienda.EditarDireccionTiendaFragmen
 import com.example.findyourstyle.FragmentCrudTienda.EditarNombreTiendaFragment;
 import com.example.findyourstyle.FragmentCrudTienda.EditarNombreTiendaFragment;
 import com.example.findyourstyle.R;
+import com.loopj.android.http.Base64;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,12 +97,14 @@ public class PerfilTiendaFragment extends Fragment {
         correoTienda = bundle.getString("correoTienda", "No hay correo");
     }
 
-    ImageView imgPerfilTienda;
+    ImageView imgPerfilTienda, imgEditarImagen;
     TextView nombreTienda, direccionTienda, ciudadTienda, categoriaTienda;
     RequestQueue request;
     private StringRequest stringRequest;
     String rutaImagen;
     Button cerrarSesion;
+    private Bitmap bitmap;
+    String imagenPerfil;
     private Fragment editarNombreTienda, editarCategoria, editarCiudad, editarDireccion;
 
     @Override
@@ -104,6 +113,7 @@ public class PerfilTiendaFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_perfil_tienda, container, false);
         imgPerfilTienda = view.findViewById(R.id.imgPerfilTienda_fragmentPerfilTienda);
+        imgEditarImagen = view.findViewById(R.id.imgEditarImagenTienda);
         nombreTienda = view.findViewById(R.id.txtNombre_Tienda_fragmentPerfilTienda);
         direccionTienda = view.findViewById(R.id.txtDireccionFragmentPerfilTienda);
         ciudadTienda = view.findViewById(R.id.CiudadTiendaPerfil);
@@ -118,6 +128,14 @@ public class PerfilTiendaFragment extends Fragment {
         request = Volley.newRequestQueue(getContext());
 
         conusultarPerfilTienda();
+
+        imgEditarImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarImagen();
+
+            }
+        });
 
         cerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,5 +273,93 @@ public class PerfilTiendaFragment extends Fragment {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.contenedorFragmentTienda, fragment);
         fragmentTransaction.commit();
+    }
+
+
+    private void cargarImagen() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent.createChooser(intent, "Seleccione una Apliacación"), 10);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 10) {
+            Uri path = data.getData();
+            imgPerfilTienda.setImageURI(path);
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), path);
+                imgPerfilTienda.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            bitmap=redimensionarImagen(bitmap,800,800);
+        }
+        editarImagen();
+    }
+
+    private Bitmap redimensionarImagen(Bitmap bitmap, float anchoNuevo, float altoNuevo) {
+
+        int ancho = bitmap.getWidth();
+        int alto = bitmap.getHeight();
+
+        if (ancho > anchoNuevo || alto > altoNuevo) {
+            float escalaAncho = anchoNuevo / ancho;
+            float escalaAlto = altoNuevo / alto;
+
+            Matrix matrix = new Matrix();
+            matrix.postScale(escalaAncho, escalaAlto);
+
+            return Bitmap.createBitmap(bitmap, 0, 0, ancho, alto, matrix, false);
+
+        } else {
+            return bitmap;
+        }
+
+    }
+
+    public  void editarImagen(){
+        // Enviar datos al web service
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaPerfilTienda/editarImagenTienda.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext(),"Imagen editada exitosamente", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"La imagen no se ha editado", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String correoT = correoTienda;
+                String nombreT = nombreTienda.getText().toString();
+                String imagenT = convertirImagenString(bitmap);
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_tienda", correoT);
+                parametros.put("nombre_tienda", nombreT);
+                parametros.put("imagen", imagenT);
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+    }
+
+    private String convertirImagenString(Bitmap bitmap){
+        ByteArrayOutputStream array = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
+        byte [] imageByte = array.toByteArray();
+        String imagenString = Base64.encodeToString(imageByte,Base64.DEFAULT);
+
+
+        return imagenString;
     }
 }

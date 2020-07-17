@@ -163,7 +163,23 @@ public class PerfilFragment extends Fragment {
         final Bundle bundleEditarUsuario = new Bundle();
         bundleEditarUsuario.putString("correoUsuario",correoUsuario);
         editarPerfilUsuario.setArguments(bundleEditarUsuario);
+
+
+        final Bundle bundleEditarNombre = new Bundle();
+        bundleEditarNombre.putString("correoUsuario",correoUsuario);
+        editarNombre.setArguments(bundleEditarNombre);
+
+
+        final Bundle bundleEditarApellido = new Bundle();
+        bundleEditarApellido.putString("correoUsuario",correoUsuario);
+        editarApellido.setArguments(bundleEditarApellido);
+
+        final Bundle bundleEditarCiudad = new Bundle();
+        bundleEditarCiudad.putString("correoUsuario",correoUsuario);
+        editarCiudad.setArguments(bundleEditarCiudad);
+
         conusultarPerfilUsuario();
+
 
        /* btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
