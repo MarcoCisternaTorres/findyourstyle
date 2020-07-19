@@ -32,7 +32,13 @@
     android:layout_marginTop="110dp"
     android:layout_marginLeft="20dp"
     android:src="@drawable/ic_launcher_background"/>
-
+    <ImageView
+        android:id="@+id/imgEditarImagenProducto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginLeft="120dp"
+        android:src="@mipmap/camara_amarilla_icon" />
     <TextView
         android:id="@+id/txtNombreProductoDetalle"
         android:layout_width="wrap_content"
@@ -46,7 +52,7 @@
         android:id="@+id/txtSignoPesoTienda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="150dp"
         android:layout_marginLeft="200dp"
         android:text="$"
         android:textSize="17dp"/>
@@ -55,10 +61,21 @@
         android:id="@+id/txtPrecioDetalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="150dp"
         android:layout_marginLeft="220dp"
         android:text="Precio"
         android:textSize="17dp"/>
+
+    <TextView
+        android:id="@+id/txtCategoriaDetalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="185dp"
+        android:layout_marginLeft="200dp"
+        android:text="Categoria"
+        android:textSize="17dp"/>
+
+
 
     <ImageView
         android:id="@+id/imgAgregarHoraDetalle"
@@ -66,7 +83,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="-155dp"
+        android:layout_marginTop="-100dp"
         android:src="@drawable/time" />
 
     <!--<ImageView

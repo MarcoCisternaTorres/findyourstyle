@@ -1,14 +1,19 @@
 package com.example.findyourstyle.Fragments;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +32,21 @@ import com.android.volley.toolbox.Volley;
 import com.example.findyourstyle.Adampters.AdapterAgendaUsuario;
 import com.example.findyourstyle.Adampters.AdapterHorasDetalle;
 import com.example.findyourstyle.Adampters.AdapterProductosTienda;
+import com.example.findyourstyle.FragmentsCrudProducto.EditarCategoriaFragment;
+import com.example.findyourstyle.FragmentsCrudProducto.EditarNombreProductoFragment;
+import com.example.findyourstyle.FragmentsCrudProducto.EditarPrecioFragment;
 import com.example.findyourstyle.Modelo.HorasTiendaDetalle;
 import com.example.findyourstyle.Modelo.HorasUsuario;
 import com.example.findyourstyle.Modelo.ProductoTienda;
 import com.example.findyourstyle.R;
+import com.loopj.android.http.Base64;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -90,14 +101,15 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
     }
 
 
-    private TextView nombreProducto, nombreTienda, direccion, precio;
-    private ImageView imgDetalle, imgHora, imgEditar, imgVolverAtras;
-    Fragment horas, editar;
+    private TextView nombreProducto, nombreTienda, direccion, precio, categoriaProducto;
+    private ImageView imgDetalle, imgHora, imgEditar, imgVolverAtras, imgEditarImagenProducto;
+    Fragment horas, editar, editarNombreProducto, editarPecio, editarCategoria;
     RequestQueue request;
     private StringRequest stringRequest;
     RecyclerView recyclerHorasProductos;
     ArrayList<HorasTiendaDetalle> listaHorasDetalle;
     ProductoTiendaFragment productoTiendaFragment;
+    private Bitmap bitmap;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -112,28 +124,29 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
 
         nombreProducto = view.findViewById(R.id.txtNombreProductoDetalle);
         precio = view.findViewById(R.id.txtPrecioDetalle);
+        categoriaProducto = view.findViewById(R.id.txtCategoriaDetalle);
         imgDetalle = view.findViewById(R.id.imgDetalle);
+        imgEditarImagenProducto = view.findViewById(R.id.imgEditarImagenProducto);
         imgHora = view.findViewById(R.id.imgAgregarHoraDetalle);
         //imgEditar = view.findViewById(R.id.imgEditarproducto);
         imgEditar = view.findViewById(R.id.iconVolverAtrasDetalle);
         request = Volley.newRequestQueue(getContext());
+
         horas = new Horas();
         editar = new EditarYEliminarProductos();
+        editarNombreProducto = new EditarNombreProductoFragment();
+        editarPecio = new  EditarPrecioFragment();
+        editarCategoria = new EditarCategoriaFragment();
 
         final Bundle bundle = new Bundle();
         bundle.putString("correoTienda",correoTienda);
         horas.setArguments(bundle);
+
         consultarHoraAtencionProductos();
 
-
-        imgHora.setOnClickListener(this);
-//        imgEditar.setOnClickListener(this);
-        imgEditar.setOnClickListener(this);
-        
         final Bundle bundleProducatodTienda = new Bundle();
         bundleProducatodTienda.putString("correoTienda",correoTienda);
         productoTiendaFragment.setArguments(bundleProducatodTienda);
-
 
         Bundle productos = new Bundle(getArguments());
         ProductoTienda productosTienda = null;
@@ -141,6 +154,7 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
             productosTienda = (ProductoTienda) productos.getSerializable("objeto");
             nombreProducto.setText(productosTienda.getNombreProducto());
             precio.setText(productosTienda.getPrecio());
+
 
             if(productosTienda.getRutaImagen()!=null){
                 cargarImagenServidor(productosTienda.getRutaImagen());
@@ -154,13 +168,33 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
             horas.setArguments(bundleNombreHoras);
 
             final Bundle bundleEditarProducto= new Bundle();
-        bundleEditarProducto.putString("nombreProducto",productosTienda.getNombreProducto());
-        bundleEditarProducto.putString("correoTienda",correoTienda);
-        editar.setArguments(bundleEditarProducto);
+            bundleEditarProducto.putString("nombreProducto",productosTienda.getNombreProducto());
+            bundleEditarProducto.putString("correoTienda",correoTienda);
+            editar.setArguments(bundleEditarProducto);
+        }
+        conusultarCategoriaProducto();
+        final Bundle bundleEditarNombreP = new Bundle();
+        bundleEditarNombreP.putString("correoTienda",correoTienda);
+        bundleEditarNombreP.putString("nombreProducto",nombreProducto.getText().toString());
+        editarNombreProducto.setArguments(bundleEditarNombreP);
 
 
-    }
+        final Bundle bundleEditarPercioP = new Bundle();
+        bundleEditarPercioP.putString("correoTienda",correoTienda);
+        bundleEditarPercioP.putString("nombreProducto",nombreProducto.getText().toString());
+        bundleEditarPercioP.putString("precioProducto",precio.getText().toString());
+        editarPecio.setArguments(bundleEditarPercioP);
 
+
+
+
+        imgHora.setOnClickListener(this);
+//        imgEditar.setOnClickListener(this);
+        imgEditar.setOnClickListener(this);
+        nombreProducto.setOnClickListener(this);
+        precio.setOnClickListener(this);
+        categoriaProducto.setOnClickListener(this);
+        imgEditarImagenProducto.setOnClickListener(this);
 
         return view;
     }
@@ -193,6 +227,18 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         }*/
         if(v == imgEditar){
             setFragment(productoTiendaFragment);
+        }
+        if(v == nombreProducto){
+            setFragment(editarNombreProducto);
+        }
+        if (v == precio){
+            setFragment(editarPecio);
+        }
+        if (v == categoriaProducto){
+            setFragment(editarCategoria);
+        }
+        if (v == imgEditarImagenProducto){
+            cargarImagen();
         }
     }
 
@@ -244,6 +290,139 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         request.add(stringRequest);
 
     }
+    public  void conusultarCategoriaProducto(){
+
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaProductoTienda/consultarCategoriaDetalle.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObj = new JSONObject(response);
+                    JSONArray jsonArreglo = jsonObj.optJSONArray("categoria_servicio");
+                    for (int i = 0; i < jsonArreglo.length(); i++) {
+                        categoriaProducto.setText(jsonArreglo.getJSONObject(i).optString("nombre_servicio"));
+                    }
+
+                    final Bundle bundleEditarCategoria = new Bundle();
+                    bundleEditarCategoria.putString("correoTienda",correoTienda);
+                    bundleEditarCategoria.putString("nombreProducto",nombreProducto.getText().toString());
+                    bundleEditarCategoria.putString("categoriaProducto",categoriaProducto.getText().toString());
+                    editarCategoria.setArguments(bundleEditarCategoria);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"No ha conectado", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String correoT = correoTienda;
+                String nombreP = nombreProducto.getText().toString();
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_tienda", correoT);
+                parametros.put("nombre_producto", nombreP);
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+    }
+    private void cargarImagen() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent.createChooser(intent, "Seleccione una Apliacación"), 10);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 10) {
+            Uri path = data.getData();
+            imgDetalle.setImageURI(path);
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), path);
+                imgDetalle.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            bitmap=redimensionarImagen(bitmap,800,800);
+        }
+        editarImagen();
+    }
+
+    private Bitmap redimensionarImagen(Bitmap bitmap, float anchoNuevo, float altoNuevo) {
+
+        int ancho = bitmap.getWidth();
+        int alto = bitmap.getHeight();
+
+        if (ancho > anchoNuevo || alto > altoNuevo) {
+            float escalaAncho = anchoNuevo / ancho;
+            float escalaAlto = altoNuevo / alto;
+
+            Matrix matrix = new Matrix();
+            matrix.postScale(escalaAncho, escalaAlto);
+
+            return Bitmap.createBitmap(bitmap, 0, 0, ancho, alto, matrix, false);
+
+        } else {
+            return bitmap;
+        }
+
+    }
+
+    public  void editarImagen(){
+        // Enviar datos al web service
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/editarImagenProduto.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext(),"Imagen editada exitosamente", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"La imagen no se ha editado", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String correoT = correoTienda;
+                String nombreP = nombreProducto.getText().toString();
+                String imagenT = convertirImagenString(bitmap);
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_tienda", correoT);
+                parametros.put("nombre_producto", nombreP);
+                parametros.put("imagen", imagenT);
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+    }
+
+    private String convertirImagenString(Bitmap bitmap){
+        ByteArrayOutputStream array = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
+        byte [] imageByte = array.toByteArray();
+        String imagenString = Base64.encodeToString(imageByte,Base64.DEFAULT);
+
+
+        return imagenString;
+    }
+
 
     public void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
