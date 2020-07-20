@@ -16,26 +16,41 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:src="@mipmap/icon_flecha_atras"/>-->
-
-    <ImageView
-        android:id="@+id/notificacion_fragmentBuscar"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/logo_findyourstyle" />
-
-
     <TextView
         android:id="@+id/text_buscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="-340dp"
+        android:layout_marginTop="-360dp"
 
         android:text="Productos"
         android:textColor="@color/colorNegro"
         android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/etxtBuscarProducto"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="50dp"
+        android:hint="Buscar por nombre"
+        android:background="@drawable/estilo_borde_edit_text"/>
+    <ImageView
+        android:id="@+id/imgBuscar"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/icono_buscar"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="320dp"/>
+
+    <ImageView
+        android:id="@+id/imgBorrarCampoBuscar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/close"
+        android:layout_marginTop="85dp"
+        android:layout_marginLeft="250dp"/>
+
 
 
 
@@ -44,8 +59,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_buscar"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginTop="140dp" />
+        android:layout_height="580dp"
+        android:layout_marginTop="160dp" />
 
 
 </FrameLayout>

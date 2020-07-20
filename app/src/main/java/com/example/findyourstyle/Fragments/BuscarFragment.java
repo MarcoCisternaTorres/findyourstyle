@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -30,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -43,7 +45,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,19 +66,22 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
 
     RecyclerView recyclerViewBuscar;
     ArrayList<ModeloBuscar> listaProductos;
+    ArrayList<ModeloBuscar> buscarProductosLista;
+    ArrayList<ModeloBuscar> setProductosLista;
 
     ProgressDialog progress;
 
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
 
-
-    ImageView btnAtras;
+    EditText etxtBuscar;
+    ImageView btnAtras, imgBuscar, imgBorrarCampos;
 
 
     //comunicacion de fragments
     Activity actividad;
     IComunicaFragment iComunicaFragment;
+    private StringRequest stringRequest;
 
 
     public BuscarFragment() {
@@ -88,15 +95,162 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
         recyclerViewBuscar.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerViewBuscar.setHasFixedSize(true);
         recyclerViewBuscar.setLayoutManager(new GridLayoutManager(getContext(), 1));
-
+        etxtBuscar = view.findViewById(R.id.etxtBuscarProducto);
+        imgBuscar = view.findViewById(R.id.imgBuscar);
+        imgBorrarCampos = view.findViewById(R.id.imgBorrarCampoBuscar);
         listaProductos = new ArrayList<>();
+        buscarProductosLista = new ArrayList<>();
+        setProductosLista = new ArrayList<>();
         request = Volley.newRequestQueue(getContext());
+
        // btnAtras = view.findViewById(R.id.fechaAtras_fragmentBuscar);
 
         cargarWebService();
+        imgBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!etxtBuscar.getText().toString().isEmpty()){
+                    buscarProducto();
+                }else{
+                    Toast.makeText(getContext(), "Debe ingresar un nombre", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        });
+
+        imgBorrarCampos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setPrdoctos();
+                etxtBuscar.setText("");
+            }
+        });
 
         return view;
+    }
+
+    private void buscarProducto() {
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/buscarProductoNombre.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                ModeloBuscar modeloBuscar = null;
+
+                try{
+                    JSONObject jsonObj = new JSONObject(response);
+                    JSONArray jsonArray =  jsonObj.optJSONArray("producto");
+                    for(int i = 0; i < jsonArray.length();i++){
+                        modeloBuscar = new ModeloBuscar();
+                        JSONObject jsonObject = null;
+                        jsonObject = jsonArray.getJSONObject(i);
+
+                        modeloBuscar.setNombreProducto(jsonObject.optString("nombre_producto"));
+                        modeloBuscar.setTienda(jsonObject.optString("nombre_tienda"));
+                        modeloBuscar.setPrecio(jsonObject.optString("precio"));
+                        modeloBuscar.setRutaImagen(jsonObject.optString("ruta_imagen"));
+                        modeloBuscar.setDireccion(jsonObject.optString("direccion_tienda"));
+                        listaProductos.add(modeloBuscar);
+                    }
+
+
+                    AdapterBuscar adapterBuscar = new AdapterBuscar(listaProductos,actividad);
+                    recyclerViewBuscar.setAdapter(adapterBuscar);
+                    adapterBuscar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            iComunicaFragment.enviarProducto(listaProductos.get(recyclerViewBuscar.getChildAdapterPosition(v)));
+                        }
+                    });
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    Toast.makeText(getContext(),"Producto no encontrado", Toast.LENGTH_LONG).show();
+                    progress.hide();
+
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"Producto no se ha registrado", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String nombreP = etxtBuscar.getText().toString();
+
+
+
+
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("nombre_producto", nombreP);
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
+
+
+    }
+
+    private void setPrdoctos() {
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaListaProductos.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                ModeloBuscar modeloBuscar = null;
+
+                try{
+                    JSONObject jsonObj = new JSONObject(response);
+                    JSONArray jsonArray =  jsonObj.optJSONArray("producto");
+                    for(int i = 0; i < jsonArray.length();i++){
+                        modeloBuscar = new ModeloBuscar();
+                        JSONObject jsonObject = null;
+                        jsonObject = jsonArray.getJSONObject(i);
+
+                        modeloBuscar.setNombreProducto(jsonObject.optString("nombre_producto"));
+                        modeloBuscar.setTienda(jsonObject.optString("nombre_tienda"));
+                        modeloBuscar.setPrecio(jsonObject.optString("precio"));
+                        modeloBuscar.setRutaImagen(jsonObject.optString("ruta_imagen"));
+                        modeloBuscar.setDireccion(jsonObject.optString("direccion_tienda"));
+                        setProductosLista.add(modeloBuscar);
+                    }
+
+
+                    AdapterBuscar adapterBuscar = new AdapterBuscar(setProductosLista,actividad);
+                    recyclerViewBuscar.setAdapter(adapterBuscar);
+                    adapterBuscar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            iComunicaFragment.enviarProducto(setProductosLista.get(recyclerViewBuscar.getChildAdapterPosition(v)));
+                        }
+                    });
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    Toast.makeText(getContext(),"no se ha podido conectar con el servidor"+""+response, Toast.LENGTH_LONG).show();
+                    progress.hide();
+
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"Producto no se ha registrado", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        request.add(stringRequest);
+
+
     }
 
     private void cargarWebService() {
@@ -133,11 +287,11 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
                 modeloBuscar.setPrecio(jsonObject.optString("precio"));
                 modeloBuscar.setRutaImagen(jsonObject.optString("ruta_imagen"));
                 modeloBuscar.setDireccion(jsonObject.optString("direccion_tienda"));
-                listaProductos.add(modeloBuscar);
+                buscarProductosLista.add(modeloBuscar);
             }
             progress.hide();
 
-            AdapterListaProducto adapterListaProducto = new AdapterListaProducto(listaProductos,actividad);
+            AdapterListaProducto adapterListaProducto = new AdapterListaProducto(buscarProductosLista,actividad);
             recyclerViewBuscar.setAdapter(adapterListaProducto);
             adapterListaProducto.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -167,7 +321,5 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
     public void onDetach() {
         super.onDetach();
     }
-
-
 
 }
