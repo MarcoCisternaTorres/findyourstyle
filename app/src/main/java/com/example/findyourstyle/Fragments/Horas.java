@@ -96,7 +96,7 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
     DetalleFragment detalleFragment;
 
 
-    private int dia,mes,ano,hora,minutos;
+    private int dia,mes,ano,hora,minutos, mesAntencion;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -140,8 +140,9 @@ public class Horas extends Fragment  implements  View.OnClickListener , Response
             DatePickerDialog datePickerDialog=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    txtFecha_carAgregarFecha.setText(dayOfMonth+"/"+(monthOfYear)+"/"+year);
-                    diaAtencion = dayOfMonth+"/"+monthOfYear+"/"+year;
+                    txtFecha_carAgregarFecha.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
+                    mesAntencion = monthOfYear +1;
+                    diaAtencion = dayOfMonth+"/"+mesAntencion+"/"+year;
                 }
             },dia,mes,ano);
             datePickerDialog.show();

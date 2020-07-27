@@ -95,14 +95,15 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            correoTienda = bundle.getString("correoTienda", "No hay correo");
         }
-        correoTienda = bundle.getString("correoTienda", "No hay correo");
+
 
     }
 
 
     private TextView nombreProducto, nombreTienda, direccion, precio, categoriaProducto;
-    private ImageView imgDetalle, imgHora, imgEditar, imgVolverAtras, imgEditarImagenProducto;
+    private ImageView imgDetalle, imgHora, imgEditar, imgVolverAtras, imgEditarImagenProducto, imgEliminarProducto;
     Fragment horas, editar, editarNombreProducto, editarPecio, editarCategoria;
     RequestQueue request;
     private StringRequest stringRequest;
@@ -130,6 +131,8 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         imgHora = view.findViewById(R.id.imgAgregarHoraDetalle);
         //imgEditar = view.findViewById(R.id.imgEditarproducto);
         imgEditar = view.findViewById(R.id.iconVolverAtrasDetalle);
+        imgEliminarProducto = view.findViewById(R.id.imgEliminarProducto);
+
         request = Volley.newRequestQueue(getContext());
 
         horas = new Horas();
@@ -176,6 +179,7 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         final Bundle bundleEditarNombreP = new Bundle();
         bundleEditarNombreP.putString("correoTienda",correoTienda);
         bundleEditarNombreP.putString("nombreProducto",nombreProducto.getText().toString());
+        bundleEditarNombreP.putString("precioProducto",precio.getText().toString());
         editarNombreProducto.setArguments(bundleEditarNombreP);
 
 
@@ -195,6 +199,7 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         precio.setOnClickListener(this);
         categoriaProducto.setOnClickListener(this);
         imgEditarImagenProducto.setOnClickListener(this);
+        imgEliminarProducto.setOnClickListener(this);
 
         return view;
     }
@@ -240,6 +245,9 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         if (v == imgEditarImagenProducto){
             cargarImagen();
         }
+        if(v == imgEliminarProducto){
+            eliminarProducto();
+        }
     }
 
     public  void consultarHoraAtencionProductos(){
@@ -247,48 +255,47 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
         final String ip = getString(R.string.ip);
         String url = ip + "/findyourstyleBDR/consultarHorasPorProductos.php?";
 
-        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                HorasTiendaDetalle horasTiendaDetalle = null;
-                try {
-                    JSONObject jsonObj = new JSONObject(response);
-                    JSONArray jsonArreglo = jsonObj.optJSONArray("hora_atencion");
-                    for (int i = 0; i < jsonArreglo.length(); i++) {
-                        horasTiendaDetalle = new HorasTiendaDetalle();
-                        horasTiendaDetalle.setFecha_atencion(jsonArreglo.getJSONObject(i).optString("dia_atencion"));
-                        horasTiendaDetalle.setHora_atencion(jsonArreglo.getJSONObject(i).optString("hora_atencion"));
-                        listaHorasDetalle.add(horasTiendaDetalle);
+            stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                        try {
+                            HorasTiendaDetalle horasTiendaDetalle = null;
+                            JSONObject jsonObj = new JSONObject(response);
+                            JSONArray jsonArreglo = jsonObj.optJSONArray("hora_atencion");
+                            for (int i = 0; i < jsonArreglo.length(); i++) {
+                                horasTiendaDetalle = new HorasTiendaDetalle();
+                                horasTiendaDetalle.setFecha_atencion(jsonArreglo.getJSONObject(i).optString("dia_atencion"));
+                                horasTiendaDetalle.setHora_atencion(jsonArreglo.getJSONObject(i).optString("hora_atencion"));
+                                listaHorasDetalle.add(horasTiendaDetalle);
+                            }
+                            AdapterHorasDetalle adapterHorasDetalle = new AdapterHorasDetalle(listaHorasDetalle, getContext());
+                            recyclerHorasProductos.setAdapter(adapterHorasDetalle);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    AdapterHorasDetalle adapterHorasDetalle = new AdapterHorasDetalle(listaHorasDetalle,getContext());
-                    recyclerHorasProductos.setAdapter(adapterHorasDetalle);
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getContext(), "No ha registrado ninguna hora de atención", Toast.LENGTH_SHORT).show();
 
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    String correoT = correoTienda;
+                    String nombreP = nombreProducto.getText().toString();
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(),"No ha registrado ninguna hora de atención", Toast.LENGTH_SHORT).show();
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                String correoT = correoTienda;
-                String nombreP = nombreProducto.getText().toString();
-
-                Map<String,String> parametros = new HashMap<>();
-                parametros.put("correo_tienda", correoT);
-                parametros.put("nombre_producto", nombreP);
-                return parametros;
-            }
-        };
-        request.add(stringRequest);
-
+                    Map<String, String> parametros = new HashMap<>();
+                    parametros.put("correo_tienda", correoT);
+                    parametros.put("nombre_producto", nombreP);
+                    return parametros;
+                }
+            };
+            request.add(stringRequest);
     }
     public  void conusultarCategoriaProducto(){
 
@@ -308,7 +315,7 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
 
                     final Bundle bundleEditarCategoria = new Bundle();
                     bundleEditarCategoria.putString("correoTienda",correoTienda);
-                    bundleEditarCategoria.putString("nombreProducto",nombreProducto.getText().toString());
+                    bundleEditarCategoria.putString("nombrProducto",nombreProducto.getText().toString());
                     bundleEditarCategoria.putString("categoriaProducto",categoriaProducto.getText().toString());
                     editarCategoria.setArguments(bundleEditarCategoria);
                 } catch (JSONException e) {
@@ -421,6 +428,41 @@ public class DetalleFragment extends Fragment implements  View.OnClickListener{
 
 
         return imagenString;
+    }
+
+    public  void eliminarProducto(){
+        // Enviar datos al web service
+        final String ip = getString(R.string.ip);
+        String url = ip + "/findyourstyleBDR/consultaProductoTienda/eliminarProducto.php?";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                            Toast.makeText(getContext(), "Producto eliminado exitosamente", Toast.LENGTH_SHORT).show();
+                            setFragment(productoTiendaFragment);
+
+                }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"Producto no se ha eliminado", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String correo = correoTienda;
+                String nombreP = nombreProducto.getText().toString();
+                Map<String,String> parametros = new HashMap<>();
+                parametros.put("correo_tienda", correo);
+                parametros.put("nombre_producto", nombreP);
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
     }
 
 

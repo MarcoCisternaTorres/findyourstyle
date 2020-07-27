@@ -161,15 +161,6 @@ public class AgendarHoraFragment extends Fragment implements Response.ErrorListe
         cargarHorasDisponibles();
 
         //Icono para volver atras
-        btnAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.contenedorFragment, buscarFragment);
-                transaction.commit();
-            }
-        });
 
         return view;
     }

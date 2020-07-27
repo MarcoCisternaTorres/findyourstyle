@@ -1,8 +1,12 @@
 package com.example.findyourstyle.FragmentsCrudProducto;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import cz.msebera.android.httpclient.Header;
 
 import android.view.LayoutInflater;
@@ -20,6 +24,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.findyourstyle.Fragments.DetalleFragment;
+import com.example.findyourstyle.Interfaces.IDetalleFragment;
 import com.example.findyourstyle.Modelo.CategoriaServicio;
 import com.example.findyourstyle.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -68,7 +74,7 @@ public class EditarCategoriaFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    String correoTienda, nombreProducto, categoriaProducto;
+    String correoTienda, nombreProducto, categoriaProducto, precio;
     RequestQueue request;
     private StringRequest stringRequest;
     Button btnEditarCategoria;
@@ -83,10 +89,14 @@ public class EditarCategoriaFragment extends Fragment {
 
         correoTienda = bundle.getString("correoTienda", "No hay correo");
         nombreProducto = bundle.getString("nombreProducto", "No hay nombre");
+        precio = bundle.getString("precioProducto", "No hay precio");
         categoriaProducto = bundle.getString("categoriaProducto", "No hay categoria");
     }
     private AsyncHttpClient asyncHttpClient;
     Spinner spCategoriaProducto;
+    Fragment detalleFragment;
+    Activity actividad;
+    IDetalleFragment iDetalleFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,7 +106,7 @@ public class EditarCategoriaFragment extends Fragment {
         btnEditarCategoria = view.findViewById(R.id.btnEditarCategoriaProducto);
         asyncHttpClient = new AsyncHttpClient();
         request = Volley.newRequestQueue(getContext());
-
+        detalleFragment = new DetalleFragment();
         llenarSpinnner();
 
         btnEditarCategoria.setOnClickListener(new View.OnClickListener() {
@@ -172,6 +182,7 @@ public class EditarCategoriaFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(getContext(),"Categoria editada exitosamente", Toast.LENGTH_LONG).show();
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -196,5 +207,18 @@ public class EditarCategoriaFragment extends Fragment {
             }
         };
         request.add(stringRequest);
+    }
+    public void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contenedorFragmentTienda, fragment);
+        fragmentTransaction.commit();
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof  Activity){
+            this.actividad = (Activity) context;
+            iDetalleFragment = (IDetalleFragment) this.actividad;
+        }
     }
 }

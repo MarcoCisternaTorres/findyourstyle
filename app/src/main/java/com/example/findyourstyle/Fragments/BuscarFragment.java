@@ -52,7 +52,7 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BuscarFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject> {
+public class BuscarFragment extends Fragment {
 
 
     String correoUsuario;
@@ -128,6 +128,8 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
 
         return view;
     }
+
+
 
     private void buscarProducto() {
         final String ip = getString(R.string.ip);
@@ -261,52 +263,65 @@ public class BuscarFragment extends Fragment implements Response.ErrorListener, 
         final String ip = getString(R.string.ip);
 
         String url = ip + "/findyourstyleBDR/consultaListaProductos.php";
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
-        request.add(jsonObjectRequest);
-    }
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(actividad, "No existen productos disponibles", Toast.LENGTH_LONG).show();
-        System.out.println();
-        progress.hide();
-        Log.d("ERROR: ", error.toString());
-    }
 
-    @Override
-    public void onResponse(JSONObject response) {
-        ModeloBuscar modeloBuscar = null;
-        JSONArray jsonArray =  response.optJSONArray("producto");
-        try{
-            for(int i = 0; i < jsonArray.length();i++){
-                modeloBuscar = new ModeloBuscar();
-                JSONObject jsonObject = null;
-                jsonObject = jsonArray.getJSONObject(i);
 
-                modeloBuscar.setNombreProducto(jsonObject.optString("nombre_producto"));
-                modeloBuscar.setTienda(jsonObject.optString("nombre_tienda"));
-                modeloBuscar.setPrecio(jsonObject.optString("precio"));
-                modeloBuscar.setRutaImagen(jsonObject.optString("ruta_imagen"));
-                modeloBuscar.setDireccion(jsonObject.optString("direccion_tienda"));
-                buscarProductosLista.add(modeloBuscar);
-            }
-            progress.hide();
 
-            AdapterListaProducto adapterListaProducto = new AdapterListaProducto(buscarProductosLista,actividad);
-            recyclerViewBuscar.setAdapter(adapterListaProducto);
-            adapterListaProducto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                ModeloBuscar modeloBuscar = null;
 
-                    iComunicaFragment.enviarProducto(listaProductos.get(recyclerViewBuscar.getChildAdapterPosition(v)));
+                try{
+                    JSONObject jsonObj = new JSONObject(response);
+                    JSONArray jsonArray =  jsonObj.optJSONArray("producto");
+                    for(int i = 0; i < jsonArray.length();i++){
+                        modeloBuscar = new ModeloBuscar();
+                        JSONObject jsonObject = null;
+                        jsonObject = jsonArray.getJSONObject(i);
+
+                        modeloBuscar.setNombreProducto(jsonObject.optString("nombre_producto"));
+                        modeloBuscar.setTienda(jsonObject.optString("nombre_tienda"));
+                        modeloBuscar.setPrecio(jsonObject.optString("precio"));
+                        modeloBuscar.setRutaImagen(jsonObject.optString("ruta_imagen"));
+                        modeloBuscar.setDireccion(jsonObject.optString("direccion_tienda"));
+                        buscarProductosLista.add(modeloBuscar);
+                    }
+
+
+                    AdapterBuscar adapterBuscar = new AdapterBuscar(buscarProductosLista,actividad);
+                    recyclerViewBuscar.setAdapter(adapterBuscar);
+                    adapterBuscar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            iComunicaFragment.enviarProducto(buscarProductosLista.get(recyclerViewBuscar.getChildAdapterPosition(v)));
+                        }
+                    });
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    Toast.makeText(getContext(),"Producto no encontrado", Toast.LENGTH_LONG).show();
+                    progress.hide();
+
                 }
-            });
-        }catch (JSONException e){
-            e.printStackTrace();
-            Toast.makeText(getContext(),"no se ha podido conectar con el servidor"+""+response, Toast.LENGTH_LONG).show();
-            progress.hide();
 
-        }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(actividad, "No existen productos disponibles", Toast.LENGTH_LONG).show();
+                System.out.println();
+                progress.hide();
+                Log.d("ERROR: ", error.toString());
+
+            }
+        });
+        request.add(stringRequest);
+
+
     }
+
+
     // comunicacion de fragment a fragment
     @Override
     public void onAttach(@NonNull Context context) {

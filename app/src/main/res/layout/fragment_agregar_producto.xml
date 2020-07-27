@@ -42,7 +42,7 @@
         android:background="@drawable/estilo_borde_edit_text"
         android:layout_gravity="center"
         android:layout_marginTop="-110dp"
-        android:hint="Precio Produto"
+        android:hint="Precio Producto"
         android:ems="10"
         android:inputType="number"
         />
