@@ -55,6 +55,7 @@ public class HomeActivity extends AppCompatActivity implements IComunicaFragment
         setContentView(R.layout.activity_home);
         bottomNavigationView    = (BottomNavigationView) findViewById(R.id.bottomNavegation);
         inicioFragment          = new InicioFragment();
+
         buscarFragment          = new BuscarFragment();
         agendaFragment          = new AgendaFragment();
         perfilFragment          = new PerfilFragment();
